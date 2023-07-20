@@ -42,22 +42,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "babel": {
-    "presets": [
-      "react-app"
-    ],
-    "plugins": [
-      [
-        "babel-plugin-styled-components",
-        {
-          "namespace": "",
-          "displayName": true,
-          "fileName": true,
-          "ssr": false,
-          "meaninglessFileNames": []
-        }
-      ]
-    ]
   }
 }
