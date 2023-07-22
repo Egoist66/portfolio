@@ -1,0 +1,34 @@
+[
+    {
+        "image": "../assets/icons/sprite.svg#code",
+        "title": "html5",
+        "description": "I love HTML 5"
+    },
+    {
+        "image": "../assets/icons/sprite.svg#css3",
+        "title": "css3",
+        "description": "I love CSS3"
+    },
+    {
+        "image": "../assets/icons/sprite.svg#react",
+        "title": "react",
+        "description": "I love React"
+    },
+    {
+        "image": "../assets/icons/sprite.svg#ts",
+        "title": "typescript",
+        "description": "I love Typescript"
+    },
+
+    {
+        "image": "../assets/icons/sprite.svg#styledCom",
+        "title": "styled components",
+        "description": "I love Styled Components"
+    },
+    
+    {
+        "image": "../assets/icons/sprite.svg#figma",
+        "title": "web design",
+        "description": "I love Web Design"
+    },
+]
