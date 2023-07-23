@@ -12,7 +12,7 @@ function Nav(){
 
 
     return (
-        <StyledNav>
+        <StyledNav id="main-nav">
             <ul>
                 {routes.map(route => (
                     <li key={route.name}>

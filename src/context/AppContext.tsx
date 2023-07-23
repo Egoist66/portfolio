@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {ReactNode} from 'react'
 import {useContext} from 'react'
 import useMenuToggle from '../hooks/useMenuToggle'
 
@@ -15,7 +15,11 @@ export const useAppContext = () =>  {
 }
 
 
-function AppContext({children} : any){
+interface AppContextChildren {
+    children: ReactNode
+}
+
+function AppContext({children} : AppContextChildren){
 
     const {isToggled, toggleMenu} = useMenuToggle()
     const data : AppContextValues = {

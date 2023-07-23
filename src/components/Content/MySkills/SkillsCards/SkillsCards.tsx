@@ -1,14 +1,15 @@
 import styled from "styled-components";
-import SVG from "../../../../service/SVG/SVG";
+import React from 'react'
 
+
+import SVG from "../../../../service/SVG/SVG";
 import skills from '../../../../data/skills.json'
 import sprite from '../../../../assets/icons/sprite.svg'
 import DIV from "../../../../service/DIV/DIV";
 import Text from "../../../../service/TEXT/TEXT";
 
-console.log(sprite);
 
-const skillsImages = [
+const skillsImages : Array<string> = [
 
     `${sprite}#code`,
     `${sprite}#css3`,
@@ -29,7 +30,7 @@ const SkillsGrid = styled.div(props => ({
 
 }))
 
-function SkillsCards(){
+function SkillsCards() : JSX.Element{
 
     return (
         <SkillsGrid id="skills-grid">

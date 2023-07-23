@@ -7,6 +7,7 @@ import Menu from "./Menu/Menu";
 import PreviewAvatar from "../Content/PreviewAvatar/PreviewAvatar";
 import { useAppContext } from "../../context/AppContext";
 import Skills from "../Content/MySkills/Skills";
+import Works from "../Content/MyWorks/Works";
 
 //import sprite from "../../assets/icons/sprite.svg"
 
@@ -44,7 +45,8 @@ function Layout(){
 
                 <Container>
                     
-
+                    <Works />
+                    
                 </Container>
             
             </Section>

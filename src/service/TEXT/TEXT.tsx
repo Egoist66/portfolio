@@ -25,7 +25,7 @@ const StyledTitleH2 = styled.h2<TextPropsType>((props) => ({
   textAlign: props.centered === "true" ? "center" : "initial",
 }));
 
-function Text({ _color, font_size, type, centered, children }: TextPropsType) {
+function Text({ _color, font_size, type = 'p', centered, children }: TextPropsType) {
   switch (type) {
     case "p":
       return (
