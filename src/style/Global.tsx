@@ -30,7 +30,8 @@ export const pseudoLinkElem = `
 const GlobalStyles = createGlobalStyle`
 
         body,html {
-            margin: 0;
+            margin: 0;   
+            scroll-behavior: smooth;
             padding: 0;
             color: ${({ theme }) => theme.styles.colors.textColor};
             box-sizing: border-box;

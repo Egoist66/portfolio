@@ -1,11 +1,15 @@
 import React, {ReactNode} from 'react'
 import {useContext} from 'react'
 import useMenuToggle from '../hooks/useMenuToggle'
+import useContact from '../hooks/useContact'
 
 
 interface AppContextValues {
     isToggled?: boolean,
-    toggleMenu?: () => void
+    toggleMenu?: () => void,
+    handleInput?:(e : any) => void,
+    body?: string,
+    subject?: string,
 }
 
 
@@ -22,9 +26,15 @@ interface AppContextChildren {
 function AppContext({children} : AppContextChildren){
 
     const {isToggled, toggleMenu} = useMenuToggle()
+    const {handleInput, subject, body} = useContact('')
+
     const data : AppContextValues = {
         isToggled,
-        toggleMenu
+        toggleMenu,
+        body,
+        subject,
+        handleInput
+        
     }
 
 

@@ -1,5 +1,9 @@
 import styled from "styled-components";
 import {NavLink} from 'react-router-dom'
+import { useRef, useEffect } from 'react';
+import {redirect} from 'react-router-dom'
+
+
 
 const routes = [
   { name: "All", path: "/all" },
@@ -19,23 +23,28 @@ const WorksNav = styled.nav(props => ({
 const WorksNavList = styled.ul(props => ({
     display: 'flex',
     gap: '50px',
+    flexWrap: 'wrap'
     
 }))
 
+
+
 function WorkLinks() {
+
 
     return (
 
-      
         <WorksNav id="works-nav">
             <WorksNavList id="works-nav-list">
 
-                {routes.map(route => (
+                {routes.map((route, i) => (
+                    
                     <li key={route.name}>
-                        <NavLink className='route-links' to={route.path}>{route.name}</NavLink>
+                        <NavLink className={`route-links`} to={route.path}>{route.name}</NavLink>
                     </li>
                 ))}
             </WorksNavList>
+
         </WorksNav>
            
     )

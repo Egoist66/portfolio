@@ -1,7 +1,7 @@
 [
-    {"name": "Home", "path": "/"},
-    {"name": "Skills", "path": "/skills"},
-    {"name": "Works", "path": "/works"},
-    {"name": "Testimony", "path": "/testimony"},
-    {"name": "Contact", "path": "/contact"}
+    {"name": "Home", "path": "#/"},
+    {"name": "Skills", "path": "#skills"},
+    {"name": "Works", "path": "#works"},
+    {"name": "Testimony", "path": "#testimony"},
+    {"name": "Contact", "path": "#contact"}
 ]

@@ -30,6 +30,14 @@ const SkillsGrid = styled.div(props => ({
 
 }))
 
+export const SkillsFigure = styled.div({
+    backgroundColor: '#333',
+    width: '50px', 
+    margin: '0px auto 50px auto',
+    padding: '30px'
+
+})
+
 function SkillsCards() : JSX.Element{
 
     return (
@@ -37,15 +45,11 @@ function SkillsCards() : JSX.Element{
 
             {skills.map((skill, i) => (
                 <DIV className="skills-cards" key={skill.title}>
-                    <DIV 
-                    style={{
-                        backgroundColor: '#333',
-                         width: 50, 
-                         margin: '0px auto 50px auto',
-                         padding: 30
-                        }}>
+                    <SkillsFigure> 
+                   
                         <SVG width="50" height="50" url={`${skillsImages[i]}`} />
-                    </DIV>
+                        
+                    </SkillsFigure>
                     <Text centered="true" type="h2">{skill.title.toUpperCase()}</Text>
                     <Text centered="true" type="p">{skill.description}</Text>
                 </DIV>

@@ -1,10 +1,12 @@
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route, Navigate} from 'react-router-dom'
 import Text from '../../service/TEXT/TEXT';
 import AllWorks from '../Content/MyWorks/All/AllWorks';
 
 
 
 function WorkRoutes() {
+
+
   return (
     <Routes>
       <Route path='/all' element={<AllWorks />} />

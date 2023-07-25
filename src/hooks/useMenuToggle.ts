@@ -1,9 +1,11 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 interface useMenuTogglePropsType {
     isToggled: boolean,
     toggleMenu: () => void
 }
+
+
 
 function useMenuToggle() : useMenuTogglePropsType {
 
@@ -14,6 +16,19 @@ function useMenuToggle() : useMenuTogglePropsType {
         setToggle(isToggled => !isToggled)
     }
 
+    useEffect(() => {
+        function closeNav(e: KeyboardEvent){
+            if(e.key === "Escape"){
+                setToggle(true)
+            }
+        }
+        document.addEventListener('keydown', closeNav)
+
+
+        return () => {
+            document.removeEventListener('keydown', closeNav)
+        }
+    }, [])
 
 
     return {
