@@ -5,7 +5,12 @@ import {redirect} from 'react-router-dom'
 
 
 
-const routes = [
+type Routes = {
+    name: string,
+    path: string
+}
+
+const routes : Array<Routes> = [
   { name: "All", path: "/all" },
   { name: "Landing Page", path: "/landing-page" },
   { name: "React", path: "/react" },
@@ -31,18 +36,36 @@ const WorksNavList = styled.ul(props => ({
 
 function WorkLinks() {
 
+    const setDefRoute = () => {
+        const defRoute = document.querySelector('#def-route') as HTMLAnchorElement
+        if(defRoute){
+            defRoute?.click()
+        }
+
+    }
+
+    
+    useEffect(() => {
+        setDefRoute()
+       
+    })
+
 
     return (
 
         <WorksNav id="works-nav">
             <WorksNavList id="works-nav-list">
 
-                {routes.map((route, i) => (
-                    
-                    <li key={route.name}>
-                        <NavLink className={`route-links`} to={route.path}>{route.name}</NavLink>
-                    </li>
-                ))}
+                {routes.map((route, i : number) => {
+                   
+                    return (
+
+                        <li key={route.name}>
+                            <NavLink id={i === 0 ? 'def-route' : ''} className={`route-links`} to={route.path}>{route.name}</NavLink>
+                        </li>
+                    )
+                })}
+
             </WorksNavList>
 
         </WorksNav>
