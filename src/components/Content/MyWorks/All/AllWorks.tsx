@@ -25,7 +25,6 @@ const projectIcons = [
     terminal,
     signature
 ]
-
 function AllWorks() {
 
 
