@@ -45,7 +45,7 @@ function Socials(){
     return (
         <>
 
-            <SectionTitle font_size={'22px'} text={'Farid'} />
+            <SectionTitle font_size={'22px'} text={'I am in social media'} />
 
             <StyledSocialNav>
 

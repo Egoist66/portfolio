@@ -38,6 +38,10 @@ const GlobalStyles = createGlobalStyle`
             font-family: ${({ theme }) => theme.styles.font.fontFamilies[0]}
         }
 
+        .swiper-wrapper {
+            padding-top: 20px;
+        }
+
         h1 {
             position: relative;
             z-index: 22222;

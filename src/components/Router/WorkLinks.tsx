@@ -34,7 +34,7 @@ const routes: Array<Routes> = [
     { name: "Marvel app", path: "/marvel-app" },
     { name: "Notes app", path: "/notes-app" },
     { name: "CodePencil app", path: "/code-pencil-app" },
-    { name: "SimpleEditor app", path: "/simple-edito-app" },
+    { name: "SimpleEditor app", path: "/simple-editor-app" },
     { name: "Converter app", path: "/converter-app" },
     { name: "Todolist-app", path: "/todolist-app" },
     { name: "Social network-app", path: "/social-network-app" },

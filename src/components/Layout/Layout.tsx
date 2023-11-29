@@ -10,7 +10,6 @@ import Skills from "../Content/MySkills/Skills";
 import Works from "../Content/MyWorks/Works";
 import Testimony from "../Content/Testimony/Testimony";
 import Contact from "../Content/Contact/Contact";
-import Freelance from "../Content/Freelance/Freelance";
 import Socials from "../Content/Socials/Socials";
 
 
@@ -74,20 +73,11 @@ function Layout() {
 
             </Section>
 
-            <Section id="freelance" bg_color={styles.colors.secondaryBg}>
-
-                <Container>
-
-                    <Freelance/>
-
-                </Container>
-
-            </Section>
-
+  
 
             <Footer>
 
-                <Section id="socials" bg_color={styles.colors.mainBg}>
+                <Section id="socials" bg_color={styles.colors.secondaryBg}>
 
                     <Container>
 

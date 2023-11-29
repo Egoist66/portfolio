@@ -24,7 +24,12 @@ import tailwind from '../../../../assets/images-2/tailwind.png'
 import fire from '../../../../assets/images-2/fire.png'
 
 
-const skillsImages : Array<string> = [
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css/bundle';
+import { Navigation, Keyboard, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+
+
+const skillsImages: Array<string> = [
 
     `${sprite}#code`,
     `${sprite}#css3`,
@@ -36,7 +41,7 @@ const skillsImages : Array<string> = [
 ]
 
 
-const _skillsImages : Array<string> = [
+const _skillsImages: Array<string> = [
     html,
     css3,
     sass,
@@ -59,43 +64,71 @@ const _skillsImages : Array<string> = [
 
 
 const SkillsGrid = styled.div(props => ({
-    display: 'grid',
-    gridTemplateRows: 'repeat(2, 1fr)',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    justifyItems: 'center',
-    gap: '20px'
+    
 
 }))
 
 export const SkillsFigure = styled.div({
     backgroundColor: '#333',
-    width: '50px', 
+    width: '50px',
     margin: '0px auto 50px auto',
     padding: '30px',
     height: '60px',
     boxShadow: '1px 1px 13px 1px #7472D5',
-    borderRadius:'5px',
+    borderRadius: '5px',
     display: 'flex',
     alignItems: 'center'
 
 })
 
-function SkillsCards() : JSX.Element{
+function SkillsCards(): JSX.Element {
 
     return (
         <SkillsGrid id="skills-grid">
 
-            {skills.map((skill, i) => (
-                <DIV className="skills-cards" key={skill.title}>
-                    <SkillsFigure> 
-                   
-                        <img alt={_skillsImages[i]}  src={_skillsImages[i]} />
-                        
-                    </SkillsFigure>
-                    <Text centered="true" type="h2">{skill.title.toUpperCase()}</Text>
-                </DIV>
-            ))}
-        
+
+            <Swiper
+
+                slidesPerView={3}
+                speed={500}
+                parallax
+                autoplay
+                autoHeight
+                keyboard
+                breakpoints={{
+                    320: {
+                        slidesPerView: 1,
+                    },
+                    480: {
+                        slidesPerView: 1,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                    },
+                }}
+                modules={[Navigation, Keyboard, Pagination, Scrollbar, A11y, Autoplay]}
+            >
+
+                {skills.map((skill, i) => (
+                    <SwiperSlide key={i}>
+                        <DIV className="skills-cards" key={skill.title}>
+                        <SkillsFigure>
+                            <img alt={_skillsImages[i]} src={_skillsImages[i]} />
+
+                        </SkillsFigure>
+                        <Text centered="true" type="h2">{skill.title.toUpperCase()}</Text>
+                    </DIV>
+                    </SwiperSlide>
+                ))}
+
+
+            </Swiper>
+
+
+
         </SkillsGrid>
     )
 }
