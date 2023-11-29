@@ -4,7 +4,7 @@ import { SkillsFigure } from "../../MySkills/SkillsCards/SkillsCards";
 import quotte from '../../../../assets/icons/quote-alt-right-svg 1.svg'
 import Text from "../../../../service/TEXT/TEXT";
 
-function TestimonyWrapper(){
+function TestimonyWrapper() {
     return (
 
         <DIV>
@@ -14,10 +14,8 @@ function TestimonyWrapper(){
             </SkillsFigure>
 
             <Text margin_auto="true" mw="600px" centered="true">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                I've been doing front-end development for 3 and a half years now - I absolutely love my job and what I come across every day. Challenges for me are a growth area. Constant practice and immersion in the deeper corners of the technology world makes me stronger. In my free time from IT, I try to relax because mental respite is important in our work. I listen to music, practice vocals, which is my old hobby 😉
             </Text>
-
-            <Text centered="true">{'@Rob Halford'.toUpperCase()}</Text>
 
         </DIV>
     )

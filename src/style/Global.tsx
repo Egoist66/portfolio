@@ -55,7 +55,7 @@ const GlobalStyles = createGlobalStyle`
                 width: 76%;
                 overflow: hidden;
                 background-color: ${({ theme }) =>
-                  theme.styles.colors.decorColor} ;
+        theme.styles.colors.decorColor} ;
             }
         }
 
@@ -67,6 +67,7 @@ const GlobalStyles = createGlobalStyle`
 
         p {
             margin: 10px 0px !important;
+            line-height: 1.9;
         }
 
         a {
@@ -139,7 +140,7 @@ const GlobalStyles = createGlobalStyle`
                 overflow: hidden;
                 transition: 0.3s all ease;
                 background-color: ${({ theme }) =>
-                  theme.styles.colors.decorColor};
+        theme.styles.colors.decorColor};
             }
 
     

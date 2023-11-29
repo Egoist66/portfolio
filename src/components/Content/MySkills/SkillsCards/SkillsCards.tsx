@@ -22,6 +22,7 @@ import styledicon from '../../../../assets/images-2/styled.png'
 import ts from '../../../../assets/images-2/ts.png'
 import tailwind from '../../../../assets/images-2/tailwind.png'
 import fire from '../../../../assets/images-2/fire.png'
+import ant from '../../../../assets/images-2/ant.png'
 
 
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -57,6 +58,7 @@ const _skillsImages: Array<string> = [
     saga,
     query,
     styledicon,
+    ant,
     fire
 
 
