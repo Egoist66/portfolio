@@ -54,7 +54,7 @@ function Layout() {
 
             </Section>
 
-            <Section id="testimony" bg_color={styles.colors.secondaryBg}>
+            <Section id="about-me" bg_color={styles.colors.secondaryBg}>
 
                 <Container>
 

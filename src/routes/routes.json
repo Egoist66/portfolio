@@ -2,6 +2,6 @@
     {"name": "Home", "path": "#/"},
     {"name": "Skills", "path": "#skills"},
     {"name": "Works", "path": "#works"},
-    {"name": "Testimony", "path": "#testimony"},
+    {"name": "About Me", "path": "#about-me"},
     {"name": "Contact", "path": "#contact"}
 ]

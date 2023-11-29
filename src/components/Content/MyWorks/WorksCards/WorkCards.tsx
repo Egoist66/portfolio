@@ -28,12 +28,18 @@ const StyledWorkBtn = styled.button`
     height: 32px;
     letter-spacing: 1px;
     text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 5px;
+    justify-content: center;
+    padding: 6px;
 
 
     
 `
 const StyledWorkImg = styled.img`
     display: block;
+    width: 100%;
 `
 
 const StyledWorksImgBox = styled.div`
@@ -67,14 +73,10 @@ const StyledWorkLinks = styled.a.attrs({
 
 type WorkCardsProps = {
 
-    link?: string,
+    imglink?: string,
     title?: string,
     descr?: string,
-    demo?: {
-        path?: string,
-        demo_name?: string | ''
-
-    },
+    projectLink: string
     code?: {
         path?: string,
         code_name?: string | ''
@@ -83,12 +85,12 @@ type WorkCardsProps = {
 
 }
 
-function WorkCards({link, title, descr, demo, code} : WorkCardsProps){
+function WorkCards({imglink, projectLink, title, descr, code} : WorkCardsProps){
     return (
         <StyledWorkCards>
             <StyledWorksImgBox style={{position: 'relative'}}>
-                <StyledWorkImg src={link} />
-                <StyledWorkBtn>View Project</StyledWorkBtn>
+                <StyledWorkImg src={imglink} />
+                <StyledWorkBtn target="_blank" href={projectLink} as={'a'}>View Project</StyledWorkBtn>
             </StyledWorksImgBox>
 
             <DIV style={{padding: 20}}>
@@ -103,7 +105,6 @@ function WorkCards({link, title, descr, demo, code} : WorkCardsProps){
                     gap: 20
                 }
             }>
-                <StyledWorkLinks href={demo?.path}>{demo?.demo_name}</StyledWorkLinks>
                 <StyledWorkLinks href={code?.path}>{code?.code_name}</StyledWorkLinks>
             </DIV>
 

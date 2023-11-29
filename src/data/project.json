@@ -1,0 +1,58 @@
+{
+     "project": [
+          {
+               "name": "Marvel app",
+               "link": "https://react-marvel-v8zi.vercel.app/",
+               "github": "https://github.com/Egoist66/react-marvel",
+               "description": "Interactive app about marvel heroes"
+          },
+          {
+               "name": "Notes app",
+               "link": "https://notes-app-redux-seven.vercel.app/",
+               "github": "https://github.com/Egoist66/notes-app-redux",
+               "description": "App for writing down your notes and thoughts"
+          },
+          {
+               "name": "CodePencil app",
+               "link": "https://code-web-editor-nine.vercel.app/",
+               "github": "https://github.com/Egoist66/code-web-editor",
+               "description": "Code-editor for fast html, css and scripts testing"
+          },
+          {
+               "name": "Editor app",
+               "link": "https://editor-app-tan.vercel.app/",
+               "github": "https://github.com/Egoist66/editor-app",
+               "description": "More simplified mini editor also for testing front stuff"
+          },
+          {
+               "name": "Converter app",
+               "link": "https://converter-app-v2.firebaseapp.com/",
+               "github": "#",
+               "description": "App for currency conversion"
+          },
+          {
+               "name": "Todolist app (dev)",
+               "link": "https://todolist-incubator.vercel.app/",
+               "github": "https://github.com/Egoist66/todolist-incubator",
+               "description": "Create tasks, manage, control execution"
+          },
+          {
+               "name": "Social network app (dev)",
+               "link": "https://social-network-tau-weld.vercel.app/profile",
+               "github": "https://github.com/Egoist66/social-network",
+               "description": "Chat, get friends, be in touch"
+          },
+          {
+               "name": "Terminal app",
+               "link": "https://terminal-puce.vercel.app/",
+               "github": "https://github.com/Egoist66/web-terminal",
+               "description": "Interactive terminal, can be used as microfrontend for different goals"
+          },
+          {
+               "name": "Signature generator",
+               "link": "https://egoist66.github.io/forte-signature/#item-0",
+               "github": "https://github.com/Egoist66/forte-signature",
+               "description": "Own brand signature generator for email box usage"
+          }
+     ]
+}

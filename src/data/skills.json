@@ -1,28 +1,55 @@
 [
     {
-        "title": "html5",
-        "description": "I love HTML 5"
+        "title": "html5"
     },
     {
-        "title": "css3",
-        "description": "I love CSS3"
+        "title": "css3"
     },
     {
-        "title": "react",
-        "description": "I love React"
+        "title": "sass"
     },
     {
-        "title": "typescript",
-        "description": "I love Typescript"
+        "title": "bootstrap"
     },
 
     {
-        "title": "styled components",
-        "description": "I love Styled Components"
+        "title": "tailwind"
     },
     
     {
-        "title": "web design",
-        "description": "I love Web Design"
+        "title": "git"
+    },
+    {
+        "title": "javascript"
+    },
+    {
+        "title": "jquery"
+    },
+    {
+        "title": "typescript"
+    },
+    {
+        "title": "react"
+    },
+    {
+        "title": "react native"
+    },
+    {
+        "title": "redux"
+    },
+    {
+        "title": "redux-saga"
+    },
+
+    {
+        "title": "tanstack query"
+    },
+
+    {
+        "title": "styled components"
+    },
+
+    {
+        "title": "firebase"
     }
 ]

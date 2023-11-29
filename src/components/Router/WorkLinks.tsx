@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useRef, useEffect } from 'react';
-import {redirect} from 'react-router-dom'
+import { redirect } from 'react-router-dom'
 
 
 
@@ -10,12 +10,6 @@ type Routes = {
     path: string
 }
 
-const routes : Array<Routes> = [
-  { name: "All", path: "/all" },
-  { name: "Landing Page", path: "/landing-page" },
-  { name: "React", path: "/react" },
-  { name: "SPA", path: "/spa" },
-];
 
 
 const WorksNav = styled.nav(props => ({
@@ -28,27 +22,30 @@ const WorksNav = styled.nav(props => ({
 const WorksNavList = styled.ul(props => ({
     display: 'flex',
     gap: '50px',
+    justifyContent: 'center',
+    width: '870px',
     flexWrap: 'wrap'
-    
+
 }))
+
+
+const routes: Array<Routes> = [
+    { name: "All", path: "/all" },
+    { name: "Marvel app", path: "/marvel-app" },
+    { name: "Notes app", path: "/notes-app" },
+    { name: "CodePencil app", path: "/code-pencil-app" },
+    { name: "SimpleEditor app", path: "/simple-edito-app" },
+    { name: "Converter app", path: "/converter-app" },
+    { name: "Todolist-app", path: "/todolist-app" },
+    { name: "Social network-app", path: "/social-network-app" },
+    { name: "Terminal-app", path: "/terminal-app" },
+    { name: "Signature-app", path: "/signature-app" },
+];
+
 
 
 
 function WorkLinks() {
-
-    const setDefRoute = () => {
-        const defRoute = document.querySelector('#def-route') as HTMLAnchorElement
-        if(defRoute){
-            defRoute?.click()
-        }
-
-    }
-
-    
-    useEffect(() => {
-        setDefRoute()
-       
-    })
 
 
     return (
@@ -56,8 +53,8 @@ function WorkLinks() {
         <WorksNav id="works-nav">
             <WorksNavList id="works-nav-list">
 
-                {routes.map((route, i : number) => {
-                   
+                {routes.map((route, i: number) => {
+
                     return (
 
                         <li key={route.name}>
@@ -69,7 +66,7 @@ function WorkLinks() {
             </WorksNavList>
 
         </WorksNav>
-           
+
     )
 }
 

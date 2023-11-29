@@ -5,7 +5,7 @@ function Testimony(){
     return (
         <>
         
-            <SectionTitle text="Testimony" />
+            <SectionTitle text="About me" />
             <TestimonyWrapper />
         
         </>
