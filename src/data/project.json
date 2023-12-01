@@ -32,8 +32,8 @@
           },
           {
                "name": "Todolist app (dev)",
-               "link": "https://todolist-incubator.vercel.app/",
-               "github": "https://github.com/Egoist66/todolist-incubator",
+               "link": "https://todolist-app-flax.vercel.app/",
+               "github": "https://github.com/Egoist66/todo-app",
                "description": "Create tasks, manage, control execution"
           },
           {
