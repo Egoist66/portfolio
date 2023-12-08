@@ -2,16 +2,15 @@ import SectionTitle from "../SectionTitle/SectionTitle";
 import SkillsCards from "./SkillsCards/SkillsCards";
 
 
-function Skills(){
+function Skills() {
 
     return (
         <>
-       
+
             <SectionTitle text="My skills"/>
             <SkillsCards/>
-                
 
-       
+
         </>
     )
 
