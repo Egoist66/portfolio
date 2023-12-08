@@ -2,7 +2,7 @@ import { FC } from "react";
 import data from '../../../../data/project.json'
 import WorkCards from "../WorksCards/WorkCards";
 
-import terminal from '../../../../assets/project/terminal.png'
+import terminal from '../../../../assets/images-2/terminal.png'
 
 
 const Terminal: FC = () => {

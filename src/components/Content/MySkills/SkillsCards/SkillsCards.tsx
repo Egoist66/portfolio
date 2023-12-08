@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import React from 'react'
-import SVG from "../../../../service/SVG/SVG";
 import skills from '../../../../data/skills.json'
-import sprite from '../../../../assets/icons/sprite.svg'
 import DIV from "../../../../service/DIV/DIV";
 import Text from "../../../../service/TEXT/TEXT";
 
@@ -23,23 +21,13 @@ import ts from '../../../../assets/images-2/ts.png'
 import tailwind from '../../../../assets/images-2/tailwind.png'
 import fire from '../../../../assets/images-2/fire.png'
 import ant from '../../../../assets/images-2/ant.png'
+import story from '../../../../assets/images-2/story.png'
+import jest from '../../../../assets/images-2/jest.webp'
 
 
-import { Swiper, SwiperSlide } from 'swiper/react'
+import {Swiper, SwiperSlide} from 'swiper/react'
 import 'swiper/css/bundle';
-import { Navigation, Keyboard, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
-
-
-const skillsImages: Array<string> = [
-
-    `${sprite}#code`,
-    `${sprite}#css3`,
-    `${sprite}#react`,
-    `${sprite}#ts`,
-    `${sprite}#styledCom`,
-    `${sprite}#figma`,
-
-]
+import {A11y, Autoplay, Keyboard, Navigation, Pagination, Scrollbar} from 'swiper';
 
 
 const _skillsImages: Array<string> = [
@@ -59,7 +47,9 @@ const _skillsImages: Array<string> = [
     query,
     styledicon,
     ant,
-    fire
+    fire,
+    jest,
+    story
 
 
 ]
@@ -94,6 +84,7 @@ function SkillsCards(): JSX.Element {
                 slidesPerView={3}
                 speed={500}
                 parallax
+                loop
                 autoplay
                 autoHeight
                 keyboard

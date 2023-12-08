@@ -9,10 +9,11 @@ import notes from '../../../../assets/project/notes.png'
 import pencil from '../../../../assets/project/codepencil.png'
 import editor from '../../../../assets/project/editor.png'
 import convert from '../../../../assets/project/convert.png'
-import todolist from '../../../../assets/project/todolist.png'
+import todolist from '../../../../assets/images-2/todo.png'
 import social from '../../../../assets/project/social.png'
-import terminal from '../../../../assets/project/terminal.png'
+import terminal from '../../../../assets/images-2/terminal.png'
 import signature from '../../../../assets/project/signature.png'
+import {memo} from "react";
 
 const projectIcons = [
     marvel,
@@ -34,11 +35,12 @@ function AllWorks() {
 
             <Swiper
             
-                slidesPerView={1}
+                slidesPerView={2}
                 speed={1700}
                 spaceBetween={80}
                 autoplay
-                parallax
+                loop
+                autoHeight
                 keyboard
                 breakpoints={{
                     320: {
@@ -58,7 +60,7 @@ function AllWorks() {
             >
 
                 {data.project.map((p, i) => (
-                    <SwiperSlide 
+                    <SwiperSlide
                     key={i}>
                         <WorkCards
                             imglink={projectIcons[i]}
@@ -83,4 +85,4 @@ function AllWorks() {
     )
 }
 
-export default AllWorks
+export default memo(AllWorks)

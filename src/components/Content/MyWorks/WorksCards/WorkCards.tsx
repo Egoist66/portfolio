@@ -5,6 +5,7 @@ import { pseudoLinkElem } from "../../../../style/Global"
 
 const StyledWorkCards = styled.div(props => ({
     backgroundColor: props.theme.styles.colors.secondaryBg,
+    minHeight: '350px'
 
 }))
 
@@ -40,6 +41,7 @@ const StyledWorkBtn = styled.button`
 const StyledWorkImg = styled.img`
     display: block;
     width: 100%;
+    height: 350px;
 `
 
 const StyledWorksImgBox = styled.div`

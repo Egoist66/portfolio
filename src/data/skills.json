@@ -55,5 +55,11 @@
 
     {
         "title": "firebase"
+    },
+    {
+        "title": "Jest"
+    },
+    {
+        "title": "Storybook"
     }
 ]
