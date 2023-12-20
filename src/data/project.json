@@ -2,8 +2,8 @@
      "project": [
           {
                "name": "Marvel app",
-               "link": "https://react-marvel-v8zi.vercel.app/",
-               "github": "https://github.com/Egoist66/react-marvel",
+               "link": "https://react-marvel-v-2.vercel.app/",
+               "github": "https://github.com/Egoist66/react-marvel-v-2",
                "description": "Interactive app about marvel heroes"
           },
           {
