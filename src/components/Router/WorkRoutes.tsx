@@ -7,9 +7,11 @@ import CodePencil from '../Content/MyWorks/Single/CodePencil';
 import SimpleEditor from '../Content/MyWorks/Single/SimpleEditor';
 import Converter from '../Content/MyWorks/Single/Converter';
 import Todolist from '../Content/MyWorks/Single/Todolist';
-import Social from '../Content/MyWorks/Single/Social';
+import Generator from '../Content/MyWorks/Single/Generator';
 import Terminal from '../Content/MyWorks/Single/Terminal';
 import Siganture from '../Content/MyWorks/Single/Signature';
+import AdminApp from '../Content/MyWorks/Single/AdminApp';
+import CRM from '../Content/MyWorks/Single/CRM';
 
 
 
@@ -25,9 +27,11 @@ function WorkRoutes() {
       <Route path='/simple-editor-app' element={<SimpleEditor />} />
       <Route path='/converter-app' element={<Converter />} />
       <Route path='/todolist-app' element={<Todolist />} />
-      <Route path='/social-network-app' element={<Social />} />
+      <Route path='/generator-app' element={<Generator />} />
       <Route path='/terminal-app' element={<Terminal />} />
       <Route path='/signature-app' element={<Siganture />} />
+      <Route path='/admin-app' element={<AdminApp />} />
+      <Route path='/crm-app' element={<CRM />} />
       <Route path='*' element={<Text centered='true' type='h2'>404</Text>} />
     </Routes>
   )

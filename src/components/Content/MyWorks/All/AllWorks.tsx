@@ -13,6 +13,8 @@ import todolist from '../../../../assets/images-2/todo.png'
 import social from '../../../../assets/project/social.png'
 import terminal from '../../../../assets/images-2/terminal.png'
 import signature from '../../../../assets/project/signature.png'
+import generator from '../../../../assets/project/generator.png'
+import admin from '../../../../assets/project/admin.png'
 import {memo} from "react";
 
 const projectIcons = [
@@ -22,9 +24,10 @@ const projectIcons = [
     editor,
     convert,
     todolist,
-    social,
+    generator,
     terminal,
-    signature
+    signature,
+    admin
 ]
 function AllWorks() {
 
@@ -35,8 +38,8 @@ function AllWorks() {
 
             <Swiper
             
-                slidesPerView={2}
-                speed={1700}
+                slidesPerView={3}
+                speed={1000}
                 spaceBetween={80}
                 autoplay
                 loop
@@ -53,7 +56,7 @@ function AllWorks() {
                         slidesPerView: 1,
                     },
                     1024: {
-                        slidesPerView: 2,
+                        slidesPerView: 3,
                     },
                 }}
                 modules={[Navigation, Keyboard, Pagination, Scrollbar, A11y, Autoplay]}

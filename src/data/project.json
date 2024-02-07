@@ -37,10 +37,10 @@
                "description": "Create tasks, manage, control execution"
           },
           {
-               "name": "Social network app (dev)",
-               "link": "https://social-network-tau-weld.vercel.app/profile",
-               "github": "https://github.com/Egoist66/social-network",
-               "description": "Chat, get friends, be in touch"
+               "name": "Entities generator",
+               "link": "https://generator-tools-rho.vercel.app/",
+               "github": "https://github.com/Egoist66/dev-tools",
+               "description": "As programmers we are lazy to create over and over typical things for testing, so here you can forget about it"
           },
           {
                "name": "Terminal app",
@@ -53,6 +53,20 @@
                "link": "https://egoist66.github.io/forte-signature/#item-0",
                "github": "https://github.com/Egoist66/forte-signature",
                "description": "Own brand signature generator for email box usage"
+          },
+
+          {
+               "name": "Admin app",
+               "link": "#",
+               "github": "https://github.com/Egoist66/admin-app",
+               "description": "Addon for editing static simple sites in convenient way"
+          },
+
+          {
+               "name": "Mini CRM app",
+               "link": "#",
+               "github": "https://github.com/Egoist66/CRM",
+               "description": "Simple crm app, currently in dev mode"
           }
      ]
 }

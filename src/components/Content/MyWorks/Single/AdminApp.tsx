@@ -2,10 +2,10 @@ import { FC } from "react";
 import data from '../../../../data/project.json'
 import WorkCards from "../WorksCards/WorkCards";
 
-import social from '../../../../assets/project/social.png'
+import admin from '../../../../assets/project/admin.png'
 
 
-const Social: FC = () => {
+const AdminApp: FC = () => {
      const {project} = data
      return (
           <div style={{
@@ -14,13 +14,13 @@ const Social: FC = () => {
           }}>
           
                <WorkCards 
-                    title={project[6].name}
-                    imglink={social}
-                    projectLink={project[6].link}
-                    descr={project[6].description}
+                    title={project[9].name}
+                    imglink={admin}
+                    projectLink={project[9].link}
+                    descr={project[9].description}
                     code={{
                          code_name:"Code",
-                         path: project[6].github
+                         path: project[9].github
                          
                     }}
                
@@ -31,4 +31,4 @@ const Social: FC = () => {
      )
 }
 
-export default Social
+export default AdminApp

@@ -37,9 +37,11 @@ const routes: Array<Routes> = [
     { name: "SimpleEditor app", path: "/simple-editor-app" },
     { name: "Converter app", path: "/converter-app" },
     { name: "Todolist-app", path: "/todolist-app" },
-    { name: "Social network-app", path: "/social-network-app" },
+    { name: "Entities generator-app", path: "/generator-app" },
     { name: "Terminal-app", path: "/terminal-app" },
     { name: "Signature-app", path: "/signature-app" },
+    { name: "Admin-app", path: "/admin-app" },
+    { name: "CRM-app", path: "/crm-app" },
 ];
 
 
