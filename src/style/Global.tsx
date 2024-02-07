@@ -33,6 +33,7 @@ const GlobalStyles = createGlobalStyle`
             margin: 0;   
             scroll-behavior: smooth;
             padding: 0;
+            overflow-x: hidden ;
             color: ${({ theme }) => theme.styles.colors.textColor};
             box-sizing: border-box;
             font-family: ${({ theme }) => theme.styles.font.fontFamilies[0]}
