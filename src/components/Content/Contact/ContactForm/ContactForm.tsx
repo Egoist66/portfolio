@@ -92,7 +92,7 @@ function ContactForm() {
                 </StyledContactLink>
             )
         }
-    }, [context?.body, context?.subject])
+    }, [context?.body, context?.subject, context?.bodyError, context?.inputError])
 
     return (
         <StyledForm id={'contact-form'} onSubmit={(e: FormEvent<HTMLFormElement>) => {
