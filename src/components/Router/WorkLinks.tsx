@@ -1,15 +1,11 @@
 import styled from "styled-components";
-import { NavLink } from 'react-router-dom'
-import { useRef, useEffect } from 'react';
-import { redirect } from 'react-router-dom'
-
+import {NavLink} from 'react-router-dom'
 
 
 type Routes = {
     name: string,
     path: string
 }
-
 
 
 const WorksNav = styled.nav(props => ({
@@ -30,21 +26,20 @@ const WorksNavList = styled.ul(props => ({
 
 
 const routes: Array<Routes> = [
-    { name: "All", path: "/all" },
-    { name: "Marvel app", path: "/marvel-app" },
-    { name: "Notes app", path: "/notes-app" },
-    { name: "CodePencil app", path: "/code-pencil-app" },
-    { name: "SimpleEditor app", path: "/simple-editor-app" },
-    { name: "Converter app", path: "/converter-app" },
-    { name: "Todolist-app", path: "/todolist-app" },
-    { name: "Entities generator-app", path: "/generator-app" },
-    { name: "Terminal-app", path: "/terminal-app" },
-    { name: "Signature-app", path: "/signature-app" },
-    { name: "Admin-app", path: "/admin-app" },
-    { name: "CRM-app", path: "/crm-app" },
+    {name: "All", path: "/all"},
+    {name: "Marvel app", path: "/marvel-app"},
+    {name: "Notes app", path: "/notes-app"},
+    {name: "CodePencil app", path: "/code-pencil-app"},
+    {name: "SimpleEditor app", path: "/simple-editor-app"},
+    {name: "Converter app", path: "/converter-app"},
+    {name: "Todolist-app", path: "/todolist-app"},
+    {name: "Entities generator-app", path: "/generator-app"},
+    {name: "Terminal-app", path: "/terminal-app"},
+    {name: "Signature-app", path: "/signature-app"},
+    {name: "Admin-app", path: "/admin-app"},
+    {name: "CRM-app", path: "/crm-app"},
+    {name: "Colors-app", path: "/colors-app"},
 ];
-
-
 
 
 function WorkLinks() {
@@ -60,7 +55,8 @@ function WorkLinks() {
                     return (
 
                         <li key={route.name}>
-                            <NavLink id={i === 0 ? 'def-route' : ''} className={`route-links`} to={route.path}>{route.name}</NavLink>
+                            <NavLink id={i === 0 ? 'def-route' : ''} className={`route-links`}
+                                     to={route.path}>{route.name}</NavLink>
                         </li>
                     )
                 })}

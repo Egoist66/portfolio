@@ -18,8 +18,7 @@ const StyledHeader = styled.header(props => ({
 
 function Header ({hidden} : HeaderProps){
 
-    console.log('render');
-    
+
     return (
         <>
         

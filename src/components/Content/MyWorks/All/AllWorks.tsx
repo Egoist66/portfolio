@@ -1,7 +1,7 @@
 import WorkCards from "../WorksCards/WorkCards";
-import { Swiper, SwiperSlide } from 'swiper/react'
+import {Swiper, SwiperSlide} from 'swiper/react'
 import 'swiper/css/bundle';
-import { Navigation, Keyboard, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import {A11y, Autoplay, Keyboard, Navigation, Pagination, Scrollbar} from 'swiper';
 
 import data from '../../../../data/project.json'
 import marvel from '../../../../assets/project/marvel.png'
@@ -10,11 +10,11 @@ import pencil from '../../../../assets/project/codepencil.png'
 import editor from '../../../../assets/project/editor.png'
 import convert from '../../../../assets/project/convert.png'
 import todolist from '../../../../assets/images-2/todo.png'
-import social from '../../../../assets/project/social.png'
 import terminal from '../../../../assets/images-2/terminal.png'
 import signature from '../../../../assets/project/signature.png'
 import generator from '../../../../assets/project/generator.png'
 import admin from '../../../../assets/project/admin.png'
+import colors from '../../../../assets/project/colors.png'
 import {memo} from "react";
 
 const projectIcons = [
@@ -27,7 +27,9 @@ const projectIcons = [
     generator,
     terminal,
     signature,
-    admin
+    admin,
+    '',
+    colors
 ]
 function AllWorks() {
 
