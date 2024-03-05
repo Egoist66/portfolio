@@ -100,7 +100,7 @@ function ContactForm() {
         }}>
             <StyledInput
                 id={'submit-input'}
-                style={{border: context?.inputError ? '1px solid #C7081A' : 'none'}}
+                style={{border: context?.inputError ? '1px solid #C7081A' : '1px solid rgb(74, 74, 74)'}}
                 name="subject"
                 value={context?.subject}
                 onChange={context?.handleInput}
@@ -110,7 +110,7 @@ function ContactForm() {
                 disabled={context?.subject === ''}
                 id={'submit-area'}
                 maxLength={2000}
-                style={{border: context?.bodyError ? '1px solid #C7081A' : 'none'}}
+                style={{border: context?.bodyError ? '1px solid #C7081A' : '1px solid rgb(74, 74, 74)'}}
                 placeholder="Body"
                 name="body"
                 value={context?.body}
