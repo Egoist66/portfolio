@@ -5,7 +5,7 @@ import WorkCards from "../WorksCards/WorkCards";
 import keynote from '../../../../assets/project/keynotes.png'
 
 
-const AdminApp: FC = () => {
+const KeyNotes: FC = () => {
      const {project} = data
      return (
           <div style={{
@@ -14,13 +14,13 @@ const AdminApp: FC = () => {
           }}>
           
                <WorkCards 
-                    title={project[10].name}
+                    title={project[12].name}
                     imglink={keynote}
-                    projectLink={project[10].link}
-                    descr={project[10].description}
+                    projectLink={project[12].link}
+                    descr={project[12].description}
                     code={{
                          code_name:"Code",
-                         path: project[10].github
+                         path: project[12].github
                          
                     }}
                
@@ -31,4 +31,4 @@ const AdminApp: FC = () => {
      )
 }
 
-export default AdminApp
+export default KeyNotes

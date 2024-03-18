@@ -20,7 +20,7 @@ const AdminApp: FC = () => {
                     descr={project[9].description}
                     code={{
                          code_name:"Code",
-                         path: project[9].github
+                         path: project[9].github,
                          
                     }}
                
