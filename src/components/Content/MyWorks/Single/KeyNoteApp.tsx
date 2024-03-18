@@ -1,10 +1,11 @@
 import { FC } from "react";
 import data from '../../../../data/project.json'
 import WorkCards from "../WorksCards/WorkCards";
-import crm from '../../../../assets/project/integrationcrm.png'
+
+import keynote from '../../../../assets/project/keynotes.png'
 
 
-const CRM: FC = () => {
+const AdminApp: FC = () => {
      const {project} = data
      return (
           <div style={{
@@ -14,7 +15,7 @@ const CRM: FC = () => {
           
                <WorkCards 
                     title={project[10].name}
-                    imglink={crm}
+                    imglink={keynote}
                     projectLink={project[10].link}
                     descr={project[10].description}
                     code={{
@@ -30,4 +31,4 @@ const CRM: FC = () => {
      )
 }
 
-export default CRM
+export default AdminApp

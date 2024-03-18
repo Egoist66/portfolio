@@ -15,6 +15,8 @@ import signature from '../../../../assets/project/signature.png'
 import generator from '../../../../assets/project/generator.png'
 import admin from '../../../../assets/project/admin.png'
 import colors from '../../../../assets/project/colors.png'
+import keynote from '../../../../assets/project/keynotes.png'
+import crm from '../../../../assets/project/integrationcrm.png'
 import {memo} from "react";
 
 const projectIcons = [
@@ -28,8 +30,9 @@ const projectIcons = [
     terminal,
     signature,
     admin,
-    '',
-    colors
+    crm,
+    colors,
+    keynote
 ]
 function AllWorks() {
 

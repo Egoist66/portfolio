@@ -73,6 +73,12 @@
                "link": "https://colors-app-phi.vercel.app/",
                "github": "https://github.com/Egoist66/colors-app",
                "description": "Colors-pallet generator for every day use"
+          },
+          {
+               "name": "KeyNotes app (dev)",
+               "link": "https://keynotes-app.vercel.app/",
+               "github": "https://github.com/Egoist66/keynotes-app/tree/dev",
+               "description": "Simple powerpoint replace"
           }
      ]
 }

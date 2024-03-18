@@ -39,6 +39,7 @@ const routes: Array<Routes> = [
     {name: "Admin-app", path: "/admin-app"},
     {name: "CRM-app", path: "/crm-app"},
     {name: "Colors-app", path: "/colors-app"},
+    {name: "Keynotes-app", path: "/keynotes-app"},
 ];
 
 

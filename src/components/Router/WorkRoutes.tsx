@@ -16,6 +16,7 @@ const _Signature = lazy(() => import('../Content/MyWorks/Single/Signature'))
 const _AdminApp = lazy(() => import('../Content/MyWorks/Single/AdminApp'))
 const _CRM = lazy(() => import('../Content/MyWorks/Single/CRM'))
 const _Colors = lazy(() => import('../Content/MyWorks/Single/Colors'))
+const _KeyNotes = lazy(() => import('../Content/MyWorks/Single/KeyNoteApp'))
 
 function WorkRoutes() {
 
@@ -36,6 +37,7 @@ function WorkRoutes() {
             <Route path='/admin-app' element={<_AdminApp />} />
             <Route path='/crm-app' element={<_CRM />} />
             <Route path='/colors-app' element={<_Colors />} />
+            <Route path='/keynotes-app' element={<_KeyNotes/>} />
             <Route path='*' element={<Text centered='true' type='h2'>404</Text>} />
         </Routes>
     </Suspense>
