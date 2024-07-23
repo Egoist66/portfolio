@@ -25,6 +25,7 @@ import story from '../../../../assets/images-2/story.png'
 import jest from '../../../../assets/images-2/jest.webp'
 import php from '../../../../assets/images-2/php.png'
 import alpine from '../../../../assets/images-2/alpine.png'
+import vue from '../../../../assets/images-2/vue.png'
 
 
 import {Swiper, SwiperSlide} from 'swiper/react'
@@ -53,7 +54,8 @@ const _skillsImages: Array<string> = [
     jest,
     story,
     php,
-    alpine
+    alpine,
+    vue
 
 
 ]

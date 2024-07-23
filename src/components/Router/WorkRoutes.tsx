@@ -17,6 +17,7 @@ const _AdminApp = lazy(() => import('../Content/MyWorks/Single/AdminApp'))
 const _CRM = lazy(() => import('../Content/MyWorks/Single/CRM'))
 const _Colors = lazy(() => import('../Content/MyWorks/Single/Colors'))
 const _KeyNotes = lazy(() => import('../Content/MyWorks/Single/KeyNoteApp'))
+const _Password = lazy(() => import('../Content/MyWorks/Single/PasswordApp'))
 
 function WorkRoutes() {
 
@@ -24,7 +25,7 @@ function WorkRoutes() {
   return (
     <Suspense>
         <Routes>
-            <Route path='/all' element={<_AllWorks />} />
+            <Route path='/' element={<_AllWorks />} />
             <Route path='/marvel-app' element={<_Marvel />} />_
             <Route path='/notes-app' element={<_Notes/>} />
             <Route path='/code-pencil-app' element={<_CodePencil/>} />
@@ -38,6 +39,7 @@ function WorkRoutes() {
             <Route path='/crm-app' element={<_CRM />} />
             <Route path='/colors-app' element={<_Colors />} />
             <Route path='/keynotes-app' element={<_KeyNotes/>} />
+            <Route path='/password-app' element={<_Password />} />
             <Route path='*' element={<Text centered='true' type='h2'>404</Text>} />
         </Routes>
     </Suspense>

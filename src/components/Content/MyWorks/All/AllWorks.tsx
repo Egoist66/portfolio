@@ -17,6 +17,7 @@ import admin from '../../../../assets/project/admin.png'
 import colors from '../../../../assets/project/colors.png'
 import keynote from '../../../../assets/project/keynotes.png'
 import crm from '../../../../assets/project/integrationcrm.png'
+import password from '../../../../assets/project/password.png'
 import {memo} from "react";
 
 const projectIcons = [
@@ -32,7 +33,8 @@ const projectIcons = [
     admin,
     crm,
     colors,
-    keynote
+    keynote,
+    password
 ]
 function AllWorks() {
 

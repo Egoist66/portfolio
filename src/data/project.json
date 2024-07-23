@@ -79,6 +79,13 @@
                "link": "https://keynotes-app.vercel.app/",
                "github": "https://github.com/Egoist66/keynotes-app/tree/dev",
                "description": "Simple powerpoint replace"
+          },
+
+          {
+               "name": "Password Generator app",
+               "link": "https://password-app-rtkx.vercel.app/",
+               "github": "https://github.com/Egoist66/password-app",
+               "description": "Simple but useful password generator"
           }
      ]
 }

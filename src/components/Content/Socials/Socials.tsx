@@ -17,7 +17,7 @@ const socialIcons : Array<string> = [
 ]
 
 const links : Array<string> = [
-    'https://t.me/Farid_Mahmudov',
+    'https://t.me/codebuilder1',
     'https://www.instagram.com/eg0ist66/',
     'https://vk.com/metalmaniac_666',
     'https://www.linkedin.com/in/farid-mahmudov-1624a8227'

@@ -14,7 +14,6 @@ function WorksWrapper(){
 
         <StyledWorkWrapper>
 
-            
             <WorkRoutes />
             
 

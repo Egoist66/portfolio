@@ -26,7 +26,7 @@ const WorksNavList = styled.ul(props => ({
 
 
 const routes: Array<Routes> = [
-    {name: "All", path: "/all"},
+    {name: "All", path: "/"},
     {name: "Marvel app", path: "/marvel-app"},
     {name: "Notes app", path: "/notes-app"},
     {name: "CodePencil app", path: "/code-pencil-app"},
@@ -40,6 +40,7 @@ const routes: Array<Routes> = [
     {name: "CRM-app", path: "/crm-app"},
     {name: "Colors-app", path: "/colors-app"},
     {name: "Keynotes-app", path: "/keynotes-app"},
+    {name: "Password-app", path: "/password-app"},
 ];
 
 
