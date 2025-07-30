@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { themeStyle } from "../theme/theme";
 
 export const pseudoLinkElem = `
         
@@ -34,9 +35,9 @@ const GlobalStyles = createGlobalStyle`
             scroll-behavior: smooth;
             padding: 0;
             overflow-x: hidden ;
-            color: ${({ theme }) => theme.styles.colors.textColor};
+            color: ${themeStyle.styles.colors.textColor};
             box-sizing: border-box;
-            font-family: ${({ theme }) => theme.styles.font.fontFamilies[0]}
+            font-family: ${ themeStyle.styles.font.fontFamilies[0]}
         }
 
         .swiper-wrapper {
@@ -55,13 +56,12 @@ const GlobalStyles = createGlobalStyle`
                 bottom: 0;
                 width: 76%;
                 overflow: hidden;
-                background-color: ${({ theme }) =>
-        theme.styles.colors.decorColor} ;
+                background-color: ${ themeStyle.styles.colors.decorColor} ;
             }
         }
 
         h1,h2, li, a {
-            font-family: ${({ theme }) => theme.styles.font.fontFamilies[1]};
+            font-family: ${themeStyle.styles.font.fontFamilies[1]};
             margin: 0;
             letter-spacing: 2.5px;
         }
@@ -93,7 +93,8 @@ const GlobalStyles = createGlobalStyle`
                 text-decoration: none;
                 font-size: 50px;
                 letter-spacing: normal !important;
-                color: ${({ theme }) => theme.styles.colors.decorColor};
+              
+                color: ${themeStyle.styles.colors.decorColor};
                 position: relative;
                 overflow: hidden;
                 display: 'inline-block';
@@ -140,8 +141,7 @@ const GlobalStyles = createGlobalStyle`
                 width: 0%;
                 overflow: hidden;
                 transition: 0.3s all ease;
-                background-color: ${({ theme }) =>
-        theme.styles.colors.decorColor};
+                background-color: ${themeStyle.styles.colors.decorColor};
             }
 
     
@@ -156,7 +156,7 @@ const GlobalStyles = createGlobalStyle`
             width: 100%;
             overflow: hidden;
             transition: 0.3s all ease;
-            background-color: ${({ theme }) => theme.styles.colors.decorColor};
+            background-color: ${themeStyle.styles.colors.decorColor};
         }
 
 

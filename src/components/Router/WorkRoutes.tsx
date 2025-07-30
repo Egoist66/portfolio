@@ -18,12 +18,17 @@ const _CRM = lazy(() => import('../Content/MyWorks/Single/CRM'))
 const _Colors = lazy(() => import('../Content/MyWorks/Single/Colors'))
 const _KeyNotes = lazy(() => import('../Content/MyWorks/Single/KeyNoteApp'))
 const _Password = lazy(() => import('../Content/MyWorks/Single/PasswordApp'))
+const _Weather = lazy(() => import('../Content/MyWorks/Single/WeatherApp'))
+const _TresFinance = lazy(() => import('../Content/MyWorks/Single/TresFinance'))
+const _NotesV2 = lazy(() => import('../Content/MyWorks/Single/VueNotes'))
+const _InterviewApp = lazy(() => import('../Content/MyWorks/Single/InterviewApp'))
+const _LangApp = lazy(() => import('../Content/MyWorks/Single/LangApp'))
 
 function WorkRoutes() {
 
 
   return (
-    <Suspense>
+    <Suspense fallback={<Text>Loading...</Text>}>
         <Routes>
             <Route path='/' element={<_AllWorks />} />
             <Route path='/marvel-app' element={<_Marvel />} />_
@@ -40,6 +45,13 @@ function WorkRoutes() {
             <Route path='/colors-app' element={<_Colors />} />
             <Route path='/keynotes-app' element={<_KeyNotes/>} />
             <Route path='/password-app' element={<_Password />} />
+            <Route path='/weather-app' element={<_Weather />} />
+            <Route path='/tres-finance' element={<_TresFinance />} />
+            <Route path='/basic-notes' element={<_NotesV2 />} />
+            <Route path='/interview-app' element={<_InterviewApp />} />
+            <Route path='/learn-lang-app' element={<_LangApp />} />
+
+
             <Route path='*' element={<Text centered='true' type='h2'>404</Text>} />
         </Routes>
     </Suspense>

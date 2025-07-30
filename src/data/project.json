@@ -8,8 +8,8 @@
           },
           {
                "name": "Notes app",
-               "link": "https://notes-app-redux-seven.vercel.app/",
-               "github": "https://github.com/Egoist66/notes-app-redux",
+               "link": "https://handy-notes-gamma.vercel.app/",
+               "github": "https://github.com/Egoist66/handy-notes",
                "description": "App for writing down your notes and thoughts"
           },
           {
@@ -86,6 +86,39 @@
                "link": "https://password-app-rtkx.vercel.app/",
                "github": "https://github.com/Egoist66/password-app",
                "description": "Simple but useful password generator"
+          },
+          {
+               "name": "Weather-app",
+               "link": "https://weather-app-v2-black.vercel.app/",
+               "github": "https://github.com/Egoist66/weather-app-v2",
+               "description": "Simple weather app"
+          },
+          {
+               "name": "Tres-Finance",
+               "link": "https://tres-finance.vercel.app/",
+               "github": "https://github.com/Egoist66/tres-finance",
+               "description": "Demo Tres-Finance app"
+          },
+          
+          {
+               "name": "Basic notes",
+               "link": "https://vue-note-app-alpha.vercel.app/",
+               "github": "https://github.com/Egoist66/vue-note-app",
+               "description": "Simple notes app with Notification API"
+          },
+          {
+               "name": "Interview App",
+               "link": "https://interview-app-psi.vercel.app/",
+               "github": "https://github.com/Egoist66/interview-app",
+               "description": "App for organizing interviews"
+          },
+
+          {
+               "name": "Learn Lang App",
+               "link": "https://learn-lang-app.vercel.app/",
+               "github": "https://github.com/Egoist66/learn-lang-app",
+               "description": "App for learning foreign languages"
           }
+          
      ]
 }

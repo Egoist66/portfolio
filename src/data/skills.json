@@ -70,5 +70,11 @@
     },
     {
         "title": "Vue.js"
+    },
+    {
+        "title": "Nuxt"
+    },
+    {
+        "title": "Pinia"
     }
 ]

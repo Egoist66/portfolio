@@ -11,17 +11,17 @@ import Works from "../Content/MyWorks/Works";
 import Testimony from "../Content/Testimony/Testimony";
 import Contact from "../Content/Contact/Contact";
 import Socials from "../Content/Socials/Socials";
+import { themeStyle } from "../../theme/theme";
 
 
 function Layout() {
 
     const theme = useTheme()
     const context = useAppContext()
-    const {styles} = theme
 
     return (
         <>
-            <Section id="/" _relative={'true'} bg_color={styles.colors.mainBg}>
+            <Section id="/" _relative={'true'} bg_color={themeStyle.styles.colors.mainBg}>
 
                 <Container>
                     <Menu/>
@@ -33,7 +33,7 @@ function Layout() {
 
             </Section>
 
-            <Section id="skills" bg_color={styles.colors.secondaryBg}>
+            <Section id="skills" bg_color={themeStyle.styles.colors.secondaryBg}>
 
                 <Container>
 
@@ -43,7 +43,7 @@ function Layout() {
 
             </Section>
 
-            <Section id="works" bg_color={styles.colors.mainBg}>
+            <Section id="works" bg_color={themeStyle.styles.colors.mainBg}>
 
                 <Container>
 
@@ -53,7 +53,7 @@ function Layout() {
 
             </Section>
 
-            <Section id="about-me" bg_color={styles.colors.secondaryBg}>
+            <Section id="about-me" bg_color={themeStyle.styles.colors.secondaryBg}>
 
                 <Container>
 
@@ -63,7 +63,7 @@ function Layout() {
 
             </Section>
 
-            <Section id="contact" bg_color={styles.colors.mainBg}>
+            <Section id="contact" bg_color={themeStyle.styles.colors.mainBg}>
 
                 <Container>
 
@@ -77,7 +77,7 @@ function Layout() {
 
             <Footer>
 
-                <Section id="socials" bg_color={styles.colors.secondaryBg}>
+                <Section id="socials" bg_color={themeStyle.styles.colors.secondaryBg}>
 
                     <Container>
 

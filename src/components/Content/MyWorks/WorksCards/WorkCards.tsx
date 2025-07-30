@@ -2,9 +2,10 @@ import styled from "styled-components"
 import DIV from "../../../../service/DIV/DIV"
 import Text from "../../../../service/TEXT/TEXT"
 import { pseudoLinkElem } from "../../../../style/Global"
+import { themeStyle } from "../../../../theme/theme"
 
 const StyledWorkCards = styled.div(props => ({
-    backgroundColor: props.theme.styles.colors.secondaryBg,
+    backgroundColor: themeStyle.styles.colors.secondaryBg,
     height: '550px'
 
 }))
@@ -23,7 +24,7 @@ const StyledWorkBtn = styled.button`
     transform: translate(-50%, -50%);
     will-change: contents;
     color: white;
-    background-color: ${props => props.theme.styles.colors.decorColor};
+    background-color: ${themeStyle.styles.colors.decorColor};
     border: none;
     width: 170px;
     height: 32px;

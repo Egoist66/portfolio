@@ -61,7 +61,7 @@ function Socials(){
 
             </StyledSocialNav>
 
-            <Text centered={'true'} font_size={'14px'}>© 2024 Farid Makhmudov, All Rights Reserved.</Text>
+            <Text centered={'true'} font_size={'14px'}>© {new Date().getFullYear()} Farid Makhmudov, All Rights Reserved.</Text>
 
         </>
     )

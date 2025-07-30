@@ -41,6 +41,12 @@ const routes: Array<Routes> = [
     {name: "Colors-app", path: "/colors-app"},
     {name: "Keynotes-app", path: "/keynotes-app"},
     {name: "Password-app", path: "/password-app"},
+    {name: "Weather-app", path: "/weather-app"},
+    {name: "Tres-finance", path: "/tres-finance"},
+    {name: "Basic-notes", path: "/basic-notes"},
+    {name: "Interview-app", path: "/interview-app"},
+    {name: "Learn-lang-app", path: "/learn-lang-app"},
+
 ];
 
 

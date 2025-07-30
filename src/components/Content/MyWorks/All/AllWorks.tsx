@@ -18,6 +18,11 @@ import colors from '../../../../assets/project/colors.png'
 import keynote from '../../../../assets/project/keynotes.png'
 import crm from '../../../../assets/project/integrationcrm.png'
 import password from '../../../../assets/project/password.png'
+import weather from '../../../../assets/project/weather.png'
+import tres from '../../../../assets/project/tres.png'
+import notesv2 from '../../../../assets/project/notes-v2.png'
+import interview from '../../../../assets/project/interview.png'
+import lang from '../../../../assets/project/lang.png'
 import {memo} from "react";
 
 const projectIcons = [
@@ -34,7 +39,13 @@ const projectIcons = [
     crm,
     colors,
     keynote,
-    password
+    password,
+    weather,
+    tres,
+    notesv2,
+    interview,
+    lang
+
 ]
 function AllWorks() {
 

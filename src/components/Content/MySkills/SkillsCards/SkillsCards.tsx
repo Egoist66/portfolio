@@ -26,7 +26,8 @@ import jest from '../../../../assets/images-2/jest.webp'
 import php from '../../../../assets/images-2/php.png'
 import alpine from '../../../../assets/images-2/alpine.png'
 import vue from '../../../../assets/images-2/vue.png'
-
+import nuxt from '../../../../assets/images-2/nuxt.svg'
+import pinia from '../../../../assets/images-2/pinia.svg'
 
 import {Swiper, SwiperSlide} from 'swiper/react'
 import 'swiper/css/bundle';
@@ -55,7 +56,9 @@ const _skillsImages: Array<string> = [
     story,
     php,
     alpine,
-    vue
+    vue,
+    nuxt,
+    pinia
 
 
 ]
