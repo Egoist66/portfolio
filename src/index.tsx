@@ -1,11 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/App/App";
-
-import { ThemeProvider } from "styled-components";
-import { themeStyle } from "./theme/theme";
-import GlobalStyles from "./style/Global";
 import AppContext from "./context/AppContext";
+import ThemeContextProvider from "./context/ThemeContext";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
@@ -13,14 +10,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Router>
-    <ThemeProvider theme={themeStyle}>
+    <ThemeContextProvider>
       <AppContext>
-
-        <GlobalStyles />
         <App />
-        
       </AppContext>
-    </ThemeProvider>
+    </ThemeContextProvider>
   </Router>
 );
-

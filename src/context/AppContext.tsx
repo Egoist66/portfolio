@@ -7,6 +7,7 @@ import useContact from '../hooks/useContact'
 interface AppContextValues {
     isToggled?: boolean,
     toggleMenu?: () => void,
+    closeMenu?: () => void,
     handleInput?: (e: any) => void,
     body?: string,
     bodyError?: boolean,
@@ -28,12 +29,13 @@ interface AppContextChildren {
 
 function AppContext({children}: AppContextChildren) {
 
-    const {isToggled, toggleMenu} = useMenuToggle()
+    const {isToggled, toggleMenu, closeMenu} = useMenuToggle()
     const {handleInput, subject, body, inputError, bodyError, hasError} = useContact('')
 
     const data: AppContextValues = {
         isToggled,
         toggleMenu,
+        closeMenu,
         hasError,
         body,
         bodyError,

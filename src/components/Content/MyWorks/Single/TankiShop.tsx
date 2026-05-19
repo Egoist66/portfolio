@@ -1,6 +1,7 @@
 import { FC } from "react";
 import data from '../../../../data/project.json'
 import WorkCards from "../WorksCards/WorkCards";
+import SingleProjectWrap from "./SingleProjectWrap";
 
 import tanki from '../../../../assets/project/tanki.png'
 
@@ -8,12 +9,8 @@ import tanki from '../../../../assets/project/tanki.png'
 const TankiShop: FC = () => {
      const {project} = data
      return (
-          <div style={{
-               maxWidth: 650,
-               margin: '0 auto'
-          }}>
-           
-               <WorkCards 
+          <SingleProjectWrap>
+<WorkCards 
                     title={project[19].name}
                     imglink={ tanki}
                     projectLink={project[19].link}
@@ -25,9 +22,7 @@ const TankiShop: FC = () => {
                     }}
                
                />
-           
-           
-          </div>
+          </SingleProjectWrap>
      )
 }
 

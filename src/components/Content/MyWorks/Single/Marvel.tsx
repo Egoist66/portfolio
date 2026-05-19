@@ -1,34 +1,25 @@
 import { FC } from "react";
-import data from '../../../../data/project.json'
+import data from "../../../../data/project.json";
 import WorkCards from "../WorksCards/WorkCards";
-
-import marvel from '../../../../assets/project/marvel.png'
-
+import SingleProjectWrap from "./SingleProjectWrap";
+import marvel from "../../../../assets/project/marvel.png";
 
 const Marvel: FC = () => {
-     const {project} = data
-     return (
-          <div style={{
-               maxWidth: 650,
-               margin: '0 auto'
-          }}>
-          
-               <WorkCards 
-                    title={project[0].name}
-                    imglink={marvel}
-                    projectLink={project[0].link}
-                    descr={project[0].description}
-                    code={{
-                         code_name:"Code",
-                         path: project[0].github
-                         
-                    }}
-               
-               />
-          
-          
-          </div>
-     )
-}
+  const { project } = data;
+  return (
+    <SingleProjectWrap>
+      <WorkCards
+        title={project[0].name}
+        imglink={marvel}
+        projectLink={project[0].link}
+        descr={project[0].description}
+        code={{
+          code_name: "Code",
+          path: project[0].github,
+        }}
+      />
+    </SingleProjectWrap>
+  );
+};
 
-export default Marvel
+export default Marvel;

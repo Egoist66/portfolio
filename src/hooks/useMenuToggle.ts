@@ -1,40 +1,52 @@
-import { useState, useEffect } from "react"
+import { useCallback, useEffect, useState } from "react";
 
-interface useMenuTogglePropsType {
-    isToggled: boolean,
-    toggleMenu: () => void
+interface UseMenuToggleReturn {
+  isToggled: boolean;
+  toggleMenu: () => void;
+  closeMenu: () => void;
 }
 
+function useMenuToggle(): UseMenuToggleReturn {
+  const [isToggled, setToggle] = useState<boolean>(true);
 
+  const toggleMenu = useCallback(() => {
+    setToggle((prev) => !prev);
+  }, []);
 
-function useMenuToggle() : useMenuTogglePropsType {
+  const closeMenu = useCallback(() => {
+    setToggle(true);
+  }, []);
 
-    const [isToggled, setToggle] = useState<boolean>(true)
+  const isMenuOpen = !isToggled;
 
-    const toggleMenu = () => {
-
-        setToggle(isToggled => !isToggled)
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
     }
 
-    useEffect(() => {
-        function closeNav(e: KeyboardEvent){
-            if(e.key === "Escape"){
-                setToggle(true)
-            }
-        }
-        document.addEventListener('keydown', closeNav)
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
 
+  useEffect(() => {
+    const closeNav = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeMenu();
+      }
+    };
 
-        return () => {
-            document.removeEventListener('keydown', closeNav)
-        }
-    }, [])
+    document.addEventListener("keydown", closeNav);
+    return () => document.removeEventListener("keydown", closeNav);
+  }, [closeMenu]);
 
-
-    return {
-        isToggled,
-        toggleMenu
-    }
+  return {
+    isToggled,
+    toggleMenu,
+    closeMenu,
+  };
 }
 
-export default useMenuToggle
+export default useMenuToggle;

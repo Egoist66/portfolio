@@ -1,6 +1,7 @@
 import { FC } from "react";
 import data from '../../../../data/project.json'
 import WorkCards from "../WorksCards/WorkCards";
+import SingleProjectWrap from "./SingleProjectWrap";
 
 import encrypting from '../../../../assets/project/encrypting.png'
 
@@ -8,12 +9,8 @@ import encrypting from '../../../../assets/project/encrypting.png'
 const EncryptingApp: FC = () => {
      const {project} = data
      return (
-          <div style={{
-               maxWidth: 650,
-               margin: '0 auto'
-          }}>
-           
-               <WorkCards 
+          <SingleProjectWrap>
+<WorkCards 
                     title={project[21].name}
                     imglink={ encrypting}
                     projectLink={project[21].link}
@@ -25,9 +22,7 @@ const EncryptingApp: FC = () => {
                     }}
                
                />
-           
-           
-          </div>
+          </SingleProjectWrap>
      )
 }
 

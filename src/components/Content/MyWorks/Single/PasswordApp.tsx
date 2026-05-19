@@ -1,6 +1,7 @@
 import { FC } from "react";
 import data from '../../../../data/project.json'
 import WorkCards from "../WorksCards/WorkCards";
+import SingleProjectWrap from "./SingleProjectWrap";
 
 import password from '../../../../assets/project/password.png'
 
@@ -8,12 +9,8 @@ import password from '../../../../assets/project/password.png'
 const KeyNotes: FC = () => {
      const {project} = data
      return (
-          <div style={{
-               maxWidth: 650,
-               margin: '0 auto'
-          }}>
-          
-               <WorkCards 
+          <SingleProjectWrap>
+<WorkCards 
                     title={project[13].name}
                     imglink={password}
                     projectLink={project[13].link}
@@ -25,9 +22,7 @@ const KeyNotes: FC = () => {
                     }}
                
                />
-          
-          
-          </div>
+          </SingleProjectWrap>
      )
 }
 

@@ -1,175 +1,128 @@
-import { createGlobalStyle } from "styled-components";
-import { themeStyle } from "../theme/theme";
+import { createGlobalStyle, css } from "styled-components";
 
-export const pseudoLinkElem = `
-        
+export const pseudoLinkElem = css`
+  position: relative;
+  display: inline-block;
+  color: ${({ theme }) => theme.styles.colors.textColor};
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: color ${({ theme }) => theme.styles.transition.base};
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: ${({ theme }) => theme.styles.colors.accentGradient};
+    border-radius: 2px;
+    transition: width ${({ theme }) => theme.styles.transition.base};
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.styles.colors.decorColorLight};
+
     &::after {
-        content: '';
-        height: 17px;
-        position: absolute;
-        left: 0;
-        bottom: -13px;
-        width: 0%;
-        overflow: hidden;
-        transition: 0.3s all ease;
-        background-color: #7572D5;
+      width: 100%;
     }
+  }
+`;
 
-        &:hover::after {
-            content: '';
-            height: 17px;
-            position: absolute;
-            left: 0;
-            bottom: -13px;
-            width: 100%;
-            overflow: hidden;
-            transition: 0.3s all ease;
-            background-color: #7572D5;
-        }
-
-    `;
 const GlobalStyles = createGlobalStyle`
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-        body,html {
-            margin: 0;   
-            scroll-behavior: smooth;
-            padding: 0;
-            overflow-x: hidden ;
-            color: ${themeStyle.styles.colors.textColor};
-            box-sizing: border-box;
-            font-family: ${ themeStyle.styles.font.fontFamilies[0]}
-        }
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-        .swiper-wrapper {
-            padding-top: 20px;
-        }
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    color: ${({ theme }) => theme.styles.colors.textColor};
+    background-color: ${({ theme }) => theme.styles.colors.mainBg};
+    font-family: ${({ theme }) => theme.styles.font.fontFamilies.join(", ")};
+    font-size: 16px;
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
 
-        h1 {
-            position: relative;
-            z-index: 22222;
-            &::after {
-                content: '';
-                height: 19px;
-                z-index: -2;
-                position: absolute;
-                left: 140px;
-                bottom: 0;
-                width: 76%;
-                overflow: hidden;
-                background-color: ${ themeStyle.styles.colors.decorColor} ;
-            }
-        }
+  h1,
+  h2,
+  h3,
+  li,
+  a,
+  button {
+    font-family: ${({ theme }) =>
+      theme.styles.font.headingFamilies.join(", ")};
+    margin: 0;
+  }
 
-        h1,h2, li, a {
-            font-family: ${themeStyle.styles.font.fontFamilies[1]};
-            margin: 0;
-            letter-spacing: 2.5px;
-        }
+  h1 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
 
-        p {
-            margin: 10px 0px !important;
-            line-height: 1.9;
-        }
+  h2 {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
 
-        a {
-            text-decoration: none;
-            color: #fff;
-        }
+  p {
+    margin: 0 0 1rem;
+    line-height: 1.75;
+    color: ${({ theme }) => theme.styles.colors.textMuted};
+  }
 
-        img {
-            max-width: 100%;
-        }
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color ${({ theme }) => theme.styles.transition.fast};
+  }
 
-        ul {
-            padding: 0;
-            margin: 0;
-            list-style: none;
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 
-        }
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
 
-        #main-nav ul li {
-            margin-bottom: 20px;
-            & a {
-                text-decoration: none;
-                font-size: 50px;
-                letter-spacing: normal !important;
-              
-                color: ${themeStyle.styles.colors.decorColor};
-                position: relative;
-                overflow: hidden;
-                display: 'inline-block';
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
 
-                &::before {
-                    content: "";
-                    position: absolute;
-                    bottom: 0;
-                    width: 0%;
-                    height: 3px;
-                    background-color: #fff;
-                    opacity: 0;
-                    -webkit-transition: all .2s;
-                    transition: all .2s;
-                }
+  :focus-visible {
+    outline: 2px solid ${({ theme }) => theme.styles.colors.decorColor};
+    outline-offset: 3px;
+  }
 
-                &:hover::before {
-                    left: 0;
-                    width: 100%;
-                    opacity: 1;
-                }
-            }
-        }
+  .swiper-wrapper {
+    padding: 0.5rem 0 1.5rem;
+  }
 
+  .swiper-slide {
+    height: auto;
+  }
 
-        #works-nav-list {
-            & li a {
-                color: #fff;
-                text-decoration: none;
-                text-transform: uppercase;
-                position: relative;
-                transition: 0.3s all ease;
-
-
-               
-            }
-
-            & li a::after {
-                content: '';
-                height: 17px;
-                position: absolute;
-                left: 0;
-                bottom: -13px;
-                width: 0%;
-                overflow: hidden;
-                transition: 0.3s all ease;
-                background-color: ${themeStyle.styles.colors.decorColor};
-            }
-
-    
-        }
-
-        #works-nav-list a.active::after {
-            content: '';
-            height: 17px;
-            position: absolute;
-            left: 0;
-            bottom: -13px;
-            width: 100%;
-            overflow: hidden;
-            transition: 0.3s all ease;
-            background-color: ${themeStyle.styles.colors.decorColor};
-        }
-
-
-
-      @media (max-width: 710px){
-        #skills-grid {
-            display: block;
-        }
-      }
-
-
-
-    
-    `;
+  ::selection {
+    background: rgba(124, 108, 240, 0.35);
+    color: ${({ theme }) => theme.styles.colors.textColor};
+  }
+`;
 
 export default GlobalStyles;

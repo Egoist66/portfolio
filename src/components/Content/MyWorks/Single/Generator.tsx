@@ -1,6 +1,7 @@
 import { FC } from "react";
 import data from '../../../../data/project.json'
 import WorkCards from "../WorksCards/WorkCards";
+import SingleProjectWrap from "./SingleProjectWrap";
 
 import generator from '../../../../assets/project/generator.png'
 
@@ -8,12 +9,8 @@ import generator from '../../../../assets/project/generator.png'
 const Generator: FC = () => {
      const {project} = data
      return (
-          <div style={{
-               maxWidth: 650,
-               margin: '0 auto'
-          }}>
-          
-               <WorkCards 
+          <SingleProjectWrap>
+<WorkCards 
                     title={project[6].name}
                     imglink={generator}
                     projectLink={project[6].link}
@@ -25,9 +22,7 @@ const Generator: FC = () => {
                     }}
                
                />
-          
-          
-          </div>
+          </SingleProjectWrap>
      )
 }
 

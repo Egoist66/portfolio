@@ -1,125 +1,148 @@
-import {useAppContext} from "../../../../context/AppContext";
-import styled from "styled-components";
-import {FormEvent, useEffect, useMemo} from "react";
+import { useAppContext } from "../../../../context/AppContext";
+import styled, { css } from "styled-components";
+import { FormEvent, useEffect, useMemo } from "react";
 
-const StyledForm = styled.form({
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    maxWidth: "540px",
-    margin: "0 auto",
-});
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 520px;
+  margin: 0 auto;
+`;
 
-type StyledInputTypes = {
-    place_holder?: string;
-};
+const fieldBase = css<{ $error?: boolean }>`
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: ${({ theme }) => theme.styles.colors.textColor};
+  background: ${({ theme }) => theme.styles.colors.surface};
+  border: 1px solid
+    ${({ theme, $error }) =>
+      $error ? theme.styles.colors.error : theme.styles.colors.border};
+  border-radius: ${({ theme }) => theme.styles.radius.md};
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 
-const StyledInput = styled.input.attrs<StyledInputTypes>((props) => ({
-    type: "text",
-    placeholder: props.place_holder,
-}))({
-    width: "100%",
-    backgroundColor: "#252527",
-    border: "1px solid #4A4A4A",
-    color: "#fff",
-    height: "32px",
-    padding: "10px",
-    outline: "none",
-    fontSize: "16px",
-    fontFamily: "Poppins",
-    marginBottom: "30px",
-});
+  &::placeholder {
+    color: ${({ theme }) => theme.styles.colors.placeholder};
+  }
 
-const StyledTextArea = styled.textarea({
-    width: "100%",
-    border: "1px solid #4A4A4A",
-    backgroundColor: "#252527",
-    color: "#fff",
-    padding: "10px",
-    fontFamily: "Poppins",
-    outline: "none",
-    fontSize: "16px",
-    minHeight: "155px",
-    marginBottom: "30px",
-    resize: "none",
-});
+  &:focus {
+    border-color: ${({ theme }) => theme.styles.colors.borderFocus};
+    box-shadow: 0 0 0 3px rgba(124, 108, 240, 0.15);
+  }
 
-const StyledContactLink = styled.button({
-    width: "200px",
-    height: "35px",
-    padding: "5px",
-    background: "#7572D5",
-    color: "#fff",
-    textAlign: 'center',
-    border: "none",
-});
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`;
 
+const StyledInput = styled.input<{ $error?: boolean }>`
+  ${fieldBase}
+`;
+
+const StyledTextArea = styled.textarea<{ $error?: boolean }>`
+  ${fieldBase}
+  min-height: 140px;
+  resize: vertical;
+`;
+
+const StyledContactLink = styled.button`
+  align-self: center;
+  min-width: 200px;
+  padding: 0.875rem 1.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: ${({ theme }) => theme.styles.colors.accentGradient};
+  border: none;
+  border-radius: ${({ theme }) => theme.styles.radius.full};
+  box-shadow: ${({ theme }) => theme.styles.shadow.md};
+  transition: transform ${({ theme }) => theme.styles.transition.fast},
+    box-shadow ${({ theme }) => theme.styles.transition.base};
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: ${({ theme }) => theme.styles.shadow.lg},
+      ${({ theme }) => theme.styles.shadow.glow};
+  }
+
+  a {
+    display: block;
+    color: inherit;
+  }
+`;
 
 function ContactForm() {
-    const context = useAppContext();
+  const context = useAppContext();
 
-    useEffect(() => {
-        if (context?.hasError) {
-            context.hasError()
-        }
-    }, [context?.body, context?.subject])
+  useEffect(() => {
+    if (context?.hasError) {
+      context.hasError();
+    }
+  }, [context?.body, context?.subject]);
 
-
-    const submitLinks = useMemo(() => {
-        if (context?.inputError) {
-            return (
-                <StyledContactLink>
-                    <a style={{display: 'block'}}
-                       href={'#submit-input'}>{'Subject is empty'.toUpperCase()}</a>
-
-                </StyledContactLink>
-            )
-        } else if (context?.bodyError) {
-            return (
-                <StyledContactLink>
-                    <a style={{display: 'block'}}
-                       href={'#submit-area'}>{'Body is empty'.toUpperCase()}</a>
-
-                </StyledContactLink>
-            )
-        } else {
-            return (
-                <StyledContactLink>
-                    <a style={{display: 'block'}}
-                       href={`mailto:razormad666@gmail.com?subject=${context?.subject}&body=${context?.body}.`}>{'send message'.toUpperCase()}</a>
-
-                </StyledContactLink>
-            )
-        }
-    }, [context?.body, context?.subject, context?.bodyError, context?.inputError])
-
+  const submitLinks = useMemo(() => {
+    if (context?.inputError) {
+      return (
+        <StyledContactLink type="button">
+          <a href="#submit-input">Subject is empty</a>
+        </StyledContactLink>
+      );
+    }
+    if (context?.bodyError) {
+      return (
+        <StyledContactLink type="button">
+          <a href="#submit-area">Body is empty</a>
+        </StyledContactLink>
+      );
+    }
     return (
-        <StyledForm id={'contact-form'} onSubmit={(e: FormEvent<HTMLFormElement>) => {
-            e.preventDefault()
-        }}>
-            <StyledInput
-                id={'submit-input'}
-                style={{border: context?.inputError ? '1px solid #C7081A' : '1px solid rgb(74, 74, 74)'}}
-                name="subject"
-                value={context?.subject}
-                onChange={context?.handleInput}
-                place_holder="Subject"
-            />
-            <StyledTextArea
-                disabled={context?.subject === ''}
-                id={'submit-area'}
-                maxLength={2000}
-                style={{border: context?.bodyError ? '1px solid #C7081A' : '1px solid rgb(74, 74, 74)'}}
-                placeholder="Body"
-                name="body"
-                value={context?.body}
-                onChange={context?.handleInput}
-            />
-
-            {submitLinks}
-        </StyledForm>
+      <StyledContactLink type="button">
+        <a
+          href={`mailto:razormad666@gmail.com?subject=${context?.subject}&body=${context?.body}.`}
+        >
+          Send message
+        </a>
+      </StyledContactLink>
     );
+  }, [
+    context?.body,
+    context?.subject,
+    context?.bodyError,
+    context?.inputError,
+  ]);
+
+  return (
+    <StyledForm
+      id="contact-form"
+      onSubmit={(e: FormEvent<HTMLFormElement>) => e.preventDefault()}
+    >
+      <StyledInput
+        id="submit-input"
+        $error={context?.inputError}
+        name="subject"
+        value={context?.subject}
+        onChange={context?.handleInput}
+        placeholder="Subject"
+      />
+      <StyledTextArea
+        disabled={context?.subject === ""}
+        id="submit-area"
+        maxLength={2000}
+        $error={context?.bodyError}
+        placeholder="Your message..."
+        name="body"
+        value={context?.body}
+        onChange={context?.handleInput}
+      />
+      {submitLinks}
+    </StyledForm>
+  );
 }
 
 export default ContactForm;

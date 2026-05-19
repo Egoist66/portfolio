@@ -1,6 +1,7 @@
 import { FC } from "react";
 import data from '../../../../data/project.json'
 import WorkCards from "../WorksCards/WorkCards";
+import SingleProjectWrap from "./SingleProjectWrap";
 
 import tres from '../../../../assets/project/tres.png'
 
@@ -8,12 +9,8 @@ import tres from '../../../../assets/project/tres.png'
 const TresFinance: FC = () => {
      const {project} = data
      return (
-          <div style={{
-               maxWidth: 650,
-               margin: '0 auto'
-          }}>
-          
-               <WorkCards 
+          <SingleProjectWrap>
+<WorkCards 
                     title={project[15].name}
                     imglink={tres}
                     projectLink={project[15].link}
@@ -25,9 +22,7 @@ const TresFinance: FC = () => {
                     }}
                
                />
-          
-          
-          </div>
+          </SingleProjectWrap>
      )
 }
 

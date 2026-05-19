@@ -1,6 +1,7 @@
 import { FC } from "react";
 import data from '../../../../data/project.json'
 import WorkCards from "../WorksCards/WorkCards";
+import SingleProjectWrap from "./SingleProjectWrap";
 
 import todolist from '../../../../assets/project/todolist.png'
 
@@ -8,12 +9,8 @@ import todolist from '../../../../assets/project/todolist.png'
 const Todolist: FC = () => {
      const {project} = data
      return (
-          <div style={{
-               maxWidth: 650,
-               margin: '0 auto'
-          }}>
-          
-               <WorkCards 
+          <SingleProjectWrap>
+<WorkCards 
                     title={project[5].name}
                     imglink={todolist}
                     projectLink={project[5].link}
@@ -25,9 +22,7 @@ const Todolist: FC = () => {
                     }}
                
                />
-          
-          
-          </div>
+          </SingleProjectWrap>
      )
 }
 

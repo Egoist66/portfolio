@@ -1,70 +1,96 @@
 import SectionTitle from "../SectionTitle/SectionTitle";
 import styled from "styled-components";
-import sprite from '../../../assets/icons/sprite.svg'
-import SVG from "../../../service/SVG/SVG";
-
-import telegram from '../../../assets/socials/tgsvg.svg';
-import inst from '../../../assets/socials/social icon.svg';
-import vk from '../../../assets/socials/social icon (1).svg';
-import linked from '../../../assets/socials/social icon (2).svg';
 import Text from "../../../service/TEXT/TEXT";
 
-const socialIcons : Array<string> = [
-    telegram,
-    inst,
-    vk,
-    linked
-]
+import telegram from "../../../assets/socials/tgsvg.svg";
+import inst from "../../../assets/socials/social icon.svg";
+import vk from "../../../assets/socials/social icon (1).svg";
+import linked from "../../../assets/socials/social icon (2).svg";
 
-const links : Array<string> = [
-    'https://t.me/codebuilder1',
-    'https://www.instagram.com/eg0ist66/',
-    'https://vk.com/metalmaniac_666',
-    'https://www.linkedin.com/in/farid-mahmudov-1624a8227'
+const socialIcons: Array<string> = [telegram, inst, vk, linked];
 
-]
+const links: Array<string> = [
+  "https://t.me/codebuilder1",
+  "https://www.instagram.com/eg0ist66/",
+  "https://vk.com/metalmaniac_666",
+  "https://www.linkedin.com/in/farid-mahmudov-1624a8227",
+];
 
+const StyledSocialNav = styled.nav`
+  margin-bottom: 2rem;
+`;
 
-const StyledSocialNav = styled.nav({
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: '50px'
-})
+const StyledSocialList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+`;
 
-const StyledSocialList = styled.ul({
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '20px'
-})
+const SocialLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  padding: 0.75rem;
+  background: ${({ theme }) => theme.styles.colors.surface};
+  border: 1px solid ${({ theme }) => theme.styles.colors.border};
+  border-radius: ${({ theme }) => theme.styles.radius.md};
+  transition: transform ${({ theme }) => theme.styles.transition.base},
+    border-color ${({ theme }) => theme.styles.transition.base},
+    box-shadow ${({ theme }) => theme.styles.transition.base};
 
-const StyledSocialLinks = styled.li({
-})
-function Socials(){
-    return (
-        <>
+  img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    opacity: 0.85;
+    transition: opacity ${({ theme }) => theme.styles.transition.fast};
+  }
 
-            <SectionTitle font_size={'22px'} text={'I am in social media'} />
+  &:hover {
+    transform: translateY(-3px);
+    border-color: ${({ theme }) => theme.styles.colors.borderFocus};
+    box-shadow: ${({ theme }) => theme.styles.shadow.glow};
 
-            <StyledSocialNav>
+    img {
+      opacity: 1;
+    }
+  }
+`;
 
-                <StyledSocialList>
-                    {socialIcons.map((social, i) => (
-                        <StyledSocialLinks key={social}>
-                            <a target={'_blank'} href={links[i]}>
-                                <img src={social} alt="soclial"/>
-                            </a>
-                        </StyledSocialLinks>
-                    ))}
-                </StyledSocialList>
+const Copyright = styled(Text)`
+  opacity: 0.7;
+`;
 
-            </StyledSocialNav>
+function Socials() {
+  return (
+    <>
+      <SectionTitle font_size="clamp(1.25rem, 3vw, 1.5rem)" text="I am on social media" />
 
-            <Text centered={'true'} font_size={'14px'}>© {new Date().getFullYear()} Farid Makhmudov, All Rights Reserved.</Text>
+      <StyledSocialNav>
+        <StyledSocialList>
+          {socialIcons.map((social, i) => (
+            <li key={social}>
+              <SocialLink
+                target="_blank"
+                rel="noopener noreferrer"
+                href={links[i]}
+                aria-label={`Social link ${i + 1}`}
+              >
+                <img src={social} alt="" />
+              </SocialLink>
+            </li>
+          ))}
+        </StyledSocialList>
+      </StyledSocialNav>
 
-        </>
-    )
+      <Copyright centered="true" font_size="0.875rem">
+        © {new Date().getFullYear()} Farid Makhmudov. All rights reserved.
+      </Copyright>
+    </>
+  );
 }
 
-export default Socials
+export default Socials;
