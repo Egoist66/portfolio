@@ -46,6 +46,12 @@ const routes: Array<Routes> = [
     {name: "Basic-notes", path: "/basic-notes"},
     {name: "Interview-app", path: "/interview-app"},
     {name: "Learn-lang-app", path: "/learn-lang-app"},
+    {name: "Tanki-shop", path: "/tanki-shop"},
+    {name: "Apisaurus", path: "/apisaurus"},
+    {name: "Encrypting-app", path: "/encrypting-app"},
+    {name: "Vue-csrf-app", path: "/vue-csrf-app"},
+    {name: "Interval-app", path: "/interval-app"},
+    {name: "Alumini-js", path: "/alumini-js"},
 
 ];
 

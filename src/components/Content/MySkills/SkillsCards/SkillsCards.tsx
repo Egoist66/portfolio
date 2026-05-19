@@ -28,6 +28,7 @@ import alpine from '../../../../assets/images-2/alpine.png'
 import vue from '../../../../assets/images-2/vue.png'
 import nuxt from '../../../../assets/images-2/nuxt.svg'
 import pinia from '../../../../assets/images-2/pinia.svg'
+import nodejs from '../../../../assets/images-2/nodejs-image.webp'
 
 import {Swiper, SwiperSlide} from 'swiper/react'
 import 'swiper/css/bundle';
@@ -58,9 +59,8 @@ const _skillsImages: Array<string> = [
     alpine,
     vue,
     nuxt,
-    pinia
-
-
+    pinia,
+    nodejs
 ]
 
 

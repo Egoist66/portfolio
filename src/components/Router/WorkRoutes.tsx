@@ -23,6 +23,12 @@ const _TresFinance = lazy(() => import('../Content/MyWorks/Single/TresFinance'))
 const _NotesV2 = lazy(() => import('../Content/MyWorks/Single/VueNotes'))
 const _InterviewApp = lazy(() => import('../Content/MyWorks/Single/InterviewApp'))
 const _LangApp = lazy(() => import('../Content/MyWorks/Single/LangApp'))
+const _TankiShop = lazy(() => import('../Content/MyWorks/Single/TankiShop'))
+const _Apisaurus = lazy(() => import('../Content/MyWorks/Single/Apisaurus'))
+const _EncryptingApp = lazy(() => import('../Content/MyWorks/Single/EncryptingApp'))
+const _VueCsrfApp = lazy(() => import('../Content/MyWorks/Single/VueCsrfApp'))
+const _IntervalApp = lazy(() => import('../Content/MyWorks/Single/IntervalApp'))
+const _Alumini = lazy(() => import('../Content/MyWorks/Single/Alumini'))
 
 function WorkRoutes() {
 
@@ -50,6 +56,12 @@ function WorkRoutes() {
             <Route path='/basic-notes' element={<_NotesV2 />} />
             <Route path='/interview-app' element={<_InterviewApp />} />
             <Route path='/learn-lang-app' element={<_LangApp />} />
+            <Route path='/tanki-shop' element={<_TankiShop />} />
+            <Route path='/apisaurus' element={<_Apisaurus />} />
+            <Route path='/encrypting-app' element={<_EncryptingApp />} />
+            <Route path='/vue-csrf-app' element={<_VueCsrfApp />} />
+            <Route path='/interval-app' element={<_IntervalApp />} />
+            <Route path='/alumini-js' element={<_Alumini />} />
 
 
             <Route path='*' element={<Text centered='true' type='h2'>404</Text>} />

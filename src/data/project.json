@@ -113,12 +113,48 @@
                "description": "App for organizing interviews"
           },
 
-          {
-               "name": "Learn Lang App",
-               "link": "https://learn-lang-app.vercel.app/",
-               "github": "https://github.com/Egoist66/learn-lang-app",
-               "description": "App for learning foreign languages"
-          }
-          
+           {
+                "name": "Learn Lang App",
+                "link": "https://learn-lang-app.vercel.app/",
+                "github": "https://github.com/Egoist66/learn-lang-app",
+                "description": "App for learning foreign languages"
+           },
+            {
+                 "name": "Tanki Shop",
+                 "link": "https://tanki-shop.vercel.app/premium?price=desc",
+                 "github": "https://github.com/Egoist66/tanki-shop",
+                 "description": "World of Tanks themed shop application"
+            },
+            {
+                 "name": "Apisaurus",
+                 "link": "https://apisaurus.vercel.app/dashboard",
+                 "github": "https://github.com/Egoist66/apisaurus",
+                 "description": "API documentation tool"
+            },
+            {
+                 "name": "Encrypting app",
+                 "link": "https://encrypting-app.vercel.app/",
+                 "github": "https://github.com/Egoist66/encrypting-app",
+                 "description": "Secure text encryption and decryption tool"
+            },
+            {
+                 "name": "Vue CSRF app",
+                 "link": "https://vue-csrf-app.vercel.app/",
+                 "github": "https://github.com/Egoist66/vue-csrf-app",
+                 "description": "Vue.js app demonstrating CSRF protection techniques"
+            },
+            {
+                 "name": "Interval app",
+                 "link": "https://interval-app-swart.vercel.app/",
+                 "github": "https://github.com/Egoist66/interval-app",
+                 "description": "Timer and interval management utility"
+            },
+            {
+                 "name": "Alumini.js",
+                 "link": "https://aluminijs.vercel.app/",
+                 "github": "https://github.com/Egoist66/alumini.js",
+                 "description": "Custom web components library"
+            }
+            
      ]
 }
