@@ -8,6 +8,7 @@ import PreviewAvatar from "../Content/PreviewAvatar/PreviewAvatar";
 import { useAppContext } from "../../context/AppContext";
 import Skills from "../Content/MySkills/Skills";
 import Works from "../Content/MyWorks/Works";
+import Games from "../Content/MyGames/Games";
 import Testimony from "../Content/Testimony/Testimony";
 import Contact from "../Content/Contact/Contact";
 import Socials from "../Content/Socials/Socials";
@@ -36,7 +37,13 @@ function Layout() {
         </Container>
       </Section>
 
-      <Section id="about-me" bg_color={colors.secondaryBg}>
+      <Section id="games" bg_color={colors.secondaryBg}>
+        <Container>
+          <Games />
+        </Container>
+      </Section>
+
+      <Section id="about-me" bg_color={colors.mainBg}>
         <Container>
           <Testimony />
         </Container>

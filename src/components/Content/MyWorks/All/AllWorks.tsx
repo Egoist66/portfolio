@@ -31,6 +31,13 @@ import tres from "../../../../assets/project/tres.png";
 import notesv2 from "../../../../assets/project/notes-v2.png";
 import interview from "../../../../assets/project/interview.png";
 import lang from "../../../../assets/project/lang.png";
+import tanki from "../../../../assets/project/tanki.png";
+import apisaurus from "../../../../assets/project/apisaurus.png";
+import encrypting from "../../../../assets/project/encrypting.png";
+import csrf from "../../../../assets/project/csrf.png";
+import interval from "../../../../assets/project/interval.png";
+import alumini from "../../../../assets/project/alumini.png";
+import chess from "../../../../assets/project/chess.png";
 import { memo } from "react";
 
 const WorkSlide = styled(SwiperSlide)`
@@ -60,6 +67,13 @@ const projectIcons = [
   notesv2,
   interview,
   lang,
+  tanki,
+  apisaurus,
+  encrypting,
+  csrf,
+  interval,
+  alumini,
+  chess,
 ];
 
 function AllWorks() {

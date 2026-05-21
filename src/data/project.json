@@ -154,6 +154,12 @@
                  "link": "https://aluminijs.vercel.app/",
                  "github": "https://github.com/Egoist66/alumini.js",
                  "description": "Custom web components library"
+            },
+            {
+                 "name": "Chess",
+                 "link": "https://chess-omega-eight.vercel.app/",
+                 "github": "https://github.com/Egoist66/chess",
+                 "description": "Full-featured browser chess with move history, undo, save and load, sound, and captured pieces"
             }
             
      ]

@@ -51,6 +51,7 @@ const _EncryptingApp = lazy(() => import("../Content/MyWorks/Single/EncryptingAp
 const _VueCsrfApp = lazy(() => import("../Content/MyWorks/Single/VueCsrfApp"));
 const _IntervalApp = lazy(() => import("../Content/MyWorks/Single/IntervalApp"));
 const _Alumini = lazy(() => import("../Content/MyWorks/Single/Alumini"));
+const _Chess = lazy(() => import("../Content/MyWorks/Single/Chess"));
 
 function WorksLoadingFallback() {
   return (
@@ -94,15 +95,9 @@ function WorkRoutes() {
         <Route path="/vue-csrf-app" element={<_VueCsrfApp />} />
         <Route path="/interval-app" element={<_IntervalApp />} />
         <Route path="/alumini-js" element={<_Alumini />} />
+        <Route path="/chess-app" element={<_Chess />} />
 
-        <Route
-          path="*"
-          element={
-            <Text centered="true" type="h2">
-              404
-            </Text>
-          }
-        />
+        <Route path="*" element={<_AllWorks />} />
       </Routes>
     </Suspense>
   );

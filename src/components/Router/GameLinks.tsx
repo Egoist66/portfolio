@@ -6,7 +6,7 @@ type Routes = {
   path: string;
 };
 
-const WorksNav = styled.nav`
+const GamesNav = styled.nav`
   margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
   margin-left: calc(-1 * ${({ theme }) => theme.styles.container.padding});
   margin-right: calc(-1 * ${({ theme }) => theme.styles.container.padding});
@@ -20,7 +20,7 @@ const WorksNav = styled.nav`
   }
 `;
 
-const WorksNavList = styled.ul`
+const GamesNavList = styled.ul`
   display: flex;
   gap: 0.5rem;
   width: max-content;
@@ -35,7 +35,7 @@ const WorksNavList = styled.ul`
   }
 `;
 
-const WorksNavLink = styled(NavLink)`
+const GamesNavLink = styled(NavLink)`
   display: inline-block;
   padding: 0.5rem 1rem;
   font-size: 0.8125rem;
@@ -66,53 +66,24 @@ const WorksNavLink = styled(NavLink)`
 `;
 
 const routes: Array<Routes> = [
-  { name: "All", path: "/" },
-  { name: "Marvel app", path: "/marvel-app" },
-  { name: "Notes app", path: "/notes-app" },
-  { name: "CodePencil app", path: "/code-pencil-app" },
-  { name: "SimpleEditor app", path: "/simple-editor-app" },
-  { name: "Converter app", path: "/converter-app" },
-  { name: "Todolist-app", path: "/todolist-app" },
-  { name: "Entities generator-app", path: "/generator-app" },
-  { name: "Terminal-app", path: "/terminal-app" },
-  { name: "Signature-app", path: "/signature-app" },
-  { name: "Admin-app", path: "/admin-app" },
-  { name: "CRM-app", path: "/crm-app" },
-  { name: "Colors-app", path: "/colors-app" },
-  { name: "Keynotes-app", path: "/keynotes-app" },
-  { name: "Password-app", path: "/password-app" },
-  { name: "Weather-app", path: "/weather-app" },
-  { name: "Tres-finance", path: "/tres-finance" },
-  { name: "Basic-notes", path: "/basic-notes" },
-  { name: "Interview-app", path: "/interview-app" },
-  { name: "Learn-lang-app", path: "/learn-lang-app" },
-  { name: "Tanki-shop", path: "/tanki-shop" },
-  { name: "Apisaurus", path: "/apisaurus" },
-  { name: "Encrypting-app", path: "/encrypting-app" },
-  { name: "Vue-csrf-app", path: "/vue-csrf-app" },
-  { name: "Interval-app", path: "/interval-app" },
-  { name: "Alumini-js", path: "/alumini-js" },
-  { name: "Chess-app", path: "/chess-app" },
+  { name: "All", path: "/games" },
+  { name: "Chess", path: "/games/chess" },
 ];
 
-function WorkLinks() {
+function GameLinks() {
   return (
-    <WorksNav id="works-nav">
-      <WorksNavList id="works-nav-list">
-        {routes.map((route, i) => (
+    <GamesNav id="games-nav">
+      <GamesNavList id="games-nav-list">
+        {routes.map((route) => (
           <li key={route.name}>
-            <WorksNavLink
-              id={i === 0 ? "def-route" : undefined}
-              className="route-links"
-              to={route.path}
-            >
+            <GamesNavLink className="route-links" to={route.path} end={route.path === "/games"}>
               {route.name}
-            </WorksNavLink>
+            </GamesNavLink>
           </li>
         ))}
-      </WorksNavList>
-    </WorksNav>
+      </GamesNavList>
+    </GamesNav>
   );
 }
 
-export default WorkLinks;
+export default GameLinks;
