@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useThemeMode } from "../../../context/ThemeContext";
+import { useLanguage } from "../../../context/LanguageContext";
 
 const ToggleButton = styled.button`
   width: 48px;
@@ -61,14 +62,15 @@ function MoonIcon() {
 
 function ThemeToggle() {
   const { mode, toggleTheme } = useThemeMode();
+  const { t } = useLanguage();
   const isDark = mode === "dark";
 
   return (
     <ToggleButton
       type="button"
       onClick={toggleTheme}
-      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      title={isDark ? "Light theme" : "Dark theme"}
+      aria-label={isDark ? t("theme.switchLight") : t("theme.switchDark")}
+      title={isDark ? t("theme.light") : t("theme.dark")}
     >
       {isDark ? <SunIcon /> : <MoonIcon />}
     </ToggleButton>

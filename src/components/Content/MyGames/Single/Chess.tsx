@@ -1,22 +1,23 @@
-import { FC } from "react";
-import data from "../../../../data/games.json";
-import WorkCards from "../../MyWorks/WorksCards/WorkCards";
 import SingleProjectWrap from "../../MyWorks/Single/SingleProjectWrap";
-
+import WorkCards from "../../MyWorks/WorksCards/WorkCards";
 import chess from "../../../../assets/project/chess.png";
+import { useGame } from "../../../../hooks/useLocalizedData";
+import { useLanguage } from "../../../../context/LanguageContext";
 
-const Chess: FC = () => {
-  const { games } = data;
+const Chess = () => {
+  const game = useGame(0);
+  const { t } = useLanguage();
+
   return (
     <SingleProjectWrap>
       <WorkCards
-        title={games[0].name}
+        title={game.name}
         imglink={chess}
-        projectLink={games[0].link}
-        descr={games[0].description}
+        projectLink={game.link}
+        descr={game.description}
         code={{
-          code_name: "Code",
-          path: games[0].github,
+          code_name: t("common.code"),
+          path: game.github,
         }}
       />
     </SingleProjectWrap>

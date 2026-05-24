@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "sourcePdf": "/resume/FM-resume.pdf",
+    "updatedAt": "May 19, 2026",
+    "version": 1
+  },
+  "personal": {
+    "name": "Farid Makhmudov",
+    "title": "Frontend Developer",
+    "birthDate": "July 12, 1997",
+    "age": 28,
+    "location": "Minsk, Kamennaya Gorka metro",
+    "citizenship": "Belarus",
+    "workPermit": ["Belarus", "Russia"],
+    "relocation": "Not ready to relocate, open to occasional business trips",
+    "totalExperience": "7 years 2 months",
+    "employmentTypes": ["full-time", "part-time", "project-based work"],
+    "workFormats": ["hybrid", "remote", "on-site"],
+    "contacts": {
+      "phone": "+375 (29) 8379785",
+      "email": "fmahmudov1997@mail.ru",
+      "telegram": "@codebuilder1",
+      "telegramUrl": "https://t.me/codebuilder1",
+      "portfolio": "https://portfolio-six-gamma-33.vercel.app"
+    },
+    "pdfUrl": "/resume/FM-resume.pdf"
+  },
+  "about": "I have been immersed in IT and front-end web development for over 6 years. I am also diving deeper into backend technologies. As a FE developer I have faced many interesting challenges that positively shaped my growth. I am always eager to learn and reach new heights while working with strong specialists. I love what I do. Portfolio available on request as an archive.",
+  "experience": [
+    {
+      "company": "Dobronom, JSC",
+      "location": "Minsk",
+      "industry": "Retail · Grocery retail chain",
+      "role": "Frontend Developer",
+      "period": "October 2025 — Present",
+      "duration": "8 months",
+      "description": "Development of an internal warehouse and logistics operations portal for employees across departments: goods receiving, shipments and analytics, quality control and product cards, inventory and defect tracking, vehicle parking, sanitation and regulatory tasks, incidents and event logs. Separate functionality for assembling and distributing shipments to retail stores (routes, transport sessions, different warehouse types), plus a transport module and pallet analytics.",
+      "highlights": [
+        "Development and maintenance of pages and modal flows for warehouse and logistics processes",
+        "Client-side backend integration design: typed services, API response normalization",
+        "Complex form validation with react-hook-form and yup",
+        "Lazy-loaded routing for a large application",
+        "Role-based access control with protected route guards",
+        "Modular product structure including a transport microfrontend (Vite)",
+        "Production UX improvements: notifications, long request states, MUI Date Pickers, react-window",
+        "Local storage with Dexie for offline scenarios and client caching"
+      ],
+      "stack": ["TypeScript", "React 19", "Vite", "Material UI", "React Router v7", "Zustand", "Axios", "React Hook Form", "Yup", "Day.js", "Dexie"]
+    },
+    {
+      "company": "Innowise Group",
+      "location": "Minsk",
+      "website": "https://innowise.com/",
+      "industry": "Software Development · System Integration · IT Consulting",
+      "role": "Middle+ Software Engineer",
+      "period": "September 2024 — June 2025",
+      "duration": "10 months",
+      "description": "Project-based work, mentoring junior developers, creating test assignments and supporting the team.",
+      "highlights": [
+        "Frontend development and maintenance of web applications",
+        "Code refactoring and bug fixing",
+        "Feature implementation according to technical specifications",
+        "Backend development and maintenance"
+      ],
+      "stack": ["React", "Next.js", "Vue", "TypeScript", "Nuxt", "Strapi", "WordPress"]
+    },
+    {
+      "company": "Coral Team",
+      "location": "Minsk",
+      "website": "https://www.coral.team/",
+      "industry": "Software Development",
+      "role": "Front-end Developer",
+      "period": "March 2024 — August 2024",
+      "duration": "6 months",
+      "description": "Development of an admin panel for monitoring incoming client requests, signed contracts, errors and more. Custom client engine. UI built from scratch and integrated with REST API. Also worked on a Paramount WordPress multi-user theme.",
+      "highlights": [
+        "Admin panel with client request and contract monitoring",
+        "Fully custom UI integrated with REST API",
+        "WordPress theme development for Paramount"
+      ],
+      "stack": [".NET", "Microsoft Azure", "Vue.js", "Pinia", "PrimeVue", "VeeValidate", "Quasar", "TanStack Query", "WordPress"]
+    },
+    {
+      "company": "FORTE Group",
+      "location": "Minsk",
+      "website": "https://fortegrp.com/",
+      "industry": "Software Development",
+      "role": "Frontend Developer",
+      "period": "January 2019 — February 2024",
+      "duration": "5 years 2 months",
+      "description": "JavaScript (Vue) and Nuxt.js. CRM system, admin panel, UI performance optimization, page layout, admin extensions, plugins. Collaboration with Salesforce and HubSpot teams — API integrations, REST API and unit testing. React.js and Next.js projects: lead generation service, internal portal and crypto wallet for Purple. WordPress themes and PHP API (Laravel).",
+      "highlights": [
+        "CRM system and admin panel on Vue/Nuxt",
+        "Salesforce and HubSpot integrations via REST API",
+        "React/Next projects: lead gen, internal portal, crypto wallet",
+        "Mentoring, intern onboarding, technical assessments",
+        "Support in client interview preparation"
+      ],
+      "stack": ["Vue.js", "Nuxt.js", "React", "Next.js", "WordPress", "Laravel", "Postman", "Firebase", "Okta", "Storybook", "Swagger", "Jest", "Vitest", "Supabase", "Auth.js"]
+    },
+    {
+      "company": "Weblancer (Freelance)",
+      "location": "Minsk",
+      "industry": "Freelance",
+      "role": "React Developer",
+      "period": "October 2021 — August 2022",
+      "duration": "11 months",
+      "description": "Website development with React, styled components and CSS modules. Mobile-first approach and interface creation.",
+      "highlights": [],
+      "stack": ["React", "Styled Components", "CSS Modules"]
+    }
+  ],
+  "education": [
+    {
+      "year": "2023",
+      "institution": "IT-INCUBATOR",
+      "degree": "Information Technology, React Developer",
+      "type": "Higher education"
+    }
+  ],
+  "courses": [
+    { "year": "2023", "title": "Front-end React development", "provider": "IT-INCUBATOR" },
+    { "year": "2022", "title": "HTML CSS JAVASCRIPT Course", "provider": "ITAcademy" },
+    { "year": "2021", "title": "Fullstack JavaScript Course", "provider": "Udemy.com" }
+  ],
+  "skills": [
+    "TypeScript", "React", "Next.js", "Vue.js", "Nuxt", "Node.js", "Redux", "Zustand", "Pinia",
+    "REST API", "Axios", "HTML5", "CSS3", "Styled Components", "React Hook Form",
+    "Jest", "Vitest", "Supabase", "WordPress", "SSR", "Electron", "Quasar",
+    "PHP", "JavaScript", "UI", "Vercel", "OOP"
+  ],
+  "languages": [
+    { "name": "Russian", "level": "Native" },
+    { "name": "English", "level": "B2 — Upper Intermediate" },
+    { "name": "German", "level": "A1 — Beginner" }
+  ],
+  "driving": {
+    "hasCar": true,
+    "license": "Category B driver's license"
+  },
+  "recommendations": {
+    "company": "Innowise Group",
+    "contact": "Nikita (Project Manager)"
+  }
+}

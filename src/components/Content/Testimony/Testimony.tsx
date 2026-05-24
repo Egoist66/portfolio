@@ -1,15 +1,16 @@
 import SectionTitle from "../SectionTitle/SectionTitle";
 import TestimonyWrapper from "./TestimonyWrapper/TestimonyWrapper";
+import { useLanguage } from "../../../context/LanguageContext";
 
-function Testimony(){
-    return (
-        <>
-        
-            <SectionTitle text="About me" />
-            <TestimonyWrapper />
-        
-        </>
-    )
+function Testimony() {
+  const { t } = useLanguage();
+
+  return (
+    <>
+      <SectionTitle text={t("sections.about")} />
+      <TestimonyWrapper />
+    </>
+  );
 }
 
-export default Testimony
+export default Testimony;

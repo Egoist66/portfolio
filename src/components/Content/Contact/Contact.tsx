@@ -1,19 +1,16 @@
 import SectionTitle from "../SectionTitle/SectionTitle";
 import ContactForm from "./ContactForm/ContactForm";
+import { useLanguage } from "../../../context/LanguageContext";
 
-function Contact(){
+function Contact() {
+  const { t } = useLanguage();
 
-    
-    return (
-        <>
-        
-            <SectionTitle text="Contact" />
-
-            <ContactForm />
-
-
-        </>
-    )
+  return (
+    <>
+      <SectionTitle text={t("sections.contact")} />
+      <ContactForm />
+    </>
+  );
 }
 
-export default Contact
+export default Contact;

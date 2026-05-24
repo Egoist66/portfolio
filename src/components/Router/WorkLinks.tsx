@@ -1,10 +1,12 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-
-type Routes = {
-  name: string;
-  path: string;
-};
+import { NavLink, useLocation } from "react-router-dom";
+import {
+  workRoutePaths,
+  workRouteProjectIndex,
+} from "../../i18n/projects";
+import { useLanguage } from "../../context/LanguageContext";
+import { useProjects } from "../../hooks/useLocalizedData";
+import { setLocaleInSearch } from "../../utils/localeQuery";
 
 const WorksNav = styled.nav`
   margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
@@ -65,51 +67,34 @@ const WorksNavLink = styled(NavLink)`
   }
 `;
 
-const routes: Array<Routes> = [
-  { name: "All", path: "/" },
-  { name: "Marvel app", path: "/marvel-app" },
-  { name: "Notes app", path: "/notes-app" },
-  { name: "CodePencil app", path: "/code-pencil-app" },
-  { name: "SimpleEditor app", path: "/simple-editor-app" },
-  { name: "Converter app", path: "/converter-app" },
-  { name: "Todolist-app", path: "/todolist-app" },
-  { name: "Entities generator-app", path: "/generator-app" },
-  { name: "Terminal-app", path: "/terminal-app" },
-  { name: "Signature-app", path: "/signature-app" },
-  { name: "Admin-app", path: "/admin-app" },
-  { name: "CRM-app", path: "/crm-app" },
-  { name: "Colors-app", path: "/colors-app" },
-  { name: "Keynotes-app", path: "/keynotes-app" },
-  { name: "Password-app", path: "/password-app" },
-  { name: "Weather-app", path: "/weather-app" },
-  { name: "Tres-finance", path: "/tres-finance" },
-  { name: "Basic-notes", path: "/basic-notes" },
-  { name: "Interview-app", path: "/interview-app" },
-  { name: "Learn-lang-app", path: "/learn-lang-app" },
-  { name: "Tanki-shop", path: "/tanki-shop" },
-  { name: "Apisaurus", path: "/apisaurus" },
-  { name: "Encrypting-app", path: "/encrypting-app" },
-  { name: "Vue-csrf-app", path: "/vue-csrf-app" },
-  { name: "Interval-app", path: "/interval-app" },
-  { name: "Alumini-js", path: "/alumini-js" },
-  { name: "Chess-app", path: "/chess-app" },
-];
-
 function WorkLinks() {
+  const { t, locale } = useLanguage();
+  const location = useLocation();
+  const projects = useProjects();
+  const localizedSearch = setLocaleInSearch(location.search, locale);
+
   return (
     <WorksNav id="works-nav">
       <WorksNavList id="works-nav-list">
-        {routes.map((route, i) => (
-          <li key={route.name}>
-            <WorksNavLink
-              id={i === 0 ? "def-route" : undefined}
-              className="route-links"
-              to={route.path}
-            >
-              {route.name}
-            </WorksNavLink>
-          </li>
-        ))}
+        {workRoutePaths.map((path, i) => {
+          const projectIndex = workRouteProjectIndex[i];
+          const label =
+            projectIndex === null
+              ? t("common.all")
+              : projects[projectIndex]?.name ?? path;
+
+          return (
+            <li key={path}>
+              <WorksNavLink
+                id={i === 0 ? "def-route" : undefined}
+                className="route-links"
+                to={{ pathname: path, search: localizedSearch }}
+              >
+                {label}
+              </WorksNavLink>
+            </li>
+          );
+        })}
       </WorksNavList>
     </WorksNav>
   );

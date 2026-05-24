@@ -11,9 +11,10 @@ import {
   Scrollbar,
 } from "swiper";
 
-import data from "../../../../data/games.json";
 import chess from "../../../../assets/project/chess.png";
 import { memo } from "react";
+import { useGames } from "../../../../hooks/useLocalizedData";
+import { useLanguage } from "../../../../context/LanguageContext";
 
 const GameSlide = styled(SwiperSlide)`
   width: ${WORK_CARD_WIDTH}px;
@@ -25,17 +26,20 @@ const GameSlide = styled(SwiperSlide)`
 const gameIcons = [chess];
 
 function AllGames() {
+  const games = useGames();
+  const { t } = useLanguage();
+
   return (
     <Swiper
       slidesPerView="auto"
       spaceBetween={32}
       speed={600}
       autoplay={{ delay: 4500, disableOnInteraction: false }}
-      loop={data.games.length > 1}
+      loop={games.length > 1}
       keyboard
       modules={[Navigation, Keyboard, Pagination, Scrollbar, A11y, Autoplay]}
     >
-      {data.games.map((game, i) => (
+      {games.map((game, i) => (
         <GameSlide key={game.name}>
           <WorkCards
             imglink={gameIcons[i]}
@@ -44,7 +48,7 @@ function AllGames() {
             descr={game.description}
             code={{
               path: game.github,
-              code_name: "Code",
+              code_name: t("common.code"),
             }}
           />
         </GameSlide>

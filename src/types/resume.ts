@@ -81,5 +81,3 @@ export interface ResumeData {
   driving: ResumeDriving;
   recommendations: ResumeRecommendations;
 }
-
-export const RESUME_JSON_URL = "/resume/resume.json";

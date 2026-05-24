@@ -1,27 +1,23 @@
 import { useTheme } from "styled-components";
-import Header from "./Header/Header";
 import Section from "./Section/Section";
 import Container from "../Container/Container";
 import Footer from "./Footer/Footer";
-import Menu from "./Menu/Menu";
 import PreviewAvatar from "../Content/PreviewAvatar/PreviewAvatar";
-import { useAppContext } from "../../context/AppContext";
 import Skills from "../Content/MySkills/Skills";
 import Works from "../Content/MyWorks/Works";
 import Games from "../Content/MyGames/Games";
 import Testimony from "../Content/Testimony/Testimony";
 import Contact from "../Content/Contact/Contact";
 import Socials from "../Content/Socials/Socials";
+import ScrollToHash from "./ScrollToHash/ScrollToHash";
 
 function Layout() {
-  const context = useAppContext();
   const { colors } = useTheme().styles;
 
   return (
     <>
+      <ScrollToHash />
       <Section id="/" _relative="true" hero bg_color={colors.mainBg}>
-        <Menu />
-        <Header hidden={context?.isToggled} />
         <PreviewAvatar />
       </Section>
 

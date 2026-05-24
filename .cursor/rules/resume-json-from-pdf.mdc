@@ -6,7 +6,10 @@ alwaysApply: false
 
 # Resume JSON from PDF
 
-The Career page (`/career`) loads data dynamically from **`public/resume/resume.json`**.  
+The Career page (`/career`) loads data dynamically from locale files:
+- **`public/resume/resume.ru.json`**
+- **`public/resume/resume.en.json`**
+
 Do not store resume content in `src/data/`. The PDF is the source of truth.
 
 ## Files
@@ -14,9 +17,11 @@ Do not store resume content in `src/data/`. The PDF is the source of truth.
 | File | Role |
 |------|------|
 | `public/resume/FM-resume.pdf` | Source resume (hh.ru export) |
-| `public/resume/resume.json` | JSON "DB" consumed by the app |
-| `src/types/resume.ts` | TypeScript schema — update if JSON shape changes |
-| `src/hooks/useResumeData.ts` | Fetches `/resume/resume.json` |
+| `public/resume/resume.ru.json` | Resume data (Russian) |
+| `public/resume/resume.en.json` | Resume data (English) |
+| `src/i18n/en.ts`, `src/i18n/ru.ts` | UI translations |
+| `src/i18n/projects.ts` | Project name/description translations |
+| `src/context/LanguageContext.tsx` | Language state + `t()` helper |
 
 ## When to regenerate JSON
 
@@ -28,7 +33,7 @@ Regenerate `resume.json` when:
 
 1. Read `public/resume/FM-resume.pdf` fully
 2. Map PDF sections → JSON fields (see mapping below)
-3. Write/update **`public/resume/resume.json`** only
+3. Write/update **`public/resume/resume.ru.json`** and **`public/resume/resume.en.json`**
 4. Set `meta.updatedAt` from PDF footer ("Резюме обновлено …")
 5. Increment `meta.version` if structure changed
 6. Run `pnpm build` to verify

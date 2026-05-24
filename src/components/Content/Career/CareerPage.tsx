@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Container from "../../Container/Container";
-import Menu from "../../Layout/Menu/Menu";
 import useResumeData from "../../../hooks/useResumeData";
+import { useLanguage } from "../../../context/LanguageContext";
+import { setLocaleInSearch } from "../../../utils/localeQuery";
 
 const Page = styled.div`
   min-height: 100svh;
@@ -475,18 +476,21 @@ const UpdatedAt = styled.p`
 
 function CareerPage() {
   const { data, loading, error } = useResumeData();
+  const { t, locale } = useLanguage();
+  const location = useLocation();
+  const localizedSearch = setLocaleInSearch(location.search, locale);
+  const homeTo = { pathname: "/", search: localizedSearch };
 
   if (loading) {
     return (
       <Page>
         <Glow className="a" aria-hidden />
         <Glow className="b" aria-hidden />
-        <Menu />
         <Content>
           <Container>
             <StateCard>
-              <StateTitle>Загрузка карьеры…</StateTitle>
-              <StateText>Читаем данные резюме</StateText>
+              <StateTitle>{t("career.loadingTitle")}</StateTitle>
+              <StateText>{t("career.loadingText")}</StateText>
             </StateCard>
           </Container>
         </Content>
@@ -499,18 +503,17 @@ function CareerPage() {
       <Page>
         <Glow className="a" aria-hidden />
         <Glow className="b" aria-hidden />
-        <Menu />
         <Content>
           <Container>
-            <BackLink to="/">
+            <BackLink to={homeTo}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
                 <path d="M19 12H5M12 19l-7-7 7-7" />
               </svg>
-              На главную
+              {t("career.back")}
             </BackLink>
             <StateCard>
-              <StateTitle>Не удалось загрузить резюме</StateTitle>
-              <StateText>{error ?? "Данные недоступны"}</StateText>
+              <StateTitle>{t("career.errorTitle")}</StateTitle>
+              <StateText>{error ?? t("career.errorFallback")}</StateText>
             </StateCard>
           </Container>
         </Content>
@@ -524,25 +527,23 @@ function CareerPage() {
     <Page>
       <Glow className="a" aria-hidden />
       <Glow className="b" aria-hidden />
-      <Menu />
-
       <Content>
         <Container>
-          <BackLink to="/">
+          <BackLink to={homeTo}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
-            На главную
+            {t("career.back")}
           </BackLink>
 
           <HeroCard>
-            <Eyebrow>Карьера · CV</Eyebrow>
+            <Eyebrow>{t("career.eyebrow")}</Eyebrow>
             <Name>{personal.name}</Name>
             <Title>{personal.title}</Title>
 
             <MetaRow>
               <MetaItem>{personal.location}</MetaItem>
-              <MetaItem>Опыт: {personal.totalExperience}</MetaItem>
+              <MetaItem>{t("career.experience")}: {personal.totalExperience}</MetaItem>
               <MetaItem>{personal.relocation}</MetaItem>
             </MetaRow>
 
@@ -557,7 +558,7 @@ function CareerPage() {
                 {personal.contacts.telegram}
               </ContactChip>
               <ContactChip href={personal.contacts.portfolio} target="_blank" rel="noopener noreferrer">
-                Portfolio
+                {t("career.portfolio")}
               </ContactChip>
             </ContactGrid>
 
@@ -565,17 +566,17 @@ function CareerPage() {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
               </svg>
-              Скачать PDF
+              {t("career.downloadPdf")}
             </DownloadBtn>
             {meta.updatedAt && (
-              <UpdatedAt>Обновлено: {meta.updatedAt}</UpdatedAt>
+              <UpdatedAt>{t("career.updated")}: {meta.updatedAt}</UpdatedAt>
             )}
           </HeroCard>
 
           <Layout>
             <Sidebar>
               <Card>
-                <CardTitle>Навыки</CardTitle>
+                <CardTitle>{t("career.skills")}</CardTitle>
                 <SkillTags>
                   {skills.map((skill) => (
                     <SkillTag key={skill}>{skill}</SkillTag>
@@ -584,7 +585,7 @@ function CareerPage() {
               </Card>
 
               <Card>
-                <CardTitle>Языки</CardTitle>
+                <CardTitle>{t("career.languages")}</CardTitle>
                 <LangList>
                   {languages.map((lang) => (
                     <LangItem key={lang.name}>
@@ -596,7 +597,7 @@ function CareerPage() {
               </Card>
 
               <Card>
-                <CardTitle>Образование</CardTitle>
+                <CardTitle>{t("career.education")}</CardTitle>
                 <EduList>
                   {education.map((edu) => (
                     <EduItem key={edu.institution}>
@@ -609,7 +610,7 @@ function CareerPage() {
               </Card>
 
               <Card>
-                <CardTitle>Курсы</CardTitle>
+                <CardTitle>{t("career.courses")}</CardTitle>
                 <EduList>
                   {courses.map((course) => (
                     <EduItem key={`${course.year}-${course.title}`}>
@@ -622,24 +623,24 @@ function CareerPage() {
               </Card>
 
               <Card>
-                <CardTitle>Дополнительно</CardTitle>
+                <CardTitle>{t("career.additional")}</CardTitle>
                 <InfoList>
                   <InfoItem>
-                    Гражданство: {personal.citizenship}. Разрешение на работу: {personal.workPermit.join(", ")}
+                    {t("career.citizenship")}: {personal.citizenship}. {t("career.workPermit")}: {personal.workPermit.join(", ")}
                   </InfoItem>
                   <InfoItem>
-                    Формат: {personal.workFormats.join(", ")}
+                    {t("career.format")}: {personal.workFormats.join(", ")}
                   </InfoItem>
                   <InfoItem>
-                    Занятость: {personal.employmentTypes.join(", ")}
+                    {t("career.employment")}: {personal.employmentTypes.join(", ")}
                   </InfoItem>
                   {driving.hasCar && (
                     <InfoItem>
-                      {driving.license}. Собственный автомобиль
+                      {driving.license}. {t("career.ownCar")}
                     </InfoItem>
                   )}
                   <InfoItem>
-                    Рекомендации: {recommendations.company} — {recommendations.contact}
+                    {t("career.recommendations")}: {recommendations.company} — {recommendations.contact}
                   </InfoItem>
                 </InfoList>
               </Card>
@@ -647,12 +648,12 @@ function CareerPage() {
 
             <Main>
               <Card>
-                <CardTitle>Обо мне</CardTitle>
+                <CardTitle>{t("career.about")}</CardTitle>
                 <AboutText>{about}</AboutText>
               </Card>
 
               <Card as="div">
-                <CardTitle>Опыт работы</CardTitle>
+                <CardTitle>{t("career.workExperience")}</CardTitle>
                 <Timeline>
                   {experience.map((job) => (
                     <ExpCard key={`${job.company}-${job.period}`}>

@@ -1,25 +1,6 @@
-import { FC } from "react";
-import data from "../../../../data/project.json";
-import WorkCards from "../WorksCards/WorkCards";
-import SingleProjectWrap from "./SingleProjectWrap";
+import ProjectCardPage from "./ProjectCardPage";
 import marvel from "../../../../assets/project/marvel.png";
 
-const Marvel: FC = () => {
-  const { project } = data;
-  return (
-    <SingleProjectWrap>
-      <WorkCards
-        title={project[0].name}
-        imglink={marvel}
-        projectLink={project[0].link}
-        descr={project[0].description}
-        code={{
-          code_name: "Code",
-          path: project[0].github,
-        }}
-      />
-    </SingleProjectWrap>
-  );
-};
+const Marvel = () => <ProjectCardPage index={0} img={marvel} />;
 
 export default Marvel;

@@ -1,6 +1,7 @@
 import { useAppContext } from "../../../../context/AppContext";
 import styled, { css } from "styled-components";
 import { FormEvent, useEffect, useMemo } from "react";
+import { useLanguage } from "../../../../context/LanguageContext";
 
 const StyledForm = styled.form`
   display: flex;
@@ -79,6 +80,7 @@ const StyledContactLink = styled.button`
 
 function ContactForm() {
   const context = useAppContext();
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (context?.hasError) {
@@ -90,14 +92,14 @@ function ContactForm() {
     if (context?.inputError) {
       return (
         <StyledContactLink type="button">
-          <a href="#submit-input">Subject is empty</a>
+          <a href="#submit-input">{t("contact.subjectEmpty")}</a>
         </StyledContactLink>
       );
     }
     if (context?.bodyError) {
       return (
         <StyledContactLink type="button">
-          <a href="#submit-area">Body is empty</a>
+          <a href="#submit-area">{t("contact.bodyEmpty")}</a>
         </StyledContactLink>
       );
     }
@@ -106,7 +108,7 @@ function ContactForm() {
         <a
           href={`mailto:razormad666@gmail.com?subject=${context?.subject}&body=${context?.body}.`}
         >
-          Send message
+          {t("contact.send")}
         </a>
       </StyledContactLink>
     );
@@ -115,6 +117,7 @@ function ContactForm() {
     context?.subject,
     context?.bodyError,
     context?.inputError,
+    t,
   ]);
 
   return (
@@ -128,14 +131,14 @@ function ContactForm() {
         name="subject"
         value={context?.subject}
         onChange={context?.handleInput}
-        placeholder="Subject"
+        placeholder={t("contact.subject")}
       />
       <StyledTextArea
         disabled={context?.subject === ""}
         id="submit-area"
         maxLength={2000}
         $error={context?.bodyError}
-        placeholder="Your message..."
+        placeholder={t("contact.message")}
         name="body"
         value={context?.body}
         onChange={context?.handleInput}

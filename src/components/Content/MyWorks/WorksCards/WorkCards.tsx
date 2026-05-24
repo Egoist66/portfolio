@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Text from "../../../../service/TEXT/TEXT";
 import { pseudoLinkElem } from "../../../../style/Global";
+import { useLanguage } from "../../../../context/LanguageContext";
 
 export const WORK_CARD_WIDTH = 450;
 
@@ -159,6 +160,8 @@ function WorkCards({
   descr,
   code,
 }: WorkCardsProps) {
+  const { t } = useLanguage();
+
   return (
     <StyledWorkCards>
       <StyledWorksImgBox>
@@ -168,7 +171,7 @@ function WorkCards({
           loading="lazy"
           decoding="async"
         />
-        <StyledWorkBtn href={projectLink}>View Project</StyledWorkBtn>
+        <StyledWorkBtn href={projectLink}>{t("common.viewProject")}</StyledWorkBtn>
       </StyledWorksImgBox>
 
       <CardBody>

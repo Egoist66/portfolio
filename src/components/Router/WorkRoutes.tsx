@@ -4,6 +4,7 @@ import { lazy, Suspense } from "react";
 import styled from "styled-components";
 import { WORK_CARD_WIDTH } from "../Content/MyWorks/WorksCards/WorkCards";
 import PageTransition from "../Layout/PageTransition/PageTransition";
+import { useLanguage } from "../../context/LanguageContext";
 
 const WorksFallbackWrap = styled.div`
   width: 100%;
@@ -55,11 +56,13 @@ const _Alumini = lazy(() => import("../Content/MyWorks/Single/Alumini"));
 const _Chess = lazy(() => import("../Content/MyWorks/Single/Chess"));
 
 function WorksLoadingFallback() {
+  const { t } = useLanguage();
+
   return (
     <WorksFallbackWrap>
       <WorksFallbackCard>
         <Text centered="true" type="h2">
-          Loading...
+          {t("common.loading")}
         </Text>
       </WorksFallbackCard>
     </WorksFallbackWrap>

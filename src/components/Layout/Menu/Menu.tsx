@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 import { useAppContext } from "../../../context/AppContext";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
+import LanguageToggle from "../LanguageToggle/LanguageToggle";
+import { useLanguage } from "../../../context/LanguageContext";
+import { setLocaleInSearch } from "../../../utils/localeQuery";
 
 const TopBar = styled.div`
   position: fixed;
@@ -116,10 +119,17 @@ function Menu() {
   const location = useLocation();
   const isOpen = !context?.isToggled;
   const isCareerActive = location.pathname === "/career";
+  const { t, locale } = useLanguage();
+  const localizedSearch = setLocaleInSearch(location.search, locale);
 
   return (
     <TopBar>
-      <CareerLink to="/career" $active={isCareerActive} aria-label="Моя карьера" title="Моя карьера">
+      <CareerLink
+        to={{ pathname: "/career", search: localizedSearch }}
+        $active={isCareerActive}
+        aria-label={t("menu.career")}
+        title={t("menu.career")}
+      >
         <svg viewBox="0 0 24 24" fill="none" aria-hidden>
           <path
             d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Z"
@@ -141,14 +151,15 @@ function Menu() {
             strokeLinecap="round"
           />
         </svg>
-        <span>Моя карьера</span>
+        <span>{t("menu.career")}</span>
       </CareerLink>
+      <LanguageToggle />
       <ThemeToggle />
       <MenuButton
         type="button"
         $open={isOpen}
         onClick={context?.toggleMenu}
-        aria-label={isOpen ? "Close menu" : "Open menu"}
+        aria-label={isOpen ? t("menu.close") : t("menu.open")}
         aria-expanded={isOpen}
       >
         <span />

@@ -1,7 +1,9 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import quotte from "../../../../assets/icons/quote-alt-right-svg 1.svg";
 import Text from "../../../../service/TEXT/TEXT";
+import { useLanguage } from "../../../../context/LanguageContext";
+import { setLocaleInSearch } from "../../../../utils/localeQuery";
 
 const QuoteCard = styled.blockquote`
   max-width: 680px;
@@ -44,6 +46,10 @@ const CvLink = styled(Link)`
 `;
 
 function TestimonyWrapper() {
+  const { t, locale } = useLanguage();
+  const location = useLocation();
+  const localizedSearch = setLocaleInSearch(location.search, locale);
+
   return (
     <QuoteCard>
       <QuoteIcon>
@@ -51,15 +57,8 @@ function TestimonyWrapper() {
       </QuoteIcon>
 
       <Text margin_auto="true" centered="true" font_size="1.0625rem">
-        I&apos;ve been doing front-end development for 7 years now — I absolutely
-        love my job and what I come across every day. Challenges for me are a
-        growth area. Constant practice and immersion in the deeper corners of
-        the technology world makes me stronger. In my free time from IT, I try to
-        relax because mental respite is important in our work. I listen to music,
-        practice vocals, which is my old hobby 😉 Here is my full{" "}
-        <CvLink to="/career">
-          CV info
-        </CvLink>
+        {t("about.text")}{" "}
+        <CvLink to={{ pathname: "/career", search: localizedSearch }}>{t("about.cvLink")}</CvLink>
       </Text>
     </QuoteCard>
   );

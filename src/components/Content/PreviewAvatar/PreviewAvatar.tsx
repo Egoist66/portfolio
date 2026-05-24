@@ -1,7 +1,8 @@
 import styled, { useTheme } from "styled-components";
 import Text from "../../../service/TEXT/TEXT";
-import avatar from "../../../assets/images/avatar.svg";
+import avatar from "../../../assets/images/avatar.jpg";
 import Container from "../../Container/Container";
+import { useLanguage } from "../../../context/LanguageContext";
 
 const HeroInner = styled.div`
   flex: 1;
@@ -80,13 +81,15 @@ const AvatarFrame = styled.div`
   order: 1;
   justify-self: center;
   position: relative;
-  padding: 1.125rem;
+  padding: 3px;
   border-radius: 2rem;
-  background: ${({ theme }) => theme.styles.colors.surface};
-  border: 1px solid ${({ theme }) => theme.styles.colors.border};
-  box-shadow: ${({ theme }) => theme.styles.shadow.lg},
-    ${({ theme }) => theme.styles.shadow.glow};
-  overflow: hidden;
+  background: ${({ theme }) => theme.styles.colors.accentGradient};
+  box-shadow:
+    0 0 0 1px rgba(124, 108, 240, 0.55),
+    0 0 18px rgba(124, 108, 240, 0.45),
+    0 0 36px rgba(99, 102, 241, 0.28),
+    ${({ theme }) => theme.styles.shadow.lg};
+  overflow: visible;
 
   @media (min-width: ${({ theme }) => theme.styles.breakpoints.md}) {
     order: 2;
@@ -94,37 +97,45 @@ const AvatarFrame = styled.div`
     border-radius: 2.25rem;
   }
 
-  &::before {
+  &::after {
     content: "";
     position: absolute;
-    inset: -1px;
+    inset: -10px;
     border-radius: inherit;
-    padding: 1px;
-    background: ${({ theme }) => theme.styles.colors.accentGradient};
-    -webkit-mask: linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0.5;
+    box-shadow: 0 0 48px rgba(124, 108, 240, 0.32);
     pointer-events: none;
+    z-index: -1;
+  }
+`;
+
+const AvatarInner = styled.div`
+  border-radius: calc(2rem - 3px);
+  overflow: hidden;
+  background: ${({ theme }) => theme.styles.colors.surface};
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  @media (min-width: ${({ theme }) => theme.styles.breakpoints.md}) {
+    border-radius: calc(2.25rem - 3px);
   }
 `;
 
 const Avatar = styled.img`
   display: block;
   width: min(340px, 82vw);
+  aspect-ratio: 2 / 3;
   height: auto;
-  border-radius: 1.5rem;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: inherit;
 
   @media (min-width: ${({ theme }) => theme.styles.breakpoints.md}) {
     width: min(380px, 36vw);
-    border-radius: 1.75rem;
   }
 `;
 
 function PreviewAvatar() {
   const { colors } = useTheme().styles;
+  const { t } = useLanguage();
 
   return (
     <HeroInner>
@@ -133,21 +144,23 @@ function PreviewAvatar() {
       <Container>
         <AvatarWrapper>
           <PreviewTextBox>
-            <Eyebrow>Hi there</Eyebrow>
+            <Eyebrow>{t("hero.eyebrow")}</Eyebrow>
             <Text type="h1" font_size="clamp(2.25rem, 6vw, 3.75rem)">
-              I am Farid Makhmudov
+              {t("hero.title")}
             </Text>
             <Text
               type="p"
               font_size="clamp(1.125rem, 2.5vw, 1.5rem)"
               _color={colors.textMuted}
             >
-              A Web Developer crafting modern digital experiences.
+              {t("hero.subtitle")}
             </Text>
           </PreviewTextBox>
 
           <AvatarFrame>
-            <Avatar src={avatar} alt="Farid Makhmudov" />
+            <AvatarInner>
+              <Avatar src={avatar} alt="Farid Makhmudov" />
+            </AvatarInner>
           </AvatarFrame>
         </AvatarWrapper>
       </Container>

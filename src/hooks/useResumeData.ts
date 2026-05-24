@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { RESUME_JSON_URL, ResumeData } from "../types/resume";
+import { useLanguage } from "../context/LanguageContext";
+import { Locale } from "../i18n";
+import { ResumeData } from "../types/resume";
+
+export const getResumeJsonUrl = (locale: Locale) =>
+  `/resume/resume.${locale}.json`;
 
 type UseResumeDataResult = {
   data: ResumeData | null;
@@ -8,6 +13,7 @@ type UseResumeDataResult = {
 };
 
 function useResumeData(): UseResumeDataResult {
+  const { locale } = useLanguage();
   const [data, setData] = useState<ResumeData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -20,7 +26,7 @@ function useResumeData(): UseResumeDataResult {
         setLoading(true);
         setError(null);
 
-        const response = await fetch(RESUME_JSON_URL, {
+        const response = await fetch(getResumeJsonUrl(locale), {
           signal: controller.signal,
           cache: "no-cache",
         });
@@ -44,7 +50,7 @@ function useResumeData(): UseResumeDataResult {
     loadResume();
 
     return () => controller.abort();
-  }, []);
+  }, [locale]);
 
   return { data, loading, error };
 }

@@ -11,7 +11,9 @@ import {
   Scrollbar,
 } from "swiper";
 
-import data from "../../../../data/project.json";
+import { memo } from "react";
+import { useProjects } from "../../../../hooks/useLocalizedData";
+import { useLanguage } from "../../../../context/LanguageContext";
 import marvel from "../../../../assets/project/marvel.png";
 import notes from "../../../../assets/project/notes.png";
 import pencil from "../../../../assets/project/codepencil.png";
@@ -38,7 +40,6 @@ import csrf from "../../../../assets/project/csrf.png";
 import interval from "../../../../assets/project/interval.png";
 import alumini from "../../../../assets/project/alumini.png";
 import chess from "../../../../assets/project/chess.png";
-import { memo } from "react";
 
 const WorkSlide = styled(SwiperSlide)`
   width: ${WORK_CARD_WIDTH}px;
@@ -77,6 +78,9 @@ const projectIcons = [
 ];
 
 function AllWorks() {
+  const projects = useProjects();
+  const { t } = useLanguage();
+
   return (
     <Swiper
       slidesPerView="auto"
@@ -87,7 +91,7 @@ function AllWorks() {
       keyboard
       modules={[Navigation, Keyboard, Pagination, Scrollbar, A11y, Autoplay]}
     >
-      {data.project.map((p, i) => (
+      {projects.map((p, i) => (
         <WorkSlide key={p.name}>
           <WorkCards
             imglink={projectIcons[i]}
@@ -96,7 +100,7 @@ function AllWorks() {
             descr={p.description}
             code={{
               path: p.github,
-              code_name: "Code",
+              code_name: t("common.code"),
             }}
           />
         </WorkSlide>

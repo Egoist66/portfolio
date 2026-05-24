@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-
-type Routes = {
-  name: string;
-  path: string;
-};
+import { NavLink, useLocation } from "react-router-dom";
+import { useLanguage } from "../../context/LanguageContext";
+import { useGames } from "../../hooks/useLocalizedData";
+import { setLocaleInSearch } from "../../utils/localeQuery";
 
 const GamesNav = styled.nav`
   margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
@@ -65,18 +63,27 @@ const GamesNavLink = styled(NavLink)`
   }
 `;
 
-const routes: Array<Routes> = [
-  { name: "All", path: "/games" },
-  { name: "Chess", path: "/games/chess" },
-];
-
 function GameLinks() {
+  const { t, locale } = useLanguage();
+  const location = useLocation();
+  const games = useGames();
+  const localizedSearch = setLocaleInSearch(location.search, locale);
+
+  const routes = [
+    { name: t("common.all"), path: "/games" },
+    { name: games[0]?.name ?? t("games.chess"), path: "/games/chess" },
+  ];
+
   return (
     <GamesNav id="games-nav">
       <GamesNavList id="games-nav-list">
         {routes.map((route) => (
-          <li key={route.name}>
-            <GamesNavLink className="route-links" to={route.path} end={route.path === "/games"}>
+          <li key={route.path}>
+            <GamesNavLink
+              className="route-links"
+              to={{ pathname: route.path, search: localizedSearch }}
+              end={route.path === "/games"}
+            >
               {route.name}
             </GamesNavLink>
           </li>

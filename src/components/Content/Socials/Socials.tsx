@@ -1,6 +1,7 @@
 import SectionTitle from "../SectionTitle/SectionTitle";
 import styled from "styled-components";
 import Text from "../../../service/TEXT/TEXT";
+import { useLanguage } from "../../../context/LanguageContext";
 
 import telegram from "../../../assets/socials/tgsvg.svg";
 import inst from "../../../assets/socials/social icon.svg";
@@ -65,9 +66,11 @@ const Copyright = styled(Text)`
 `;
 
 function Socials() {
+  const { t } = useLanguage();
+
   return (
     <>
-      <SectionTitle font_size="clamp(1.25rem, 3vw, 1.5rem)" text="I am on social media" />
+      <SectionTitle font_size="clamp(1.25rem, 3vw, 1.5rem)" text={t("sections.social")} />
 
       <StyledSocialNav>
         <StyledSocialList>
@@ -77,7 +80,7 @@ function Socials() {
                 target="_blank"
                 rel="noopener noreferrer"
                 href={links[i]}
-                aria-label={`Social link ${i + 1}`}
+                aria-label={`${t("social.link")} ${i + 1}`}
               >
                 <img src={social} alt="" />
               </SocialLink>
@@ -87,7 +90,7 @@ function Socials() {
       </StyledSocialNav>
 
       <Copyright centered="true" font_size="0.875rem">
-        © {new Date().getFullYear()} Farid Makhmudov. All rights reserved.
+        © {new Date().getFullYear()} Farid Makhmudov. {t("social.copyright")}
       </Copyright>
     </>
   );
