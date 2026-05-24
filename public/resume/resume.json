@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "sourcePdf": "/resume/FM-resume.pdf",
+    "updatedAt": "19 мая 2026",
+    "version": 1
+  },
+  "personal": {
+    "name": "Махмудов Фарид Парвизович",
+    "title": "Frontend-developer",
+    "birthDate": "12 июля 1997",
+    "age": 28,
+    "location": "Минск, м. Каменная Горка",
+    "citizenship": "Беларусь",
+    "workPermit": ["Беларусь", "Россия"],
+    "relocation": "Не готов к переезду, готов к редким командировкам",
+    "totalExperience": "7 лет 2 месяца",
+    "employmentTypes": ["полная занятость", "частичная занятость", "проектная работа"],
+    "workFormats": ["гибрид", "удалённо", "на месте работодателя"],
+    "contacts": {
+      "phone": "+375 (29) 8379785",
+      "email": "fmahmudov1997@mail.ru",
+      "telegram": "@codebuilder1",
+      "telegramUrl": "https://t.me/codebuilder1",
+      "portfolio": "https://portfolio-six-gamma-33.vercel.app"
+    },
+    "pdfUrl": "/resume/FM-resume.pdf"
+  },
+  "about": "Уже как 6 лет погружен IT технологиями в области веб-разработки front-end. Сейчас стараюсь так же погружаться в backend технологии. За время будучи FE разработчиком было много всего интересного и вызовов для меня, что положительно повлияло на мой рост. Всегда полон желания учиться и достигать дальше высот в этом направлении работая в команде с крутыми специалистами. Обожаю то, чем занимаюсь. Портфолио по запросу могу скидывать в виде архива.",
+  "experience": [
+    {
+      "company": "Доброном, ЗАО",
+      "location": "Минск",
+      "industry": "Розничная торговля · Розничная сеть (продуктовая)",
+      "role": "Frontend-разработчик",
+      "period": "Октябрь 2025 — настоящее время",
+      "duration": "8 месяцев",
+      "description": "Разработка внутреннего операционного портала склада и логистики для сотрудников разных подразделений: приёмка товара, отгрузки и аналитика по ним, контроль качества и работа с карточками, учёт продукции и брака, парковка транспорта, санитария и регламентные работы, инциденты и журналы событий. Отдельный функционал по сборке и распределению отгрузок по торговым точкам (маршруты, сессии транспорта, работа со складами разных типов), а также транспортный модуль и аналитика по паллетам.",
+      "highlights": [
+        "Разработка и сопровождение страниц и модальных сценариев для складских и логистических процессов",
+        "Проектирование клиентской интеграции с backend: типизированные сервисы, нормализация ответов API",
+        "Реализация форм со сложной валидацией на react-hook-form и yup",
+        "Настройка маршрутизации с lazy loading для оптимизации загрузки крупного приложения",
+        "Разграничение доступа к разделам по ролям с guard-компонентами защищённых маршрутов",
+        "Модульная структура продукта, включая microfrontend транспортного блока (Vite)",
+        "Улучшение UX: уведомления, состояния долгих запросов, MUI Date Pickers, react-window",
+        "Работа с локальным хранением (Dexie) для автономных сценариев и кэширования"
+      ],
+      "stack": ["TypeScript", "React 19", "Vite", "Material UI", "React Router v7", "Zustand", "Axios", "React Hook Form", "Yup", "Day.js", "Dexie"]
+    },
+    {
+      "company": "Innowise Group",
+      "location": "Минск",
+      "website": "https://innowise.com/",
+      "industry": "Разработка ПО · Системная интеграция · IT-консалтинг",
+      "role": "Middle+ Software Engineer",
+      "period": "Сентябрь 2024 — Июнь 2025",
+      "duration": "10 месяцев",
+      "description": "Проектная работа, наставничество над младшими сотрудниками, создание тестовых проверок и поддержка разработчиков.",
+      "highlights": [
+        "Разработка и поддержка фронтенда веб-приложений",
+        "Рефакторинг кода и исправление выявленных ошибок",
+        "Реализация функциональности в соответствии с техническими спецификациями",
+        "Разработка и поддержка бэкенда приложения"
+      ],
+      "stack": ["React", "Next.js", "Vue", "TypeScript", "Nuxt", "Strapi", "WordPress"]
+    },
+    {
+      "company": "Корал Тим",
+      "location": "Минск",
+      "website": "https://www.coral.team/",
+      "industry": "Разработка программного обеспечения",
+      "role": "Front-end разработчик",
+      "period": "Март 2024 — Август 2024",
+      "duration": "6 месяцев",
+      "description": "Разработка административной панели с функциями мониторинга входящих запросов от клиентов, заключённых контрактов, ошибок и многого другого. Собственный движок для клиента. Пользовательский интерфейс полностью создан с нуля и интегрирован с REST API. Также работа над проектом с Paramount — разработка и поддержка многопользовательской темы WordPress.",
+      "highlights": [
+        "Административная панель с мониторингом клиентских запросов и контрактов",
+        "Полностью кастомный UI с интеграцией REST API",
+        "Разработка WordPress-темы для Paramount"
+      ],
+      "stack": [".NET", "Microsoft Azure", "Vue.js", "Pinia", "PrimeVue", "VeeValidate", "Quasar", "TanStack Query", "WordPress"]
+    },
+    {
+      "company": "FORTE Group",
+      "location": "Минск",
+      "website": "https://fortegrp.com/",
+      "industry": "Разработка программного обеспечения",
+      "role": "Frontend-разработчик",
+      "period": "Январь 2019 — Февраль 2024",
+      "duration": "5 лет 2 месяца",
+      "description": "JavaScript (Vue) и Nuxt.js. Разработка CRM-системы, административной панели, оптимизация производительности UI, верстка страниц, расширения админ-панели, создание плагинов. Сотрудничество с командами Salesforce и HubSpot — интеграции через API, REST API и модульное тестирование. Активные проекты на React.js и Next — сервис генерации лидов, внутренний портал и криптовалютный кошелёк для Purple. Работа с WordPress-темами и PHP API (Laravel).",
+      "highlights": [
+        "Разработка CRM-системы и административной панели на Vue/Nuxt",
+        "Интеграции с Salesforce и HubSpot через REST API",
+        "React/Next проекты: лид-генерация, внутренний портал, криптокошелёк",
+        "Менторство, адаптация стажёров, проведение тестовых проверок",
+        "Поддержка в подготовке к собеседованиям с клиентами"
+      ],
+      "stack": ["Vue.js", "Nuxt.js", "React", "Next.js", "WordPress", "Laravel", "Postman", "Firebase", "Okta", "Storybook", "Swagger", "Jest", "Vitest", "Supabase", "Auth.js"]
+    },
+    {
+      "company": "Weblancer (Фриланс)",
+      "location": "Минск",
+      "industry": "Фриланс",
+      "role": "React developer",
+      "period": "Октябрь 2021 — Август 2022",
+      "duration": "11 месяцев",
+      "description": "Website development using the React library + styled components, CSS modules. Mobile-first approach, interface creation.",
+      "highlights": [],
+      "stack": ["React", "Styled Components", "CSS Modules"]
+    }
+  ],
+  "education": [
+    {
+      "year": "2023",
+      "institution": "IT-INCUBATOR",
+      "degree": "Информационных технологий, React Developer",
+      "type": "Высшее"
+    }
+  ],
+  "courses": [
+    { "year": "2023", "title": "Front-end React development", "provider": "IT-INCUBATOR" },
+    { "year": "2022", "title": "HTML CSS JAVASCRIPT Course", "provider": "ITAcademy" },
+    { "year": "2021", "title": "Fullstack JavaScript Course", "provider": "Udemy.com" }
+  ],
+  "skills": [
+    "TypeScript", "React", "Next.js", "Vue.js", "Nuxt", "Node.js", "Redux", "Zustand", "Pinia",
+    "REST API", "Axios", "HTML5", "CSS3", "Styled Components", "React Hook Form",
+    "Jest", "Vitest", "Supabase", "WordPress", "SSR", "Electron", "Quasar",
+    "PHP", "JavaScript", "UI", "Vercel", "ООП"
+  ],
+  "languages": [
+    { "name": "Русский", "level": "Родной" },
+    { "name": "Английский", "level": "B2 — Средне-продвинутый" },
+    { "name": "Немецкий", "level": "A1 — Начальный" }
+  ],
+  "driving": {
+    "hasCar": true,
+    "license": "Права категории B"
+  },
+  "recommendations": {
+    "company": "Innowise Group",
+    "contact": "Никита (Руководитель проектов)"
+  }
+}

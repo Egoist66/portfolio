@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import quotte from "../../../../assets/icons/quote-alt-right-svg 1.svg";
 import Text from "../../../../service/TEXT/TEXT";
 
@@ -30,7 +31,7 @@ const QuoteIcon = styled.div`
   }
 `;
 
-const CvLink = styled.a`
+const CvLink = styled(Link)`
   color: ${({ theme }) => theme.styles.colors.decorColorLight};
   font-weight: 500;
   text-decoration: underline;
@@ -56,7 +57,7 @@ function TestimonyWrapper() {
         the technology world makes me stronger. In my free time from IT, I try to
         relax because mental respite is important in our work. I listen to music,
         practice vocals, which is my old hobby 😉 Here is my full{" "}
-        <CvLink target="_blank" rel="noopener noreferrer" href="/resume/FM-resume.pdf">
+        <CvLink to="/career">
           CV info
         </CvLink>
       </Text>

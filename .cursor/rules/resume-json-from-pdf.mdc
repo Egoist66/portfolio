@@ -1,0 +1,80 @@
+---
+description: Generate public/resume/resume.json from PDF resume for Career page
+globs: public/resume/**
+alwaysApply: false
+---
+
+# Resume JSON from PDF
+
+The Career page (`/career`) loads data dynamically from **`public/resume/resume.json`**.  
+Do not store resume content in `src/data/`. The PDF is the source of truth.
+
+## Files
+
+| File | Role |
+|------|------|
+| `public/resume/FM-resume.pdf` | Source resume (hh.ru export) |
+| `public/resume/resume.json` | JSON "DB" consumed by the app |
+| `src/types/resume.ts` | TypeScript schema — update if JSON shape changes |
+| `src/hooks/useResumeData.ts` | Fetches `/resume/resume.json` |
+
+## When to regenerate JSON
+
+Regenerate `resume.json` when:
+- PDF is replaced or updated
+- User asks to sync career data from PDF
+
+## Workflow
+
+1. Read `public/resume/FM-resume.pdf` fully
+2. Map PDF sections → JSON fields (see mapping below)
+3. Write/update **`public/resume/resume.json`** only
+4. Set `meta.updatedAt` from PDF footer ("Резюме обновлено …")
+5. Increment `meta.version` if structure changed
+6. Run `pnpm build` to verify
+
+## PDF → JSON mapping
+
+| PDF section | JSON path |
+|-------------|-----------|
+| Header (name, age, contacts, location) | `personal` |
+| Желаемая должность | `personal.title` |
+| Опыт работы (total) | `personal.totalExperience` |
+| Гражданство / переезд / формат работы | `personal.citizenship`, `relocation`, `workFormats`, `employmentTypes` |
+| Каждое место работы | `experience[]` — newest first |
+| Строка "Стек - …" | `experience[].stack` (split by comma) |
+| Bullet duties | `experience[].highlights` |
+| Основной текст блока | `experience[].description` |
+| Образование | `education[]` |
+| Повышение квалификации | `courses[]` |
+| Навыки | `skills[]` |
+| Знание языков | `languages[]` |
+| Опыт вождения | `driving` |
+| Рекомендации | `recommendations` |
+| Обо мне | `about` |
+
+## Experience object template
+
+```json
+{
+  "company": "Company name",
+  "location": "City",
+  "website": "https://optional.com/",
+  "industry": "Industry · sub-industry",
+  "role": "Job title",
+  "period": "Month YYYY — Month YYYY",
+  "duration": "N месяцев",
+  "description": "Main paragraph from PDF",
+  "highlights": ["Bullet 1", "Bullet 2"],
+  "stack": ["React", "TypeScript"]
+}
+```
+
+## Rules
+
+- Preserve Russian text from PDF verbatim
+- Keep `experience` sorted newest → oldest (as in PDF)
+- `personal.pdfUrl` must stay `/resume/FM-resume.pdf`
+- `meta.sourcePdf` must stay `/resume/FM-resume.pdf`
+- Do not edit `CareerPage.tsx` layout when only data changes
+- After JSON update, no React code changes required unless schema changed

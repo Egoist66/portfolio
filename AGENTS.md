@@ -136,6 +136,39 @@ Add to `_skillsImages` array (at the end, before `]`):
 
 ---
 
+## Update Career Page (from PDF resume)
+
+The Career page (`/career`) loads data from **`public/resume/resume.json`** via fetch.  
+PDF source: **`public/resume/FM-resume.pdf`**
+
+### Regenerate JSON from PDF
+
+1. Read `public/resume/FM-resume.pdf`
+2. Update `public/resume/resume.json` following the schema in `src/types/resume.ts`
+3. Set `meta.updatedAt` from PDF footer date
+4. See `.cursor/rules/resume-json-from-pdf.mdc` for full PDF → JSON mapping
+
+### After JSON update
+
+No React changes needed unless the schema changed. Verify:
+
+```bash
+pnpm dev    # open /career
+pnpm build
+```
+
+### Key files
+
+| File | Purpose |
+|------|---------|
+| `public/resume/resume.json` | Resume data (JSON "DB") |
+| `public/resume/FM-resume.pdf` | Source PDF |
+| `src/hooks/useResumeData.ts` | Fetches JSON at runtime |
+| `src/types/resume.ts` | TypeScript types |
+| `src/components/Content/Career/CareerPage.tsx` | UI (dynamic render) |
+
+---
+
 ## Run & Verify
 
 ```bash

@@ -1,8 +1,9 @@
-import { Route, Routes } from "react-router-dom";
+import { useLocation, useRoutes } from "react-router-dom";
 import Text from "../../service/TEXT/TEXT";
 import { lazy, Suspense } from "react";
 import styled from "styled-components";
 import { WORK_CARD_WIDTH } from "../Content/MyWorks/WorksCards/WorkCards";
+import PageTransition from "../Layout/PageTransition/PageTransition";
 
 const GamesFallbackWrap = styled.div`
   width: 100%;
@@ -41,13 +42,24 @@ function GamesLoadingFallback() {
 }
 
 function GameRoutes() {
+  const location = useLocation();
+  const isGamesRoute = location.pathname.startsWith("/games");
+  const transitionKey = isGamesRoute ? location.pathname : "games-idle";
+
+  const element = useRoutes(
+    [
+      { path: "/games", element: <_AllGames /> },
+      { path: "/games/chess", element: <_Chess /> },
+      { path: "/games/*", element: <_AllGames /> },
+    ],
+    location
+  );
+
   return (
     <Suspense fallback={<GamesLoadingFallback />}>
-      <Routes>
-        <Route path="/games" element={<_AllGames />} />
-        <Route path="/games/chess" element={<_Chess />} />
-        <Route path="/games/*" element={<_AllGames />} />
-      </Routes>
+      <PageTransition transitionKey={transitionKey}>
+        {isGamesRoute ? element ?? <_AllGames /> : null}
+      </PageTransition>
     </Suspense>
   );
 }

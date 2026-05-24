@@ -1,8 +1,9 @@
-import { Route, Routes } from "react-router-dom";
+import { useLocation, useRoutes } from "react-router-dom";
 import Text from "../../service/TEXT/TEXT";
 import { lazy, Suspense } from "react";
 import styled from "styled-components";
 import { WORK_CARD_WIDTH } from "../Content/MyWorks/WorksCards/WorkCards";
+import PageTransition from "../Layout/PageTransition/PageTransition";
 
 const WorksFallbackWrap = styled.div`
   width: 100%;
@@ -66,39 +67,54 @@ function WorksLoadingFallback() {
 }
 
 function WorkRoutes() {
+  const location = useLocation();
+
+  const isWorkRoute =
+    location.pathname === "/career" || location.pathname.startsWith("/games")
+      ? false
+      : true;
+
+  const transitionKey = isWorkRoute ? location.pathname : "works-idle";
+
+  const element = useRoutes(
+    [
+      { path: "/", element: <_AllWorks /> },
+      { path: "/marvel-app", element: <_Marvel /> },
+      { path: "/notes-app", element: <_Notes /> },
+      { path: "/code-pencil-app", element: <_CodePencil /> },
+      { path: "/simple-editor-app", element: <_SimpleEditor /> },
+      { path: "/converter-app", element: <_Converter /> },
+      { path: "/todolist-app", element: <_TodoList /> },
+      { path: "/generator-app", element: <_Generator /> },
+      { path: "/terminal-app", element: <_Terminal /> },
+      { path: "/signature-app", element: <_Signature /> },
+      { path: "/admin-app", element: <_AdminApp /> },
+      { path: "/crm-app", element: <_CRM /> },
+      { path: "/colors-app", element: <_Colors /> },
+      { path: "/keynotes-app", element: <_KeyNotes /> },
+      { path: "/password-app", element: <_Password /> },
+      { path: "/weather-app", element: <_Weather /> },
+      { path: "/tres-finance", element: <_TresFinance /> },
+      { path: "/basic-notes", element: <_NotesV2 /> },
+      { path: "/interview-app", element: <_InterviewApp /> },
+      { path: "/learn-lang-app", element: <_LangApp /> },
+      { path: "/tanki-shop", element: <_TankiShop /> },
+      { path: "/apisaurus", element: <_Apisaurus /> },
+      { path: "/encrypting-app", element: <_EncryptingApp /> },
+      { path: "/vue-csrf-app", element: <_VueCsrfApp /> },
+      { path: "/interval-app", element: <_IntervalApp /> },
+      { path: "/alumini-js", element: <_Alumini /> },
+      { path: "/chess-app", element: <_Chess /> },
+      { path: "*", element: <_AllWorks /> },
+    ],
+    location
+  );
+
   return (
     <Suspense fallback={<WorksLoadingFallback />}>
-      <Routes>
-        <Route path="/" element={<_AllWorks />} />
-        <Route path="/marvel-app" element={<_Marvel />} />
-        <Route path="/notes-app" element={<_Notes />} />
-        <Route path="/code-pencil-app" element={<_CodePencil />} />
-        <Route path="/simple-editor-app" element={<_SimpleEditor />} />
-        <Route path="/converter-app" element={<_Converter />} />
-        <Route path="/todolist-app" element={<_TodoList />} />
-        <Route path="/generator-app" element={<_Generator />} />
-        <Route path="/terminal-app" element={<_Terminal />} />
-        <Route path="/signature-app" element={<_Signature />} />
-        <Route path="/admin-app" element={<_AdminApp />} />
-        <Route path="/crm-app" element={<_CRM />} />
-        <Route path="/colors-app" element={<_Colors />} />
-        <Route path="/keynotes-app" element={<_KeyNotes />} />
-        <Route path="/password-app" element={<_Password />} />
-        <Route path="/weather-app" element={<_Weather />} />
-        <Route path="/tres-finance" element={<_TresFinance />} />
-        <Route path="/basic-notes" element={<_NotesV2 />} />
-        <Route path="/interview-app" element={<_InterviewApp />} />
-        <Route path="/learn-lang-app" element={<_LangApp />} />
-        <Route path="/tanki-shop" element={<_TankiShop />} />
-        <Route path="/apisaurus" element={<_Apisaurus />} />
-        <Route path="/encrypting-app" element={<_EncryptingApp />} />
-        <Route path="/vue-csrf-app" element={<_VueCsrfApp />} />
-        <Route path="/interval-app" element={<_IntervalApp />} />
-        <Route path="/alumini-js" element={<_Alumini />} />
-        <Route path="/chess-app" element={<_Chess />} />
-
-        <Route path="*" element={<_AllWorks />} />
-      </Routes>
+      <PageTransition transitionKey={transitionKey}>
+        {isWorkRoute ? element ?? <_AllWorks /> : null}
+      </PageTransition>
     </Suspense>
   );
 }

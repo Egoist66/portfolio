@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import routes from "../../../routes/routes.json";
 import { useAppContext } from "../../../context/AppContext";
 
@@ -15,7 +16,7 @@ const NavList = styled.ul`
   gap: clamp(0.75rem, 3vw, 1.25rem);
 `;
 
-const NavLink = styled.a`
+const NavLink = styled(Link)`
   font-size: clamp(2rem, 8vw, 3.5rem);
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -57,7 +58,7 @@ function Nav() {
       <NavList>
         {routes.map((route) => (
           <li key={route.name}>
-            <NavLink href={route.path} onClick={handleNavClick}>
+            <NavLink to={route.path} onClick={handleNavClick}>
               {route.name}
             </NavLink>
           </li>
