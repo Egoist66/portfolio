@@ -62,6 +62,8 @@ const NavHashLink = styled.a`
   ${navLinkStyles}
 `;
 
+const STANDALONE_PATHS = ["/career", "/wordpress"];
+
 function Nav() {
   const context = useAppContext();
   const { t, locale } = useLanguage();
@@ -77,7 +79,7 @@ function Nav() {
   const handleHomeClick = () => {
     closeMenu();
 
-    if (location.pathname === "/career") return;
+    if (STANDALONE_PATHS.includes(location.pathname)) return;
 
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -93,7 +95,7 @@ function Nav() {
 
     closeMenu();
 
-    if (location.pathname === "/career") {
+    if (STANDALONE_PATHS.includes(location.pathname)) {
       navigate({ pathname: "/", hash: sectionId, search: localizedSearch });
       return;
     }
@@ -119,9 +121,9 @@ function Nav() {
               >
                 {t(route.key)}
               </NavHashLink>
-            ) : route.path === "/career" ? (
+            ) : STANDALONE_PATHS.includes(route.path) ? (
               <NavRouterLink
-                to={{ pathname: "/career", search: localizedSearch }}
+                to={{ pathname: route.path, search: localizedSearch }}
                 onClick={closeMenu}
               >
                 {t(route.key)}

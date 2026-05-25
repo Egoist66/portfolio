@@ -1,0 +1,58 @@
+{
+  "plugins": [
+    {
+      "slug": "contentforge",
+      "version": "1.0.0",
+      "wpMin": "5.9",
+      "phpMin": "7.4",
+      "downloadUrl": "/wordpress/plugins/contentforge.zip",
+      "tags": ["content", "cpt", "shortcodes"],
+      "updatedAt": "2026-05-25"
+    },
+    {
+      "slug": "content-blocks",
+      "version": "1.0.0",
+      "wpMin": "5.9",
+      "phpMin": "7.4",
+      "downloadUrl": "/wordpress/plugins/content-blocks.zip",
+      "tags": ["gutenberg", "blocks"],
+      "updatedAt": "2026-05-25"
+    },
+    {
+      "slug": "smartmail",
+      "version": "1.0.0",
+      "wpMin": "5.9",
+      "phpMin": "7.4",
+      "downloadUrl": "/wordpress/plugins/smartmail.zip",
+      "tags": ["email", "smtp"],
+      "updatedAt": "2026-05-25"
+    },
+    {
+      "slug": "perfboost",
+      "version": "1.0.0",
+      "wpMin": "5.9",
+      "phpMin": "7.4",
+      "downloadUrl": "/wordpress/plugins/perfboost.zip",
+      "tags": ["performance", "cache"],
+      "updatedAt": "2026-05-25"
+    },
+    {
+      "slug": "fm-clean-head",
+      "version": "1.0.0",
+      "wpMin": "6.0",
+      "phpMin": "7.4",
+      "downloadUrl": "/wordpress/plugins/fm-clean-head.zip",
+      "tags": ["performance", "security"],
+      "updatedAt": "2026-05-25"
+    },
+    {
+      "slug": "fm-svg-upload",
+      "version": "1.0.0",
+      "wpMin": "6.0",
+      "phpMin": "7.4",
+      "downloadUrl": "/wordpress/plugins/fm-svg-upload.zip",
+      "tags": ["media", "svg"],
+      "updatedAt": "2026-05-25"
+    }
+  ]
+}

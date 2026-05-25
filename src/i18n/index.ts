@@ -23,6 +23,7 @@ export const navRoutes = [
   { key: "nav.games", path: "/#games" },
   { key: "nav.about", path: "/#about-me" },
   { key: "nav.career", path: "/career" },
+  { key: "nav.wordpress", path: "/wordpress" },
   { key: "nav.contact", path: "/#contact" },
 ] as const;
 

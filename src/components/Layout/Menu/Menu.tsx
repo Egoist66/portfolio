@@ -16,7 +16,7 @@ const TopBar = styled.div`
   gap: 0.625rem;
 `;
 
-const CareerLink = styled(Link)<{ $active?: boolean }>`
+const ShortcutLink = styled(Link)<{ $active?: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -119,12 +119,13 @@ function Menu() {
   const location = useLocation();
   const isOpen = !context?.isToggled;
   const isCareerActive = location.pathname === "/career";
+  const isWordPressActive = location.pathname === "/wordpress";
   const { t, locale } = useLanguage();
   const localizedSearch = setLocaleInSearch(location.search, locale);
 
   return (
     <TopBar>
-      <CareerLink
+      <ShortcutLink
         to={{ pathname: "/career", search: localizedSearch }}
         $active={isCareerActive}
         aria-label={t("menu.career")}
@@ -152,7 +153,24 @@ function Menu() {
           />
         </svg>
         <span>{t("menu.career")}</span>
-      </CareerLink>
+      </ShortcutLink>
+      <ShortcutLink
+        to={{ pathname: "/wordpress", search: localizedSearch }}
+        $active={isWordPressActive}
+        aria-label={t("menu.wordpress")}
+        title={t("menu.wordpress")}
+      >
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+          <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.75" />
+          <path
+            d="M8.5 8.5c1.2 3.8 2.4 6.4 3.6 7.8 1.4-2.8 2.4-5.4 3-7.8M9 15.5h6"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
+        </svg>
+        <span>{t("menu.wordpress")}</span>
+      </ShortcutLink>
       <LanguageToggle />
       <ThemeToggle />
       <MenuButton

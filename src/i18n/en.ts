@@ -6,6 +6,7 @@ const en = {
     games: "Games",
     about: "About Me",
     career: "Career",
+    wordpress: "WordPress",
     contact: "Contact",
   },
   hero: {
@@ -40,6 +41,7 @@ const en = {
   },
   menu: {
     career: "My Career",
+    wordpress: "WordPress",
     open: "Open menu",
     close: "Close menu",
   },
@@ -88,6 +90,18 @@ const en = {
   },
   games: {
     chess: "Chess",
+  },
+  wordpress: {
+    back: "Back to home",
+    eyebrow: "WordPress · Plugins",
+    title: "Custom WordPress Plugins",
+    subtitle:
+      "Free plugins I built for my own projects. Download ZIP, install via Plugins → Add New → Upload, and activate.",
+    download: "Download ZIP",
+    wpMin: "WordPress",
+    phpMin: "PHP",
+    updated: "Updated",
+    empty: "No plugins available yet.",
   },
 } as const;
 

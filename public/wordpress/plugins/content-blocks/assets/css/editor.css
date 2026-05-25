@@ -1,0 +1,105 @@
+/* ─── ContentBlocks: Editor Styles ───────────────────────────── */
+
+.cb-hero {
+    padding: 2rem;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+}
+
+.cb-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
+.cb-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+}
+
+.cb-hero__title {
+    font-size: 2.5rem;
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+}
+
+.cb-hero__subtitle {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin: 0 0 1.5rem;
+}
+
+.cb-hero__button {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    background: #fff;
+    color: #1a1a2e;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform .2s;
+}
+
+.cb-hero__button:hover {
+    transform: translateY(-2px);
+}
+
+.cb-pricing-card--popular .cb-pricing-card__badge {
+    display: inline-block;
+    background: #e74c3c;
+    color: #fff;
+    padding: .25rem .75rem;
+    border-radius: 20px;
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.cb-faq__item[open] .cb-faq__icon {
+    transform: rotate(45deg);
+}
+
+.cb-faq__icon {
+    transition: transform .3s ease;
+}
+
+.cb-team-card__social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+    font-size: .875rem;
+    color: #3498db;
+    text-decoration: none;
+}
+
+.cb-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--cb-columns, 4), 1fr);
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.cb-stat__number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: block;
+}
+
+.cb-timeline__dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #3498db;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px #3498db;
+    position: absolute;
+    left: -8px;
+    top: 4px;
+}

@@ -6,6 +6,7 @@ const ru = {
     games: "Игры",
     about: "Обо мне",
     career: "Карьера",
+    wordpress: "WordPress",
     contact: "Контакты",
   },
   hero: {
@@ -40,6 +41,7 @@ const ru = {
   },
   menu: {
     career: "Моя карьера",
+    wordpress: "WordPress",
     open: "Открыть меню",
     close: "Закрыть меню",
   },
@@ -88,6 +90,18 @@ const ru = {
   },
   games: {
     chess: "Шахматы",
+  },
+  wordpress: {
+    back: "На главную",
+    eyebrow: "WordPress · Плагины",
+    title: "Кастомные плагины WordPress",
+    subtitle:
+      "Бесплатные плагины, которые я написал для своих проектов. Скачайте ZIP, установите через Плагины → Добавить → Загрузить и активируйте.",
+    download: "Скачать ZIP",
+    wpMin: "WordPress",
+    phpMin: "PHP",
+    updated: "Обновлено",
+    empty: "Плагины пока недоступны.",
   },
 } as const;
 

@@ -1,0 +1,81 @@
+/* ─── ContentForge Admin ──────────────────────────────────── */
+
+.cf-wrap {
+    max-width: 960px;
+}
+
+.cf-nav-tabs {
+    margin: 1.5rem 0 0;
+    border-bottom: 1px solid #c3c4c7;
+    display: flex;
+    gap: 0;
+}
+
+.cf-nav-tab {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    margin-bottom: -1px;
+    text-decoration: none;
+    color: #3c434a;
+    font-weight: 500;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+}
+
+.cf-nav-tab:hover { background: #f0f0f1; }
+
+.cf-nav-tab--active {
+    background: #fff;
+    border-color: #c3c4c7;
+    color: #1d2327;
+}
+
+.cf-panel {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-top: none;
+    padding: 1.5rem 2rem;
+    min-height: 400px;
+}
+
+/* ─── Field Rows ──────────────────────────────────────── */
+
+.cf-field-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.cf-field-row input,
+.cf-field-row select {
+    flex: 1;
+    min-width: 100px;
+}
+
+.cf-field-key {
+    max-width: 140px;
+}
+
+.cf-field-desc {
+    flex: 2 !important;
+}
+
+.cf-remove-field {
+    background: #dc3545 !important;
+    color: #fff !important;
+    border-color: #dc3545 !important;
+    line-height: 1 !important;
+    font-size: 1.2rem !important;
+    padding: 0 10px !important;
+}
+
+.cf-remove-field:hover {
+    background: #c82333 !important;
+}
+
+.cf-add-field {
+    margin-top: 0.5rem !important;
+}
