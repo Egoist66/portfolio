@@ -1,5 +1,5 @@
 ---
-description: Generate public/resume/resume.json from PDF resume for Career page
+description: Generate public/resume locale JSON from PDF resume for Career page
 globs: public/resume/**
 alwaysApply: false
 ---
@@ -10,23 +10,28 @@ The Career page (`/career`) loads data dynamically from locale files:
 - **`public/resume/resume.ru.json`**
 - **`public/resume/resume.en.json`**
 
-Do not store resume content in `src/data/`. The PDF is the source of truth.
+Keep **`public/resume/resume.json`** in sync with `resume.ru.json` when updating.
+
+Do not store resume content in `src/data/`. The hh.ru/rabota.by PDF is the source of truth for static export; JSON drives the web page and generated PDF.
 
 ## Files
 
 | File | Role |
 |------|------|
-| `public/resume/FM-resume.pdf` | Source resume (hh.ru export) |
+| `public/resume/FM-resume.pdf` | Static CV (rabota.by download button) |
+| `public/resume/avatar.jpg` | Photo for generated PDF (`personal.photoUrl`) |
 | `public/resume/resume.ru.json` | Resume data (Russian) |
 | `public/resume/resume.en.json` | Resume data (English) |
-| `src/i18n/en.ts`, `src/i18n/ru.ts` | UI translations |
-| `src/i18n/projects.ts` | Project name/description translations |
-| `src/context/LanguageContext.tsx` | Language state + `t()` helper |
+| `public/resume/resume.json` | Legacy copy — sync with RU |
+| `src/i18n/en.ts`, `src/i18n/ru.ts` | Career UI translations (not resume body text) |
+| `src/types/resume.ts` | Schema including `photoUrl`, `pdfUrl` |
+| `src/utils/generateResumePdf.ts` | Generated PDF builder |
+| `.cursor/rules/career-cv-pdf.mdc` | PDF generator rules |
 
 ## When to regenerate JSON
 
-Regenerate `resume.json` when:
-- PDF is replaced or updated
+Regenerate locale JSON when:
+- `FM-resume.pdf` is replaced or updated
 - User asks to sync career data from PDF
 
 ## Workflow
@@ -34,18 +39,21 @@ Regenerate `resume.json` when:
 1. Read `public/resume/FM-resume.pdf` fully
 2. Map PDF sections → JSON fields (see mapping below)
 3. Write/update **`public/resume/resume.ru.json`** and **`public/resume/resume.en.json`**
-4. Set `meta.updatedAt` from PDF footer ("Резюме обновлено …")
-5. Increment `meta.version` if structure changed
-6. Run `pnpm build` to verify
+4. Sync **`public/resume/resume.json`** with RU version if it exists
+5. Set `meta.updatedAt` from PDF footer ("Резюме обновлено …")
+6. Increment `meta.version` if structure changed
+7. Run `pnpm build` to verify
 
 ## PDF → JSON mapping
 
 | PDF section | JSON path |
 |-------------|-----------|
 | Header (name, age, contacts, location) | `personal` |
+| Фото | `personal.photoUrl` → `/resume/avatar.jpg` (file in `public/resume/`) |
 | Желаемая должность | `personal.title` |
 | Опыт работы (total) | `personal.totalExperience` |
 | Гражданство / переезд / формат работы | `personal.citizenship`, `relocation`, `workFormats`, `employmentTypes` |
+| Разрешение на работу | `personal.workPermit[]` — controls rabota.by button visibility (BY + RU) |
 | Каждое место работы | `experience[]` — newest first |
 | Строка "Стек - …" | `experience[].stack` (split by comma) |
 | Bullet duties | `experience[].highlights` |
@@ -58,6 +66,33 @@ Regenerate `resume.json` when:
 | Рекомендации | `recommendations` |
 | Обо мне | `about` |
 
+## Personal object — required fields
+
+```json
+{
+  "name": "...",
+  "title": "...",
+  "location": "...",
+  "citizenship": "...",
+  "workPermit": ["Belarus", "Russia"],
+  "relocation": "...",
+  "totalExperience": "...",
+  "employmentTypes": [],
+  "workFormats": [],
+  "contacts": {
+    "phone": "...",
+    "email": "...",
+    "telegram": "...",
+    "telegramUrl": "https://t.me/...",
+    "portfolio": "https://..."
+  },
+  "pdfUrl": "/resume/FM-resume.pdf",
+  "photoUrl": "/resume/avatar.jpg"
+}
+```
+
+Use localized strings in each locale file (`Беларусь`/`Belarus`, etc.).
+
 ## Experience object template
 
 ```json
@@ -68,7 +103,7 @@ Regenerate `resume.json` when:
   "industry": "Industry · sub-industry",
   "role": "Job title",
   "period": "Month YYYY — Month YYYY",
-  "duration": "N месяцев",
+  "duration": "N months",
   "description": "Main paragraph from PDF",
   "highlights": ["Bullet 1", "Bullet 2"],
   "stack": ["React", "TypeScript"]
@@ -77,9 +112,11 @@ Regenerate `resume.json` when:
 
 ## Rules
 
-- Preserve Russian text from PDF verbatim
+- Preserve text per locale (RU verbatim from PDF; EN as translation)
 - Keep `experience` sorted newest → oldest (as in PDF)
 - `personal.pdfUrl` must stay `/resume/FM-resume.pdf`
+- `personal.photoUrl` must stay `/resume/avatar.jpg` unless photo path intentionally changes
 - `meta.sourcePdf` must stay `/resume/FM-resume.pdf`
-- Do not edit `CareerPage.tsx` layout when only data changes
+- Do not edit `CareerPage.tsx` or `generateResumePdf.ts` when only resume text/data changes
 - After JSON update, no React code changes required unless schema changed
+- Updating photo: replace `public/resume/avatar.jpg` (optionally sync from `src/assets/images/avatar.jpg`)

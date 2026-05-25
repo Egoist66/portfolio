@@ -134,38 +134,86 @@ Add to `_skillsImages` array (at the end, before `]`):
 - [ ] Place icon in `assets/images-2/`
 - [ ] Add import + array entry in `SkillsCards.tsx`
 
+### Career / CV:
+- [ ] Update `public/resume/resume.ru.json` + `resume.en.json` (sync `resume.json`)
+- [ ] Replace `public/resume/FM-resume.pdf` if static rabota.by CV changed
+- [ ] Replace `public/resume/avatar.jpg` if CV photo changed
+- [ ] Set `meta.updatedAt` and keep `personal.pdfUrl` / `personal.photoUrl`
+- [ ] Test `/career` in RU and EN — generate PDF + rabota.by button (if BY+RU work permit)
+
 ---
 
-## Update Career Page (from PDF resume)
+## Career Page & CV Generator (`/career`)
 
-The Career page (`/career`) loads data from **`public/resume/resume.json`** via fetch.  
-PDF source: **`public/resume/FM-resume.pdf`**
+The Career page is **locale-aware**. Resume content comes from JSON; UI labels from i18n.
 
-### Regenerate JSON from PDF
+### Data files
+
+| File | Role |
+|------|------|
+| `public/resume/resume.ru.json` | Resume data (Russian) |
+| `public/resume/resume.en.json` | Resume data (English) |
+| `public/resume/resume.json` | Legacy/fallback copy — keep in sync with `resume.ru.json` |
+| `public/resume/FM-resume.pdf` | Static CV export (rabota.by / hh.ru) |
+| `public/resume/avatar.jpg` | Photo embedded in generated PDF |
+| `src/types/resume.ts` | TypeScript schema |
+| `src/hooks/useResumeData.ts` | Fetches `resume.{locale}.json` |
+
+Do **not** store resume content in `src/data/`.
+
+### CV buttons on `/career`
+
+| Button | Behavior |
+|--------|----------|
+| **Generate CV (PDF)** | Builds PDF client-side from current locale JSON + i18n section labels |
+| **Download rabota.by CV** | Direct download of `personal.pdfUrl` (`/resume/FM-resume.pdf`) |
+
+The rabota.by button is shown **only** when `personal.workPermit` includes both **Belarus** and **Russia** (RU/EN spellings). Logic: `src/utils/resumeRegion.ts` → `hasBelarusRussiaWorkPermit()`.
+
+### PDF generator (important)
+
+- **Library:** pdfmake **0.2.10 via CDN** (loaded on button click only — **do not** add `pdfmake` to npm)
+- **Generator:** `src/utils/generateResumePdf.ts`
+- **Page:** `src/components/Content/Career/CareerPage.tsx` (lazy-loaded in `App.tsx`)
+- **Photo:** `personal.photoUrl` (default fallback `/resume/avatar.jpg`) — fetched as base64 and placed in PDF header
+- **Never pass live React state arrays** (e.g. `highlights`) directly to pdfmake — it mutates them. Always clone data (`JSON.parse(JSON.stringify(data))`) and copy arrays before PDF build.
+
+### Update resume JSON from PDF
 
 1. Read `public/resume/FM-resume.pdf`
-2. Update `public/resume/resume.json` following the schema in `src/types/resume.ts`
+2. Update **`public/resume/resume.ru.json`** and **`public/resume/resume.en.json`** (and `resume.json` if present)
 3. Set `meta.updatedAt` from PDF footer date
-4. See `.cursor/rules/resume-json-from-pdf.mdc` for full PDF → JSON mapping
+4. Keep `personal.pdfUrl`: `/resume/FM-resume.pdf`
+5. Keep `personal.photoUrl`: `/resume/avatar.jpg` (replace `public/resume/avatar.jpg` to change photo)
+6. See `.cursor/rules/resume-json-from-pdf.mdc` for PDF → JSON field mapping
 
-### After JSON update
-
-No React changes needed unless the schema changed. Verify:
+After JSON-only updates, React changes are usually **not** needed. Verify:
 
 ```bash
-pnpm dev    # open /career
+pnpm dev    # open /career, test both locales + PDF generation
 pnpm build
 ```
+
+### i18n keys (Career UI)
+
+Add/edit labels in `src/i18n/en.ts` and `src/i18n/ru.ts` under `career`:
+
+- `downloadPdf` — generate button
+- `generatingPdf`, `generatePdfError` — PDF loading/error
+- `downloadLocalPdf` — rabota.by static PDF button
+- Section labels: `skills`, `languages`, `education`, `about`, `workExperience`, etc.
 
 ### Key files
 
 | File | Purpose |
 |------|---------|
-| `public/resume/resume.json` | Resume data (JSON "DB") |
-| `public/resume/FM-resume.pdf` | Source PDF |
-| `src/hooks/useResumeData.ts` | Fetches JSON at runtime |
-| `src/types/resume.ts` | TypeScript types |
-| `src/components/Content/Career/CareerPage.tsx` | UI (dynamic render) |
+| `src/components/Content/Career/CareerPage.tsx` | Career UI + PDF buttons |
+| `src/utils/generateResumePdf.ts` | PDF document builder + CDN pdfmake loader |
+| `src/utils/resumeRegion.ts` | BY/RU work-permit check for local PDF button |
+| `src/hooks/useResumeData.ts` | Locale resume fetch |
+| `src/types/resume.ts` | Resume schema (`photoUrl`, `pdfUrl`, …) |
+| `.cursor/rules/resume-json-from-pdf.mdc` | PDF → JSON sync rules |
+| `.cursor/rules/career-cv-pdf.mdc` | PDF generator maintenance rules |
 
 ---
 

@@ -23,7 +23,8 @@
       "telegramUrl": "https://t.me/codebuilder1",
       "portfolio": "https://portfolio-six-gamma-33.vercel.app"
     },
-    "pdfUrl": "/resume/FM-resume.pdf"
+    "pdfUrl": "/resume/FM-resume.pdf",
+    "photoUrl": "/resume/avatar.jpg"
   },
   "about": "I have been immersed in IT and front-end web development for over 6 years. I am also diving deeper into backend technologies. As a FE developer I have faced many interesting challenges that positively shaped my growth. I am always eager to learn and reach new heights while working with strong specialists. I love what I do. Portfolio available on request as an archive.",
   "experience": [

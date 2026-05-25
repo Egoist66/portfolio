@@ -1,0 +1,100 @@
+---
+description: Career page CV PDF generator — pdfmake CDN, photo, locale, rabota.by button
+globs: src/components/Content/Career/**,src/utils/generateResumePdf.ts,src/utils/resumeRegion.ts,src/hooks/useResumeData.ts,src/types/resume.ts,src/i18n/en.ts,src/i18n/ru.ts
+alwaysApply: false
+---
+
+# Career CV PDF Generator
+
+The `/career` page generates a downloadable CV PDF from locale resume JSON + i18n UI labels.
+
+## Architecture
+
+| Piece | Location |
+|-------|----------|
+| Career UI | `src/components/Content/Career/CareerPage.tsx` |
+| PDF builder | `src/utils/generateResumePdf.ts` |
+| BY/RU button gate | `src/utils/resumeRegion.ts` |
+| Resume fetch | `src/hooks/useResumeData.ts` → `/resume/resume.{locale}.json` |
+| Types | `src/types/resume.ts` |
+| Lazy route | `src/components/App/App.tsx` — `CareerPage` is `React.lazy` |
+
+## pdfmake — CDN only
+
+- Use **pdfmake 0.2.10 from cdnjs** inside `generateResumePdf.ts`
+- Scripts load **only on generate button click**
+- **Never** add `pdfmake` to `package.json` — it breaks CRA/React (duplicate React / hook errors)
+
+```text
+https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/pdfmake.min.js
+https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/vfs_fonts.js
+```
+
+Roboto fonts from `vfs_fonts.js` support Cyrillic (RU) and Latin (EN).
+
+## Generate flow
+
+1. User locale (`en` | `ru`) selects JSON file and UI labels
+2. `CareerPage` dynamically imports `generateResumePdf`
+3. Resume data is **deep-cloned** before building the document
+4. Photo fetched from `personal.photoUrl` → base64 data URL
+5. pdfmake creates PDF; filename: `CV-{name}-{locale}.pdf`
+
+## pdfmake mutation rule (critical)
+
+pdfmake **mutates** `ul` arrays in the doc definition (strings become internal layout objects).
+
+**Always:**
+- Clone resume data: `JSON.parse(JSON.stringify(data))`
+- Copy arrays: `ul: job.highlights.map((item) => String(item))`
+- Never pass references from React state / fetched JSON directly into pdfmake
+
+If skipped, React re-render throws: `Objects are not valid as a React child`.
+
+## Photo
+
+| Field | Value |
+|-------|-------|
+| JSON | `personal.photoUrl` → `/resume/avatar.jpg` |
+| File | `public/resume/avatar.jpg` |
+| Source copy | `src/assets/images/avatar.jpg` (homepage avatar) |
+
+To change CV photo: replace `public/resume/avatar.jpg` or update `photoUrl` in both locale JSON files.
+
+PDF layout: portrait photo in header — `fit: [68, 118]` (keeps aspect ratio, not squashed).
+
+## Buttons
+
+### Generate CV (PDF)
+- Always visible
+- i18n: `career.downloadPdf`, `career.generatingPdf`, `career.generatePdfError`
+- Builds PDF from current locale data
+
+### Download rabota.by CV
+- Visible only when `hasBelarusRussiaWorkPermit(personal.workPermit)` is true
+- Both Belarus **and** Russia must appear in workPermit (supports `Belarus`/`Беларусь`, `Russia`/`Россия`)
+- Links to `personal.pdfUrl` (`/resume/FM-resume.pdf`)
+- i18n: `career.downloadLocalPdf`
+
+## PDF content sections
+
+Header (with photo) → About → Work experience → Skills → Languages → Education → Courses → Additional → Updated date footer.
+
+Section titles use i18n (`ResumePdfLabels` passed from `CareerPage`).
+
+## When to edit code vs JSON
+
+| Change | Action |
+|--------|--------|
+| Job text, skills, contacts | Edit `resume.ru.json` + `resume.en.json` only |
+| New resume field | Update `src/types/resume.ts`, JSON files, `CareerPage` render, `generateResumePdf.ts` if needed in PDF |
+| New PDF section | Edit `generateResumePdf.ts` + i18n labels |
+| New UI button/label | Edit `CareerPage.tsx` + `en.ts` / `ru.ts` |
+| Change photo file | Replace `public/resume/avatar.jpg` |
+
+## Verify
+
+```bash
+pnpm dev   # /career — switch RU/EN, generate PDF, check photo + no React errors after download
+pnpm build
+```

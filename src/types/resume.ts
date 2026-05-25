@@ -26,6 +26,7 @@ export interface ResumePersonal {
   workFormats: string[];
   contacts: ResumeContacts;
   pdfUrl: string;
+  photoUrl?: string;
 }
 
 export interface ResumeExperience {

@@ -102,7 +102,76 @@ function sectionTitle(text: string): PdfContent {
   };
 }
 
-function buildDocument(data: ResumeData, labels: ResumePdfLabels): PdfDocumentDefinition {
+async function loadImageAsDataUrl(url: string): Promise<string | null> {
+  try {
+    const response = await fetch(url, { cache: "force-cache" });
+    if (!response.ok) return null;
+
+    const blob = await response.blob();
+    return await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = () => reject(new Error("Failed to read image"));
+      reader.readAsDataURL(blob);
+    });
+  } catch {
+    return null;
+  }
+}
+
+function buildHeaderBlock(
+  personal: ResumeData["personal"],
+  labels: ResumePdfLabels,
+  contactLine: string,
+  photoDataUrl?: string | null
+): PdfContent {
+  const infoStack: PdfContent[] = [
+    { text: personal.name, style: "name" },
+    { text: personal.title, style: "title" },
+    { text: contactLine, style: "contact", margin: [0, 8, 0, 6] },
+    {
+      text: [
+        personal.location,
+        `${labels.experience}: ${personal.totalExperience}`,
+        personal.relocation,
+      ].join("  ·  "),
+      style: "muted",
+    },
+  ];
+
+  if (!photoDataUrl) {
+    return {
+      stack: infoStack,
+      margin: [0, 0, 0, 16],
+    };
+  }
+
+  return {
+    columns: [
+      {
+        width: 68,
+        stack: [
+          {
+            image: photoDataUrl,
+            fit: [68, 118],
+          },
+        ],
+      },
+      {
+        width: "*",
+        stack: infoStack,
+      },
+    ],
+    columnGap: 18,
+    margin: [0, 0, 0, 16],
+  };
+}
+
+function buildDocument(
+  data: ResumeData,
+  labels: ResumePdfLabels,
+  photoDataUrl?: string | null
+): PdfDocumentDefinition {
   const {
     meta,
     personal,
@@ -207,18 +276,7 @@ function buildDocument(data: ResumeData, labels: ResumePdfLabels): PdfDocumentDe
   );
 
   const content: PdfContent[] = [
-    { text: personal.name, style: "name" },
-    { text: personal.title, style: "title" },
-    { text: contactLine, style: "contact", margin: [0, 8, 0, 6] },
-    {
-      text: [
-        personal.location,
-        `${labels.experience}: ${personal.totalExperience}`,
-        personal.relocation,
-      ].join("  ·  "),
-      style: "muted",
-      margin: [0, 0, 0, 16],
-    },
+    buildHeaderBlock(personal, labels, contactLine, photoDataUrl),
     sectionTitle(labels.about),
     { text: about, style: "body", margin: [0, 0, 0, 4] },
     sectionTitle(labels.workExperience),
@@ -303,7 +361,9 @@ export async function generateResumePdf(
 ): Promise<void> {
   const pdfMake = await getPdfMake();
   const snapshot = JSON.parse(JSON.stringify(data)) as ResumeData;
-  const docDefinition = buildDocument(snapshot, labels);
+  const photoUrl = snapshot.personal.photoUrl ?? "/resume/avatar.jpg";
+  const photoDataUrl = await loadImageAsDataUrl(photoUrl);
+  const docDefinition = buildDocument(snapshot, labels, photoDataUrl);
   const fileName = `CV-${slugify(data.personal.name) || "resume"}-${locale}.pdf`;
 
   pdfMake.createPdf(docDefinition).download(fileName);
