@@ -42,6 +42,7 @@ const en = {
   menu: {
     career: "My Career",
     wordpress: "WordPress",
+    navigation: "Navigation",
     open: "Open menu",
     close: "Close menu",
   },

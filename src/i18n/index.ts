@@ -16,15 +16,19 @@ export function translate(locale: Locale, key: string): string {
   return typeof node === "string" ? node : key;
 }
 
-export const navRoutes = [
+export const navMenuRoutes = [
   { key: "nav.home", path: "/" },
   { key: "nav.skills", path: "/#skills" },
   { key: "nav.works", path: "/#works" },
   { key: "nav.games", path: "/#games" },
   { key: "nav.about", path: "/#about-me" },
+  { key: "nav.contact", path: "/#contact" },
+] as const;
+
+/** Standalone pages — shortcuts in the top bar */
+export const navShortcutRoutes = [
   { key: "nav.career", path: "/career" },
   { key: "nav.wordpress", path: "/wordpress" },
-  { key: "nav.contact", path: "/#contact" },
 ] as const;
 
 export type { Locale } from "./types";

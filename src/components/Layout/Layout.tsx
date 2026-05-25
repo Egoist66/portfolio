@@ -17,42 +17,42 @@ function Layout() {
   return (
     <>
       <ScrollToHash />
-      <Section id="/" _relative="true" hero bg_color={colors.mainBg}>
+      <Section id="/" $relative $hero $bgColor={colors.mainBg}>
         <PreviewAvatar />
       </Section>
 
-      <Section id="skills" bg_color={colors.secondaryBg}>
+      <Section id="skills" $bgColor={colors.secondaryBg}>
         <Container>
           <Skills />
         </Container>
       </Section>
 
-      <Section id="works" bg_color={colors.mainBg}>
+      <Section id="works" $bgColor={colors.mainBg}>
         <Container>
           <Works />
         </Container>
       </Section>
 
-      <Section id="games" bg_color={colors.secondaryBg}>
+      <Section id="games" $bgColor={colors.secondaryBg}>
         <Container>
           <Games />
         </Container>
       </Section>
 
-      <Section id="about-me" bg_color={colors.mainBg}>
+      <Section id="about-me" $bgColor={colors.mainBg}>
         <Container>
           <Testimony />
         </Container>
       </Section>
 
-      <Section id="contact" bg_color={colors.mainBg}>
+      <Section id="contact" $bgColor={colors.mainBg}>
         <Container>
           <Contact />
         </Container>
       </Section>
 
       <Footer>
-        <Section id="socials" bg_color={colors.secondaryBg}>
+        <Section id="socials" $bgColor={colors.secondaryBg}>
           <Container>
             <Socials />
           </Container>

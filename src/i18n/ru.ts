@@ -42,6 +42,7 @@ const ru = {
   menu: {
     career: "Моя карьера",
     wordpress: "WordPress",
+    navigation: "",
     open: "Открыть меню",
     close: "Закрыть меню",
   },

@@ -12,8 +12,11 @@ const TopBar = styled.div`
   right: clamp(1rem, 3vw, 1.5rem);
   z-index: 1001;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   align-items: center;
-  gap: 0.625rem;
+  gap: 0.5rem;
+  max-width: min(100vw - 2rem, 520px);
 `;
 
 const ShortcutLink = styled(Link)<{ $active?: boolean }>`
@@ -54,13 +57,15 @@ const ShortcutLink = styled(Link)<{ $active?: boolean }>`
     flex-shrink: 0;
   }
 
-  @media (max-width: ${({ theme }) => theme.styles.breakpoints.sm}) {
-    width: 48px;
-    padding: 0;
-
+  @media (max-width: ${({ theme }) => theme.styles.breakpoints.lg}) {
     span {
       display: none;
     }
+  }
+
+  @media (max-width: ${({ theme }) => theme.styles.breakpoints.sm}) {
+    width: 48px;
+    padding: 0;
   }
 `;
 
