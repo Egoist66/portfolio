@@ -1,9 +1,12 @@
 import styled from "styled-components";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Container from "../../Container/Container";
 import useResumeData from "../../../hooks/useResumeData";
 import { useLanguage } from "../../../context/LanguageContext";
 import { setLocaleInSearch } from "../../../utils/localeQuery";
+import type { ResumePdfLabels } from "../../../utils/generateResumePdf";
+import { hasBelarusRussiaWorkPermit } from "../../../utils/resumeRegion";
 
 const Page = styled.div`
   min-height: 100svh;
@@ -145,7 +148,14 @@ const ContactChip = styled.a`
   }
 `;
 
-const DownloadBtn = styled.a`
+const ActionRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+`;
+
+const DownloadBtn = styled.button`
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -154,14 +164,44 @@ const DownloadBtn = styled.a`
   font-weight: 600;
   color: #fff;
   background: ${({ theme }) => theme.styles.colors.accentGradient};
+  border: none;
   border-radius: ${({ theme }) => theme.styles.radius.full};
   box-shadow: ${({ theme }) => theme.styles.shadow.glow};
+  cursor: pointer;
   transition: transform ${({ theme }) => theme.styles.transition.fast},
+    box-shadow ${({ theme }) => theme.styles.transition.base},
+    opacity ${({ theme }) => theme.styles.transition.base};
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: ${({ theme }) => theme.styles.shadow.lg};
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: wait;
+  }
+`;
+
+const LocalPdfLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.styles.colors.textColor};
+  background: ${({ theme }) => theme.styles.colors.mainBg};
+  border: 1px solid ${({ theme }) => theme.styles.colors.border};
+  border-radius: ${({ theme }) => theme.styles.radius.full};
+  transition: transform ${({ theme }) => theme.styles.transition.fast},
+    border-color ${({ theme }) => theme.styles.transition.base},
     box-shadow ${({ theme }) => theme.styles.transition.base};
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: ${({ theme }) => theme.styles.shadow.lg};
+    border-color: ${({ theme }) => theme.styles.colors.borderFocus};
+    box-shadow: ${({ theme }) => theme.styles.shadow.sm};
   }
 `;
 
@@ -478,8 +518,42 @@ function CareerPage() {
   const { data, loading, error } = useResumeData();
   const { t, locale } = useLanguage();
   const location = useLocation();
+  const [generatingPdf, setGeneratingPdf] = useState(false);
   const localizedSearch = setLocaleInSearch(location.search, locale);
   const homeTo = { pathname: "/", search: localizedSearch };
+
+  const handleGeneratePdf = async () => {
+    if (!data || generatingPdf) return;
+
+    const labels: ResumePdfLabels = {
+      experience: t("career.experience"),
+      skills: t("career.skills"),
+      languages: t("career.languages"),
+      education: t("career.education"),
+      courses: t("career.courses"),
+      additional: t("career.additional"),
+      about: t("career.about"),
+      workExperience: t("career.workExperience"),
+      citizenship: t("career.citizenship"),
+      workPermit: t("career.workPermit"),
+      format: t("career.format"),
+      employment: t("career.employment"),
+      ownCar: t("career.ownCar"),
+      recommendations: t("career.recommendations"),
+      portfolio: t("career.portfolio"),
+      updated: t("career.updated"),
+    };
+
+    try {
+      setGeneratingPdf(true);
+      const { generateResumePdf } = await import("../../../utils/generateResumePdf");
+      await generateResumePdf(data, labels, locale);
+    } catch {
+      window.alert(t("career.generatePdfError"));
+    } finally {
+      setGeneratingPdf(false);
+    }
+  };
 
   if (loading) {
     return (
@@ -522,6 +596,7 @@ function CareerPage() {
   }
 
   const { meta, personal, about, experience, education, courses, skills, languages, driving, recommendations } = data;
+  const showLocalPdf = hasBelarusRussiaWorkPermit(personal.workPermit);
 
   return (
     <Page>
@@ -562,12 +637,32 @@ function CareerPage() {
               </ContactChip>
             </ContactGrid>
 
-            <DownloadBtn href={personal.pdfUrl} target="_blank" rel="noopener noreferrer">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
-              </svg>
-              {t("career.downloadPdf")}
-            </DownloadBtn>
+            <ActionRow>
+              <DownloadBtn
+                type="button"
+                onClick={handleGeneratePdf}
+                disabled={generatingPdf}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                </svg>
+                {generatingPdf ? t("career.generatingPdf") : t("career.downloadPdf")}
+              </DownloadBtn>
+
+              {showLocalPdf && (
+                <LocalPdfLink
+                  href={personal.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                  </svg>
+                  {t("career.downloadLocalPdf")}
+                </LocalPdfLink>
+              )}
+            </ActionRow>
             {meta.updatedAt && (
               <UpdatedAt>{t("career.updated")}: {meta.updatedAt}</UpdatedAt>
             )}
@@ -678,8 +773,10 @@ function CareerPage() {
 
                       {job.highlights.length > 0 && (
                         <ExpHighlights>
-                          {job.highlights.map((item) => (
-                            <ExpHighlight key={item}>{item}</ExpHighlight>
+                          {job.highlights.map((item, index) => (
+                            <ExpHighlight key={typeof item === "string" ? item : index}>
+                              {typeof item === "string" ? item : String(item)}
+                            </ExpHighlight>
                           ))}
                         </ExpHighlights>
                       )}
